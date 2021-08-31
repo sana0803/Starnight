@@ -85,3 +85,14 @@
 # Meeting Logs
 
 - [Notion](https://feline-ceramic-f5b.notion.site/021d6df882794c8eb1259bd7dbd1c504)
+
+---
+
+## 팀원 소개
+
+| Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
+| -------- | ------ | ------ | ------ | ------ | ------ |
+| Profile  |        |        |        |        |        |
+| Position |        |        |        |        |        |
+| GitHub   |        |        |        |        |        |
+
