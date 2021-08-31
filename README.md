@@ -79,3 +79,6 @@
 - 0533030 임호정
 - 0534451 김주현
 
+# Meeting Logs
+
+- [Notion](https://feline-ceramic-f5b.notion.site/021d6df882794c8eb1259bd7dbd1c504)
