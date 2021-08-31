@@ -93,6 +93,6 @@
 | Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
 | -------- | ------ | ------ | ------ | ------ | ------ |
 | Profile  |        |        |        |        |        |
-| Position |        |        |        |        |        |
-| GitHub   |        |        |        |        |        |
+| Position |        |        |        |    Backend  |        |
+| GitHub   |        |        |        |  @SeYeonCho      |        |
 
