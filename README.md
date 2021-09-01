@@ -92,6 +92,6 @@
 
 | Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
 | -------- | ------ | ------ | ------ | ------ | ------ |
-| Profile  | ![김주현_프로필](/uploads/dc2288885b7697b98b89ffd614e49b01/김주현_프로필.jpg) |        | ![임호정_프로필](/uploads/0f298bc348037cd5dd32949171f2e5a4/임호정.png)       | ![조세연_프로필](/uploads/98422f8661eec9e5a7b5a3bafb004109/조세연.png)       |        |
-| Position | BackEnd | FE/UI,UX | FE/UI,UX |    Backend  |        |
-| GitHub   | @KJH-Sun | @sana0803 | @39ghwjd |  @SeYeonCho      |        
+| Profile  | ![김주현_프로필](/uploads/dc2288885b7697b98b89ffd614e49b01/김주현_프로필.jpg) |        | ![임호정_프로필](/uploads/0f298bc348037cd5dd32949171f2e5a4/임호정.png)       | ![조세연_프로필](/uploads/98422f8661eec9e5a7b5a3bafb004109/조세연.png)       | ![최승재_프로필](/uploads/209ea4249595c3b8f44ef14d962912ad/최승재.png) |
+| Position | BackEnd | FE/UI,UX | FE/UI,UX |    Backend  | Backend |
+| GitHub   | @KJH-Sun | @sana0803 | @39ghwjd |  @SeYeonCho      |@nodayst|
