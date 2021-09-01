@@ -92,7 +92,6 @@
 
 | Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
 | -------- | ------ | ------ | ------ | ------ | ------ |
-| Profile  |        |        |        |        |        |
-| Position |        | FE/UI,UX | FE/UI,UX | Backend  |        |
-| GitHub   |        | @sana0803 | @IMHOJEONG       |  @SeYeonCho      |        |
-
+| Profile  | ![김주현_프로필](/uploads/dc2288885b7697b98b89ffd614e49b01/김주현_프로필.jpg) |        | ![임호정_프로필](![임호정](/uploads/0f298bc348037cd5dd32949171f2e5a4/임호정.png))       |        |        |
+| Position | BackEnd | FE/UI,UX | FE/UI,UX |    Backend  |        |
+| GitHub   | @KJH-Sun | @sana0803 | @39ghwjd |  @SeYeonCho      |        
