@@ -73,3 +73,26 @@
 
 
 ---
+
+# Writer
+
+- 0533030 임호정
+- 0534451 김주현
+- 0534698 조세연
+- 0534587 이산하
+- 0534325 최승재
+
+# Meeting Logs
+
+- [Notion](https://feline-ceramic-f5b.notion.site/021d6df882794c8eb1259bd7dbd1c504)
+
+---
+
+## 팀원 소개
+
+| Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
+| -------- | ------ | ------ | ------ | ------ | ------ |
+| Profile  | ![김주현](/uploads/3b4f64d2214fcf699d6c29f978fcb01e/김주현.jpg) | ![이산하](/uploads/0e805e6f8a45cb7a4b265864690ecbd2/이산하.jpg) | ![임호정_프로필](/uploads/0f298bc348037cd5dd32949171f2e5a4/임호정.png)       | ![조세연_프로필](/uploads/98422f8661eec9e5a7b5a3bafb004109/조세연.png)       | ![최승재_프로필](/uploads/209ea4249595c3b8f44ef14d962912ad/최승재.png) |
+| Position | BE | FE/UI,UX | FE/UI,UX |    BE  | BE |
+| GitHub   | @juhyun7955 | @sana0803 | @39ghwjd |  @cnsy831 |@nodayst|
+
