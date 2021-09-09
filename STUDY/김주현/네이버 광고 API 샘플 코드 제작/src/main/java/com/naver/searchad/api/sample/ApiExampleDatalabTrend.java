@@ -8,6 +8,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    검색어 트렌드 샘플 예제 코드 작성
+ */
+
+
 class ApiExamDatalabTrend {
 
     public static void main(String[] args) {
