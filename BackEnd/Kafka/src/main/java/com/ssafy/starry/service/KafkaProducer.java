@@ -18,6 +18,6 @@ public class KafkaProducer {
 
     public void sendMessage(testDto testdto) {
         System.out.printf("Produce key1 : %s%n key2 : %s%n", testdto.getKey1(), testdto.getKey2());
-        this.kafkaTemplate.send(TOPIC, testdto);
+        this.kafkaTemplate.send(TOPIC, testdto.getKey1(), testdto);
     }
 }
