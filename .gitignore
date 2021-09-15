@@ -35,6 +35,7 @@
 **/**/.idea/**/sonarlint/
 
 
+
 # User-specific stuff
 **/**/.idea/**/workspace.xml
 **/**/.idea/**/tasks.xml
@@ -60,6 +61,8 @@
 # Gradle
 **/**/.idea/**/gradle.xml
 **/**/.idea/**/libraries
+**/**/.gradle/
+**/**/build/
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
