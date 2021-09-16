@@ -2,12 +2,10 @@ package com.ssafy.starry.controller;
 
 import com.ssafy.starry.controller.dto.testDto;
 import com.ssafy.starry.service.KafkaProducer;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,4 +26,5 @@ public class KafkaController {
         this.producer.sendMessage(testdto);
         return "success";
     }
+
 }

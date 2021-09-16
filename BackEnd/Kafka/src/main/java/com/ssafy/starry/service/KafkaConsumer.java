@@ -13,4 +13,10 @@ public class KafkaConsumer {
         System.out.println("consumer 들어옴");
         System.out.printf("Consumed key1 : %s%n key2 : %s%n", testdto.getKey1(), testdto.getKey2());
     }
+
+    @KafkaListener(topics = "input", groupId = "foo")
+    public void consumeTwitInput(String input) {
+        System.out.println("consumeTwitInput 들어옴");
+        System.out.printf("Consumed str : %s%n", input);
+    }
 }
