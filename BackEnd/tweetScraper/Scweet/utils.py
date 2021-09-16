@@ -242,7 +242,7 @@ def keep_scroling(driver, data, writer, tweet_ids, scrolling, tweet_parsed, limi
             	temp["text"] = tweet[4]
 
             	headers = {'Content-Type':'application/json; charset=utf-8'}
-            	requests.post("http://localhost:8080/twit/lunch",data = json.dumps(temp),headers=headers)
+            	requests.post("http://localhost:8080/twit/lunch",data = json.dumps(temp, ensure_ascii=False).encode('utf8'),headers=headers)
             	print(json.dumps(temp,ensure_ascii=False,indent="\t"))
             	#print("------------")
             	#print(tweet[0])

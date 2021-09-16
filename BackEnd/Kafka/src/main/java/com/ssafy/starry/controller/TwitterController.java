@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/twit")
+@RequestMapping(value = "/twit", produces = "application/json;charset=UTF-8")
 public class TwitterController {
 
     private final TwitProducer producer;
@@ -18,7 +18,7 @@ public class TwitterController {
         this.producer = producer;
     }
 
-    @PostMapping
+    @PostMapping("/lunch")
     public String sendMessage(@RequestBody String text) {
         System.out
             .println("TwitterController message" + text);
