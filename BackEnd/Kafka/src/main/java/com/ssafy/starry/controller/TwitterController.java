@@ -3,8 +3,8 @@ package com.ssafy.starry.controller;
 import com.ssafy.starry.service.TwitProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,10 +19,10 @@ public class TwitterController {
     }
 
     @PostMapping
-    public String sendMessage(@RequestParam("message") String message) {
+    public String sendMessage(@RequestBody String text) {
         System.out
-            .println("requestbody message" + message);
-        this.producer.sendTwit(message);
+            .println("TwitterController message" + text);
+        this.producer.sendTwit(text);
         return "success";
     }
 
