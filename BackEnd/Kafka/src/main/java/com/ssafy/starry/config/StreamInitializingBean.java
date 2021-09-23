@@ -36,10 +36,30 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
         KStream<String, String> textLines = streamsBuilder
             .stream("twit", Consumed.with(Serdes.String(), Serdes.String()));
 
-        List<String> foodStrs = new ArrayList<>(CsvParseBean.foods);
+//        List<String> foodStrs = new ArrayList<>(CsvParseBean.foods);
 //        Pattern pattern = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
+
         KTable<String, Long> wordCounts = textLines
-            .flatMapValues(value -> foodStrs)
+            .flatMapValues(value -> {
+                List<String> words = new ArrayList<>();
+                int vLen = value.length();
+                boolean[] used = new boolean[vLen];
+                for (int i = 7; i >= 1; i--) {
+                    if (vLen < i) {
+                        continue;
+                    }
+                    for (int j = 0; j < vLen - i + 1; j++) {
+                        String s = value.substring(j, j + i);
+                        if (!used[j] && CsvParseBean.foods.get(i).contains(s)) {
+                            words.add(s);
+                            for (int k = j; k <= j + 1; k++) {
+                                used[k] = true;
+                            }
+                        }
+                    }
+                }
+                return words;
+            })
             .groupBy((key, word) -> word, Grouped.with(Serdes.String(), Serdes.String()))
             .count();
 
@@ -59,7 +79,7 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
     private Properties getStreamConfig() {
 //        Map<String, Object> props = new HashMap<>();
         Properties streamsConfiguration = new Properties();
-        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "twit-food-count");
+        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "twit-lunch-count");
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "3.35.214.129:9092");
         streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,
             Serdes.String().getClass().getName());

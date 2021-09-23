@@ -22,15 +22,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CsvParseBean {
 
-    public static Set<String> foods = new HashSet<>();
+    public static List<Set<String>> foods = new ArrayList<>();
 
-    public Set<String> readCSV() {
+    public List<Set<String>> readCSV() {
         try {
             System.out.println("readCSV readCSV");
-            //new CSVReader(InputStreamReader 객체, 구분자, 예외구문, 삭제할 열)
-            //구분자 : csv 구분자가 ',' 이므로 ,로 지정. 챕들 다른 표식일 경우 다른 것으로 지정도 가능
-            //예외구문 : "는 예외 구분
-            //삭제할 열 : 윗줄은 보통 설명문구일 경우가 많으므로 삭제하고 출력하고 싶은 경우 줄삭제가 가능하다
+
+            for (int i = 0; i <= 7; i++) {
+                foods.add(new HashSet<>());
+            }
+
             ClassPathResource resource = new ClassPathResource("static/csv/food_name_csv.csv");
 
             CSVReader reader = new CSVReader(
@@ -39,7 +40,8 @@ public class CsvParseBean {
             String[] nextLine;
             nextLine = reader.readNext(); // 목차 버리기
             while ((nextLine = reader.readNext()) != null) {   // 2
-                foods.add(nextLine[1]);
+                String food = nextLine[1];
+                foods.get(food.length()).add(food);
             }
             reader.close();
         } catch (Exception e) {
