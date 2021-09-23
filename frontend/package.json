@@ -20,13 +20,15 @@
     "react-redux": "^7.2.5",
     "react-spring": "^9.2.4",
     "redux": "^4.1.1",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
+    "@storybook/addon-storysource": "^6.3.8",
     "@storybook/react": "^6.3.8",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
