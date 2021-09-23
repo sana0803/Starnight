@@ -18,7 +18,7 @@
 회,간회,Chopped Raw Beef Liver ,"Fresh raw beef liver and tripe chopped thinly and seasoned with sesame oil, black pepper, salt and a pinch of ground pine nuts over the top."
 구이,갈비구이,Marinated and Grilled Beef Short Ribs ,"Beef short ribs marinated in a mixture of soy sauce, green onions, garlic, black pepper, sugar and sesame oil for a few hours, then grilled. Marinated short ribs are called yangnyeom-galbi and ribs which are not marinated are called saenggalbi. Galbi-gui is also known as bulgalbi. This is one of the most popular dishes in Korea."
 찜,갈비찜,Braised Short Ribs,"Beef short ribs cut into chunks, seasoned with soy sauce, garlic, sugar and other spices, then simmered over a long period with pieces of Korean radish, carrots, chestnuts, jujubes, and ginkgo nuts. The dish is topped with julienned egg garnish and ground pine nuts."
-"국,탕",갈비탕/갈빗국,Short Rib Soup/,
+"국,탕",갈비탕,Short Rib Soup/,
 구이,갈치구이,Grilled Hairtail ,"Hairtail (a long, flat silver fish) cut into 10 centimeter lengths and grilled with salt."
 조림,갈치조림,Braised Hairtail ,"Hairtail (a long, fiat silver fish) cut into l0 centimeter lengths and braised with white radish or other vegetables in soy sauce until reduced."
 과일류,감,Persimmon ,
@@ -51,7 +51,7 @@
 "전,적",고구마전,Pan-fried Sweet Potato ,"Slices of sweet potato dipped in flour and egg, then pan-fried."
 마른찬,고구마튀김,Deep-fried Sweet Potato ,Sweet potato cut into thin oval slices or strips and deep-fried.
 김치,고들빼기김치,Godeulppaegi Kimchi ,A strongly flavored kimchi made with a wild flowering plant (godeulppaegi) which has been soaked in water for up to ten days to remove its bitter taste.
-구이,고등어(소금)구이,Grilled Mackerel ,Mackerel sprinkled with salt and grilled.
+구이,고등어구이,Grilled Mackerel ,Mackerel sprinkled with salt and grilled.
 조림,고등어조림,Braised Mackerel ,"Mackerel seasoned with soy sauce, green onions, garlic and red chili pepper powder, then braised over low heat until reduced."
 고명,고명,Garnish ,"Popular Korean garnishes include thinly red chili pepper threads, julienned egg yolk and whites (the yolks and whites are separated, beaten, and pan-fried like crepes), minced jujubes (Korean dates), chestnuts, walnuts, ground pine nuts, cooked gingko nuts, sesame salt, minari (Korean parsley), carrots, green onions, and mushrooms."
 떡,고물,Powder Coating for Rice Cake ,"Rice cakes are cooked then rolled or coated in a powder to add flavor and color and to prevent them from sticking together. The most popular are ground or whole red beans, beans of other colors, steamed and crushed chestnuts, or pan-fried bean flour."
@@ -68,7 +68,7 @@
 나물,고춧잎나물,Chili Pepper Leaf Namul ,Side dish made of chili pepper leaves that are blanched and seasoned.
 생채,골뱅이무침,Spicy Freshwater Snails ,Cooked freshwater snail tossed with chopped fresh vegetables and a spicy sauce.
 면,곰국수,Noodles in Thick Beef Soup ,Noodles in a meat broth that has been simmered for a long time. Served in a large bowl.
-"국,탕",곰탕 / 곰국,Thick Beef Soup ,Soup made from a stock of beef bones simmered for eight to twelve hours. The broth has a milky appearance and the meat is very tender. Gomtang is not seasoned during the cooking process and is served with salt and chopped green onions on the side so it can be seasoned to taste at the table. This soup is generally served with kkakdugi (a kimchi made of radishes).
+"국,탕",곰탕,Thick Beef Soup ,Soup made from a stock of beef bones simmered for eight to twelve hours. The broth has a milky appearance and the meat is very tender. Gomtang is not seasoned during the cooking process and is served with salt and chopped green onions on the side so it can be seasoned to taste at the table. This soup is generally served with kkakdugi (a kimchi made of radishes).
 육류,곱창,Beef Tripe ,
 구이,곱창구이,Grilled Beef Tripe ,Beef tripe seasoned with spices or salt and grilled.
 전골,곱창전골,Spicy Beef Tripe Hot Pot ,"A spicy, flavorful hot pot of vegetables and seasoned beef tripe cooked in a beef broth."
@@ -84,11 +84,11 @@
 전골,국수전골,Noodle Hot Pot,Hot pot of meat and vegetables in broth. The noodles are added when rest of the ingredients are nearly cooked.
 청주,국화주,Chrysanthemum Rice Wine ,Rice wine flavored by adding dried chrysanthemum petals to the wine during maturation.
 패류,굴,Oyster ,
-밥,(생)굴밥,Oyster Rice ,Rice cooked with fresh oysters. The rice is washed and cooked with the oysters in a clear seaweed or chicken broth.
+밥,굴밥,Oyster Rice ,Rice cooked with fresh oysters. The rice is washed and cooked with the oysters in a clear seaweed or chicken broth.
 어류,굴비,Dried Yellow Croaker ,"Yellow croaker, salted and dried."
 "전,적",굴전,Pan-fried Oyster ,"Fresh oysters coated in flour, dipped in egg, and pan-fried. Also called seokhwajeon."
 젓갈,굴젓,Spicy Pickled Oyster ,Oysters pickled in salt with red chili pepper powder.
-"국,탕",굴탕 / 굴국,Oyster Soup ,"Soup made with fresh oysters, white radish, dubu (soybean curd / tofu) and green onions. The soup is seasoned with pickled shrimp sauce."
+"국,탕",굴탕,Oyster Soup ,"Soup made with fresh oysters, white radish, dubu (soybean curd / tofu) and green onions. The soup is seasoned with pickled shrimp sauce."
 마른찬,굴튀김,Deep-fried Oyster ,Fresh oysters dipped in a flour batter and deep-fried.
 과일류,귤,Mandarin Orange ,
 해조류,김,Dried Laver ,"This seaweed has sheet-like fronds and grows along the western and southern coasts of Korea. It is dried in sheets, then lightly oiled, salted, and roasted. Gim is usually eaten wrapped around a spoonful of rice."
@@ -109,8 +109,8 @@
 "국,탕",김칫국,Kimchi Soup,A soup of chopped kimchi that is not as thick as kimchi stew and usually has fewer ingredients.
 김치,깍두기,Diced Radish Kimchi,"Kimchi made of diced white radish. The radish pieces are first salted and then mixed with the traditional kimchi sauce of red chili pepper powder, fish sauce, garlic, and green onions. "
 곡류,깨,Sesame (Seeds) (1),"Sesame seeds include basic sesame seeds and perilla, or wild sesame seeds. ln both cases, the seeds are fried before the oil is extracted, which is used to provide flavor in Korean cuisine."
-한과,깨(엿)강정,Sesame Toffee,A toffee made of roasted sesame seeds mixed in a malt toffee. The toffee hardens slightly as it cools and then it is cut into squares or rolled and sliced into flat round pieces.
-면,깨국수 / 깻국국수,Noodles in Sesame Soup,"Noodles in a sesame soup with beef meatballs, minari (Korean parsley), stir­fried shiitake mushrooms, and julienned cucumbers"
+한과,깨강정,Sesame Toffee,A toffee made of roasted sesame seeds mixed in a malt toffee. The toffee hardens slightly as it cools and then it is cut into squares or rolled and sliced into flat round pieces.
+면,깨국수,Noodles in Sesame Soup,"Noodles in a sesame soup with beef meatballs, minari (Korean parsley), stir­fried shiitake mushrooms, and julienned cucumbers"
 양념,깨소금,Sesame Salt,"Sesame seeds roasted in a pan and ground with salt. One of the main seasonings in Korean cooking, this gives food a slightly buttery flavor."
 죽,깨죽,Sesame Porridge,"A porridge made of sesame seeds that are fried and ground, then mixed with rice flour and simmered until thick."
 "국,탕",깻국,Sesame Soup,Soup of roasted and ground sesame seeds cooked in a chicken broth.
@@ -130,9 +130,9 @@
 찜,꽃게찜,Steamed Blue Crab Meat,"Crab meat mixed with seasonings in a fluffy egg batter, then placed back in the shell, steamed, and garnished."
 "국,탕",꽃게탕,Blue Crab Soup,"A soup of blue crab cooked with zucchini, green chili peppers and soybean paste (doenjang)."
 고명,꾸미,Meat Garnish,Minced cooked meat used to garnish soups and stews.
-육류,꿩(고기),Pheasant,
-구이,꿩(고기)구이,Grilled Pheasant,"Thinly sliced pheasant thigh meat seasoned with soy sauce, sesame seeds, black pepper, green onions, ginger and garlic, and then grilled."
-김치,꿩김치 / 생치김치,Pheasant Kimchi,A special kimchi of cooked pheasant meat mixed with whole white radish marinated in salt water. Some versions use pickled cucumbers instead of white radish.
+육류,꿩,Pheasant,
+구이,꿩구이,Grilled Pheasant,"Thinly sliced pheasant thigh meat seasoned with soy sauce, sesame seeds, black pepper, green onions, ginger and garlic, and then grilled."
+김치,꿩김치,Pheasant Kimchi,A special kimchi of cooked pheasant meat mixed with whole white radish marinated in salt water. Some versions use pickled cucumbers instead of white radish.
 만두,꿩만두,Pheasant Dumplings,"A dumpling stuffed with pheasant and vegetables, cooked in a clear broth, and served as a winter delicacy."
 면,꿩칼국수,Home-style Noodles in Pheasant Soup,"Home-style noodles made of flour, bean powder and egg, cooked in a pheasant broth."
 나물,나물,Vegetable Side Dishes,"Side dishes of vegetables or wild leafy greens. There are two main methods of preparation :stir-frying the vegetables with spices, and blanching the vegetables and then seasoning them. The most common seasonings are soy sauce, garlic, sesame seeds, sesame oil, and chopped green onions."
@@ -146,7 +146,7 @@
 면,냉국수,Chilled Noodle Soup,A soup of noodles in chilled yeolmu-kimchi (a water kimchi made of radishes and their leaves) and topped with julienned egg garnish and slices of beef.
 면,냉면,Chilled Buckwheat Noodle Soup,"Buckwheat noodles served in a chilled beef broth with slices of beef, radish kimchi, sliced Korean pear, a boiled egg, and seasoned cucumber on top. Vinegar and mustard are added to according to individual taste. This is a favorite summer dish."
 채소류,냉이,Naengi,"Shepherd's purse, a white-flowered plant in the cabbage family, which grows in fields and is picked and eaten in spring."
-나물,냉이나물(무침),Naengi Namul,A vegetable side dish made of naengi (shepherd's purse) parboiled and mixed with a seasoned soy sauce.
+나물,냉이나물,Naengi Namul,A vegetable side dish made of naengi (shepherd's purse) parboiled and mixed with a seasoned soy sauce.
 "국,탕",냉잇국,Naengi Soup,"A soup of naengi (shepherd's purse) in a soybean paste (doenjang) broth, usually with clams."
 구이,너비아니,Grilled Sliced Beef,"Thinly sliced beef marinated in a bulgogi sauce (soy sauce, sugar, garlic, green onions, and sesame oil), and then grilled."
 생채,노각생채,Seasoned Overripe Cucumbers,"Overripe cucumbers that have turned yellowish are peeled and soaked in salt water. The salted cucumbers are squeezed to eliminate excess water, then chopped and spiced with red chili pepper paste, vinegar, green onions, garlic, black pepper, and sugar."
@@ -166,7 +166,7 @@
 찜,대하찜,Steamed Stuffed King Prawns,"King prawns stuffed with seasoned minced beef, steamed, and topped with mushrooms, julienned egg garnish, and red chili pepper threads."
 패류,대합,Clam(l),
 구이,대합구이,Grilled Clams,"Big clams grilled in the shell. The clams can also be chopped and mixed with minced beef, dubu (soybean curd / tofu) and seasonings, put back in the shell and then grilled."
-"국,탕",대합국 / 대합별탕,Clam Soup(1),"A clear soup with clams. Sometimes the clams are taken from their shells, mixed with beef and seasonings, and put back in their shells before being cooked and put in the soup."
+"국,탕",대합국,Clam Soup(1),"A clear soup with clams. Sometimes the clams are taken from their shells, mixed with beef and seasonings, and put back in their shells before being cooked and put in the soup."
 전골,대합전골,Clam Hot Pot,"A hot pot of clams, beef, and vegetables in broth."
 죽,대합죽,Clam and Rice Porridge,A porridge made of rice and clams.
 찜,대합찜,Steamed Stuffed Clams,"Clam shells stuffed with chopped clams, minced beef, shiitake mushrooms, and egg, and then steamed."
@@ -217,11 +217,11 @@
 볶음,두루치기,Spicy Sliced Beef Stew,"A stew made of beef, liver and tripe thinly sliced, seasoned, and cooked in broth with vegetables. A specialty of the southwestern regions of Korea."
 채소류,두릅,Dureup,Shoots or young leaves of the fatsia (Japanese angelica) tree.
 나물,두릅나물,Dureup Namul,"Blanched dureup shoots mixed with green onions, crushed garlic, soysauce, red chili pepper paste, vinegar and sesame oil."
-"전,적",두릅(산)적,Dureup and Beef Brochette,"Blanched dureup shoots and beef slices mixed in a seasoned soy sauce and put on skewers. The brochettes are coated in flour, dipped in egg, and pan-fried."
+"전,적",두릅산적,Dureup and Beef Brochette,"Blanched dureup shoots and beef slices mixed in a seasoned soy sauce and put on skewers. The brochettes are coated in flour, dipped in egg, and pan-fried."
 "전,적",두릅전,Pan-fried Dureup,"Blanched dureup shoots coated in flour, dipped in egg, and pan-fried."
 회,두릅회,Parboiled Dureup,"Dureup shoots coated in potato starch and parboiled. Before serving, the cooked shoots are dipped in vinegared red chili pepper paste."
 두부,두부,Dubu (Soybean Curd / Tofu),
-"전,적",두부부침 / 두부전,Pan-fried Dubu,Dubu (soybean curd / tofu) sliced into flat pieces and pan-fried.
+"전,적",두부부침,Pan-fried Dubu,Dubu (soybean curd / tofu) sliced into flat pieces and pan-fried.
 선,두부선,Fancy Steamed Dubu,"Mashed dubu (soybean curd / tofu) mixed with seasoned meat and topped with shiitake and other mushrooms, julienned egg garnish, red chili threads and sliced green onions. This thickened dubu is steamed."
 전골,두부전골,Stuffed Dubu Hot Pot,"Two slices of pan-fried dubu (soybean curd / tofu) stuffed with seasoned minced beef and tied with minari (Korean parsley) stems or green onions and cooked in a hot pot with vegetables, meatballs, marinated beef, and broth."
 찌개,두부젓국찌개,Dubu Stew with Pickled Shrimp,A stew made of simmered dubu (soybean curd / tofu) and fresh oysters seasoned with pickled shrimp sauce. Also called dubu-saeujeot-jjigae (dubu and pickled shrimp stew).
@@ -244,13 +244,13 @@
 볶음,떡볶이,Stir-fried Rice Pasta with Vegetables,"A stir-fry dish made with rice pasta, seasoned beef and assorted vegetables. Recently, a spicy version with red chili pepper paste has become very popular."
 "전,적",떡산적,Beef and Rice Cake Brochette,Brochette of beef and rice cake seasoned and then grilled.
 숙채,머위나물,Butterbur Stem Namul ,Blanched stems of the butterbur (sweet colt's foot) sauteed and seasoned.
-구이,먹장어구이/곰장어구이,Grilled Eel ,Fresh sea eel grilled over an open fire and seasoned with red chili pepper paste or simply salted to taste.
-회,먹장어회/곰장어회,Raw Eel ,"Skinned fresh sea eel thinly sliced and served raw with vinegared red chili pepper paste, sliced green chili peppers, and sliced garlic on the side."
+구이,먹장어구이,Grilled Eel ,Fresh sea eel grilled over an open fire and seasoned with red chili pepper paste or simply salted to taste.
+회,먹장어회,Raw Eel ,"Skinned fresh sea eel thinly sliced and served raw with vinegared red chili pepper paste, sliced green chili peppers, and sliced garlic on the side."
 패류,멍게,Sea Squirt ,Sea squirt has red leathery skin but the inside flesh is yellow and soft. The yellow flesh is a delicacy and is served raw with a spicy dipping sauce of vinegared red chili pepper paste.
 "국,탕",메기매운탕,Spicy Catfish Stew ,"A thick, spicy stew of freshwater catfish and vegetables."
 곡류,메밀,Buckwheat ,Buckwheat seeds are ground into a fine flour which is used to make noodles or a firm buckwheat jelly.
 면,메밀국수,Buckwheat Noodles ,Cooked buckwheat noodles chilled and served with a dipping sauce made of dried fish and seaweed.
-생채,메밀묵(무침),Buckwheat Jelly ,"A firm jelly made of buckwheat that is sliced, topped with a seasoning sauce and shredded dried laver, and mixed with chopped kimchi."
+생채,메밀묵,Buckwheat Jelly ,"A firm jelly made of buckwheat that is sliced, topped with a seasoning sauce and shredded dried laver, and mixed with chopped kimchi."
 두류,메주,Fermented Soybean Bricks ,Fermented soybeans that are dried into bricks. This is the main ingredient for soy sauce and soybean paste (doenjang).
 어류,멸치,Dried Anchovies ,"Anchovies are sun-dried and prepared differently according to their size. The large anchovies are used to make broth; the mid-sized ones are braised in soy sauce, and the smallest ones are pan-fried. Fresh anchovies are also pickled in salt."
 볶음,멸치볶음,Sauteed Dried Anchovies,A side dish of dried anchovies pan-fried with soy sauce or red chili pepper paste and glazed with sugar or maltose syrup.
@@ -272,12 +272,12 @@
 곡류/견과류,묵,Jelly ,"A firm jelly made of acorn, mung bean, or buckwheat starch boiled in water and cooled until it sets."
 증류주,문배주,Munbaeju ,"A traditional liquor made of malted wheat, rice, and millet which originates in the Pyeongyang region of North Korea. lt is famous for its fragrance which is said to resemble the munbae rose, hence its name. The alcohol content is around 40%."
 연체류,문어,Octopus ,
-회,문어숙회,Parboiled Octopus,"Octopus is parboiled, then sliced and served with a dipping sauce of vinegared red chili pepper paste."
+회,메밀묵,Parboiled Octopus,"Octopus is parboiled, then sliced and served with a dipping sauce of vinegared red chili pepper paste."
 김치,물김치,Water Kimchi ,"A variation of kimchi in water. Both the water and the crunchy pickled vegetable in it are eaten. This kind of kimchi includes sliced radish and cabbage kimchi (nabak-kimchi), kimchi made with whole baby white radishes and their stalks (yeolmu-kimchi), deodeok root kimchi (deodeok-mul-kimchi ), and ginseng, radish and cabbage kimchi (ginseng-nabak-kimchi)."
 면,물냉면,Buckwheat Noodles in Chilled Broth ,A soup with buckwheat noodles and various toppings served in a chilled broth. The version with a spicy sauce instead of the soup is called bibim­naengmyeon.
 만두,물만두,Boiled Dumplings ,Dumplings cooked in water or broth and served with soup.
 양념,물엿,Maltose Syrup ,"A syrup made of malt and rice or other cereals. This thick, sweet syrup is used in many dishes."
-"국,탕",뭇국/무맑은탕,Radish and Beef Soup ,A soup made of white radish and seasoned beef.
+"국,탕",뭇국,Radish and Beef Soup ,A soup made of white radish and seasoned beef.
 채소류,미나리,Minari ,A leafy green resembling parsley and a member of the dropwort family.
 회,미나리강회,Minari Bundles with Meat ,"Blanched minari (Korean parsley) wrapped around cooked meat, julienned egg garnish, and red chili pepper and served with a dipping sauce of vinegared red chili pepper paste."
 숙채,미나리무침,Blanched and Seasoned Minari ,Blanched minari (Korean parsley) mixed with a spicy sauce.
@@ -289,7 +289,7 @@
 "국,탕",미역냉국,Chilled Seaweed Soup ,A seaweed soup served chilled. The seaweed is cooked first then mixed with soy sauce. Julienned cucumbers are added to the chilled soup.
 생채,미역무침,Spicy Seaweed ,Blanched fresh seaweed seasoned with soy sauce and vinegar or vinegared red chili pepper paste.
 쌈,미역쌈,Seaweed Wraps ,Blanched fresh seaweed cut into strips which are used to wrap spoonfuls of rice and other foods.
-회,(생)미역초회,Seaweed and Cucumber Salad,Blanched fresh seaweed and sliced cucumbers mixed with a sweet vinegar dressing.
+회,미역초회,Seaweed and Cucumber Salad,Blanched fresh seaweed and sliced cucumbers mixed with a sweet vinegar dressing.
 죽,미음,Rice Gruel ,"A thin, clear gruel made of one part rice and ten parts water. This is mostly given to patients because it is easy to drink."
 어류,민어,Croaker ,
 구이,민어구이,Grilled Croaker ,Salted and grilled croaker.
@@ -320,19 +320,19 @@
 "국,탕",버섯국,Mushroom Soup ,"A clear soup made of mushrooms, beef and dubu (soybean curd "
 볶음,버섯볶음,Stir-fried Mushroom ,"A stir-fry of mushrooms, onions and beef with seasoned soy sauce."
 전골,버섯전골,Mixed Mushroom Hot Pot ,"A hot pot of mushrooms including shiitake, coral, and oyster mushrooms, sliced and laid together with seasoned meat and minari (Korean parsley)."
-청주,(경주)법주,Rice Wine (Gyeongju Style) ,"First created by a Gyeongju family, this high quality rice wine is made from bath white and glutinous rice. The alcohol content is approximately 15%."
+청주,법주,Rice Wine (Gyeongju Style) ,"First created by a Gyeongju family, this high quality rice wine is made from bath white and glutinous rice. The alcohol content is approximately 15%."
 밥,보리밥,Barley Rice ,Rice cooked with barley.
 음청류,보리수단,Barley Balls in Omija Punch,A drink made of honey water and omija (fruit of the Chinese magnolia vine) with cooked barley balls coated in starch.
 음청류,보리차,Barley Tea ,"Roasted barley cooked in water. Served bath hot and cold, this is one of the most common beverages found in Korean homes and restaurants and is often served instead of water."
 "국,탕",보신탕,Dog Soup ,"Dog meat slowly simmered then seasoned is a soybean paste (doenjang) soup with garlic, ginger, green onions, and red chili pepper powder. This soup is said to be an aphrodisiac."
 쌈,보쌈,Chinese Cabbage Wraps with Pork,Park and kimchi wrapped in steamed cabbage leaves. Also called jeyuk-bossam or kimchi-bossam.
 김치,보쌈김치,Wrapped Kimchi ,"A kimchi made of quartered cabbages with kimchi seasonings spread between the layers of leaves and wrapped separately in a large cabbage leaf. The fist-sized bundles are put into jars and left to season together. When served, the individual bundles are put on dishes, unwrapped and eaten. This is a specialty of the Gaeseong region."
-어류,복(어),Puffer Fish (Swellfish / Globefish) ,"A stew made of putter fish, dubu (soybean curd tofu), soybean sprouts, minari (Korean parsley) and other vegetables, and spiced with red chili pepper paste and red chili pepper powder."
-"국,탕",복(어)매운탕,Spicy Puffer Fish Stew ,
+어류,복어,Puffer Fish (Swellfish / Globefish) ,"A stew made of putter fish, dubu (soybean curd tofu), soybean sprouts, minari (Korean parsley) and other vegetables, and spiced with red chili pepper paste and red chili pepper powder."
+"국,탕",복어매운탕,Spicy Puffer Fish Stew ,
 과일류,복숭아,Peach ,
 회,복어회,Raw Puffer Fish ,Thin slices of raw putter fish prepared after removing the poisonous liver and roe. Raw putter fish is served with a dipping sauce of vinegared red chili pepper paste.
-탕,복(어)지리,Puffer Fish Soup ,"Soup of putter fish, white radish, Chinese cabbage, minari (Korean parsley), and other vegetables in a clear broth."
-찜,복(어)찜,Braised Puffer Fish ,"Putter fish braised in soy sauce, garnished, and salted with pickled shrimp sauce."
+탕,복지리,Puffer Fish Soup ,"Soup of putter fish, white radish, Chinese cabbage, minari (Korean parsley), and other vegetables in a clear broth."
+찜,복찜,Braised Puffer Fish ,"Putter fish braised in soy sauce, garnished, and salted with pickled shrimp sauce."
 밥,볶음밥,Fried Rice ,Cooked rice pan-fried with chopped meat and vegetables.
 마른찬,부각,Deep-fried Vegetables Coated with Starch,"Seaweed or vegetables coated with glutinous rice starch, dried, and deep-fried."
 찌개,부대찌개,G.1.Stew ,"A spicy stew of wieners, luncheon meat, macaroni and vegetables. This dish originated from ingredients that could be scavenged from the U.S. military camps in Korea during the Korean War."
@@ -351,7 +351,7 @@
 전골,불낙전골,Bulgogi and Baby Octopus Hot Pot,A hot pot of marinated beef and spiced baby octopus cooked with vegetables in a broth.
 기타,불백정식,Bulgogi Set Menu,"A set menu of grilled marinated beef, rice, and some side dishes."
 찜,붕어찜,Braised Crusian Carp,Carp braised in a soybean paste (doenjang) broth.
-김치,(무)비늘김치,Stuffed White Radish Kimchi,A kimchi made of whole white radishes with diagonal slits that are stuffed with sliced radish and seasonings.
+김치,비늘김치,Stuffed White Radish Kimchi,A kimchi made of whole white radishes with diagonal slits that are stuffed with sliced radish and seasonings.
 면,비빔국수,Mixed Noodles,"Cooked noodles mixed with vegetables, meat and a spicy sauce."
 면,비빔냉면,Mixed Buckwheat Noodles,"Chilled buckwheat noodles mixed in a spicy sauce and topped with sliced cold meat, sliced Korean pear, cucumbers, and other vegetables."
 밥,비빔밥,Bibimbap (Rice Mixed with Vegetables and Beef),"One of the most popular Korean dishes, bibimbap consists of a bowl of rice topped with fresh and cooked vegetables and red chili pepper paste. Everything is mixed together before eating. Seasoned raw beef, grilled beef, or a fried egg can also be added. There are many styles and regional variations of this dish. The cities of Jeonju and Jinju are famous for their distinctive bibimbap and there are other variations such as hot stone pot (dolsot) bibimbap, soybean sprout bibimbap, and vegetable bibimbap. Goldongban is the royal court term for bibimbap."
@@ -359,7 +359,7 @@
 기타,빙수,Shaved Ice with Toppings,"A refreshing summer snack made of shaved ice topped with sweet red bean, fruit, and sweetened condensed milk. ln accordance with the main topping, different variations are called pat-bingsu (sweet red bean), gwail-bingsu (fruit), and so on."
 육류,사골,Mixed Ox Bones,"Ox bones are used mainly to make soup stock. The chopped bones are soaked to eliminate any impurities and remaining blood, then are simmered in water for a long time to produce a milky broth."
 과일류,사과,Apple,
-"전,적",사슬(어산)적,Pan-fried Beef and Fish Brochette,Pan-fried skewers of marinated beef and fish.
+"전,적",사슬적,Pan-fried Beef and Fish Brochette,Pan-fried skewers of marinated beef and fish.
 찜,사태찜,Simmered Beef Shank,"Beef shanks simmered for a long period with white radish, carrots, shiitake mushrooms, spices and soy sauce in a meat broth."
 한과,산자,Deep-fried Sweet Rice Cookies,"Rice cookies made of a glutinous rice flour dough cut into squares, deep-fried, and coated with puffed rice."
 "전,적",산적,Beef and Vegetable Brochette (1),"Grilled skewers of beef and vegetables. The brochettes can also be dipped in flour and egg, then pan-fried."
@@ -378,7 +378,7 @@
 마른찬,새우튀김,Deep-fried Shrimp,"Shrimp coated in a flour and egg batter, then deep-fried."
 구이,생갈비구이,Grilled Fresh Short Ribs,Beef short ribs grilled without being marinated first. Some restaurants use this name to refer to grilled ribs that were not frozen.
 채소류,생강,Ginger,Ginger is not only used to flavor food but also to make tea and traditional liquor.
-한과,생강정과 / 생강전과,Candied Ginger,Thin slices of ginger simmered in sugar and sweet syrup until candied.
+한과,생강정과,Candied Ginger,Thin slices of ginger simmered in sugar and sweet syrup until candied.
 음청류,생강차,Ginger Tea,A tea made of fresh ginger slices cooked in boiling water. Powdered instant versions are now widely available.
 과일류,생률,Peeled Fresh Chestnuts,Chestnuts peeled and served fresh.
 "전,적",생선전,Pan-fried Fish Fillets,"Fish fillet coated in flour, dipped in egg, and pan-fried. Commonly used fish for this dish include halibut, cod, pollack and shrimp. Also called jeonyueo."
@@ -387,7 +387,7 @@
 생채,생채,Fresh Vegetable Salad,Side dishes made of fresh salad vegetables tossed in a seasoned dressing.
 김치,섞박지,Chinese Cabbage and Radish Kimchi,A kimchi made of pre-salted Chinese cabbages and white radishes cut into pieces then mixed in kimchi spices or fish sauce.
 찌개,섞어찌개,Mixed Stew,"A stew made with a wide range of ingredients, usually with a spicy stew base. This dish originates from home-made stews using whatever ingredients were available at the time."
-"국,탕",선지해장국 / 선짓국,Hangover Soup with Ox Blood,"A soup made of bean sprouts, fiddleheads, other vegetables, and ox blood in an ox bone broth with soybean paste (doenjang) and red chili pepper paste. This soup is popular as a remedy for hangovers."
+"국,탕",선지해장국,Hangover Soup with Ox Blood,"A soup made of bean sprouts, fiddleheads, other vegetables, and ox blood in an ox bone broth with soybean paste (doenjang) and red chili pepper paste. This soup is popular as a remedy for hangovers."
 "국,탕",설렁탕,Ox Bone Soup,"A milky soup made by simmering the bones, head, and other parts of the cow for a long period."
 구이,섭산적,Pan-fried Beef Patries (1),Thin square patties of minced beef mixed with seasonings and grilled.
 패류,성게,Sea Urchin,
@@ -420,7 +420,7 @@
 한과,수삼정과,Candied Fresh Ginseng,Pieces of ginseng simmered in sugar water then candied with sweet syrup or honey.
 곡류,수수,Millet,
 떡,수수경단,Millet Balls,"Millet flour cakes formed into balls, cooked in water, then rolled in ground red beans or beans. Also called susu-pattteok."
-떡,수수부꾸미 / 수수전병,Millet Pancake,"Pan-fried, half-moon shaped millet cakes with red bean filling. Also called chalsusu-jijim."
+떡,수수부꾸미,Millet Pancake,"Pan-fried, half-moon shaped millet cakes with red bean filling. Also called chalsusu-jijim."
 편육,수육,Boiled Beef Slices,"Pieces of beef cooked in boiling water, then cut into thin slices and served hot."
 음청류,수정과,Cinnamon Punch with Dried Persimmon,"A sweet punch is made of ginger, cinnamon sticks and sugar simmered together in water. Dried persimmons are added after cooling and the punch is served with a few pine nuts floating on top. One of Korea's most popular dessert drinks."
 수제비,수제비,Sujebi Soup,"A soup with summer squash, other vegetables, and small dumplings. The dumplings are made of flour dough that is hand broken into little pieces and dropped into the hot soup right before serving."
@@ -439,7 +439,7 @@
 숙채,시래기나물,Cooked Dried Radish Leaf Namul,"Dried radish or Chinese cabbage leaves that have been cooked in water, seasoned, and sauteed lightly in oil. Ground dried anchovies or sesames are some of the unique seasonings used to flavor this dish."
 찌개,시래기찌개,Dried Radish Leaf Stew,A stew of dried radish or Chinese cabbage leaves that have been boiled in water and added to a soybean paste (doenjang) broth.
 "국,탕",시래깃국,Dried Radish Leaf Soup,A soup of dried radish leaves or Chinese cabbage leaves that have been cooked in water and added to a thick soybean paste broth.
-떡,시루떡 / 시루편,Layered Rice Cake,"A rice cake made with white rice flour, layered with red bean filling and steamed."
+떡,시루떡,Layered Rice Cake,"A rice cake made with white rice flour, layered with red bean filling and steamed."
 양념,식초,Vinegar,
 음청류,식혜,Rice Punch,"A traditional sweet dessert drink made of malt and rice. When served, there are often rice grains floating on top. Also called dansul."
 전골,신선로,Royal Hot Pot,"A hot pot of seafood, fine meats and vegetables in broth cooked at the table in a brass pot that is kept warm by a small charcoal fire underneath. Traditionally served at the royal court."
@@ -455,10 +455,10 @@
 면,쑥국수,Mugwort Noodles ,Noodles made of wheat flour and ground mugwort to give them a distinctive flavor and green color.
 떡,쑥떡,Mugwort Rice Cake ,"Dark green rice cakes made of rice flour and mugwort. Mugwort can also be added to buckwheat, barley or sweet potato starch to make similar cakes."
 채소류,씀바귀,Wild Lettuce ,"A wild leafy green with edible roots and long, thin leaves that are slightly bitter. This is most commonly harvested from the mountains in the spring."
-나물/생채,씀바귀나물(생채),Wild Lettuce Namul ,"A side dish made of wild lettuce which has been first soaked in salt water to remove its bitterness, then is seasoned with soy sauce, red chili pepper paste, roasted sesame seeds, green anions and garlic."
-어류,아귀/아구,Angler Fish(Monkfish) ,
-찜,아귀찜/아구찜,Spicy Angler Fish with Soybean Sprouts,"Angler fish simmered with soybean sprouts, minari (Korean parsley), and a seasoning of green onion, chili peppers, soy sauce, garlic and sugar."
-"국,탕",아귀탕/아구탕,Angler Fish Stew ,A stew of angler fish in a soybean paste (doenjang) broth with dried anchovies.
+나물/생채,씀바귀나물,Wild Lettuce Namul ,"A side dish made of wild lettuce which has been first soaked in salt water to remove its bitterness, then is seasoned with soy sauce, red chili pepper paste, roasted sesame seeds, green anions and garlic."
+어류,아귀,Angler Fish(Monkfish) ,
+찜,아귀찜,Spicy Angler Fish with Soybean Sprouts,"Angler fish simmered with soybean sprouts, minari (Korean parsley), and a seasoning of green onion, chili peppers, soy sauce, garlic and sugar."
+"국,탕",아귀탕,Angler Fish Stew ,A stew of angler fish in a soybean paste (doenjang) broth with dried anchovies.
 "국,탕",아욱국,Mallow Soup with Soybean Paste ,"A soup of mallow (a thick, dark leafy green that has to be cleaned thoroughly to soften it before cooking) in a soybean paste (doenjang) broth. Sometimes the soup is thickened with red chili pepper paste or flavored with dried shrimps."
 증류주,안동소주,Andong Soju ,A rice liquor that is distilled several times in the distiller used to make soju. The unique method of making this liquor originated in the city of Andong.
 찜,안동찜닭,Andong Braised Chicken,"Originally from the Andong region, this dish consists of chicken, chili peppers, potatoes, clear noodles, leeks and carrots braised in a spicy sauce of garlic, sweet syrup and soy sauce."
@@ -466,7 +466,7 @@
 "국,탕",알탕,Spicy Fish Roe Stew ,"A stew with pollack, cod or sea bream roe, spiced with red chili pepper powder, garlic, ginger and green onions. Altang can also refer to a pickled spicy pollack roe stew."
 찜,애저찜,Stuffed Piglet ,"A two-month old piglet stuffed with sticky rice, chestnuts, jujubes (Korean dates), garlic, green onions, ginger, and walnuts and simmered for a long time."
 한과,약과,Deep-fried Honey Cookies,"Deep-fried cookies made from a dough of wheat flour, sesame oil, soju, and honey. The cookies are pressed in a wood mold into round or flower shapes, then deep-fried and dipped in honey."
-떡,약밥 / 약식,Sweet Rice with Nuts and Jujubes,"Steamed sticky rice made with chestnuts, jujubes (Korean dates), honey, pine nuts and cinnamon. This dish is a sweet snack similar to rice cake."
+떡,약밥,Sweet Rice with Nuts and Jujubes,"Steamed sticky rice made with chestnuts, jujubes (Korean dates), honey, pine nuts and cinnamon. This dish is a sweet snack similar to rice cake."
 청주,약주,Clear Rice Wine (1) ,"A rice wine made from steamed rice that has gone through several fermentation stages. lngredients in traditional medicine are also added, giving this liquor its literal name of ""medicinal wine"" (yak means medicine)."
 "국,탕",양곰탕,Beef Tripe Soup ,"A soup made of beef tripe simmered for a long period with ginger, garlic, green onions and other ingredients. This soup is said to be an aphrodisiac."
 구이,양곱창구이,Grilled Beef Tripe and Intestines ,Beef tripe and intestines mixed in a spicy sauce and grilled. The black outside layer of the tripe is discarded and only the white inside is used. Sometimes the tripe is grilled plain and served with a sauce for dipping.
@@ -508,14 +508,14 @@
 생채,오이무침,Seasoned Cucumbers,"Sliced cucumbers lightly salted and mixed with julienned white radish, red chili pepper powder, green onions, garlic and ginger. Also called oi-saengchae."
 볶음,오이볶음,Sauteed Cucumbers ,"Sliced cucumbers lightly salted and squeezed by hand to remove excess liquid, then sauteed with minced pork and seasonings."
 선,오이선,Stuffed Cucumbers,"Cucumbers cut into three or four sections, slit lengthwise and lightly salted. After lightly sauteeing the cucumbers, each section is stuffed with beef, egg, sliced mushrooms and others ingredients. A mixture of water, sugar and vinegar is poured over the stuffed cucumbers to give a sweet, vinegary flavor."
-김치,오이소박이(김치),Stuffed Cucumber Kimchi ,"A kimchi made of cucumbers cut into three to four sections, slit lengthwise, and stuffed with a filling of green onions, garlic, ginger and red chili pepper powder."
+김치,오이소박이,Stuffed Cucumber Kimchi ,"A kimchi made of cucumbers cut into three to four sections, slit lengthwise, and stuffed with a filling of green onions, garlic, ginger and red chili pepper powder."
 장아찌,오이장아찌,Cucumbers Pickled in Soy Sauce or Red Chili Pepper Paste,"Salted cucumbers pickled in a mixture of vinegar, soy sauce and sugar, or put into a jar of red chili pepper paste or soybean paste (doenjang). Keeps for a long period and is served as a side dish."
 장아찌,오이지,Cucumbers Pickled in Salt Water ,Cucumbers pickled by pouring hot salt water over them and letting them sit for a long time.
 연체류,오징어,Squid ,Squid are eaten fresh or dried in the open air.
 구이,오징어구이,Grilled Squid ,"Fresh squid coated with red chili pepper paste and soybean paste (doenjang) and grilled. When cooked with red chili pepper paste, this dish is called squid bulgogi."
 밥,오징어덮밥,Squid over Rice ,Squid and vegetables stir-fried in a red chili pepper sauce and served on rice.
 회,오징어무침,Seasoned Squid ,Blanched squid slices and vegetables mixed with a red chili pepper sauce.
-회,오징어숙회 / 오징어데침,Parboiled Squid ,Parboiled squid slices served with vinegared red chili pepper paste sauce.
+회,오징어숙회,Parboiled Squid ,Parboiled squid slices served with vinegared red chili pepper paste sauce.
 순대,오징어순대,Stuffed Squid ,A cleaned squid stuffed with a mixture of dubu (soybean curd 
 젓갈,오징어젓,Pickled Squid ,Slices of fresh squid pickled in salt with red chili pepper powder.
 마른찬,오징어채무침,Seasoned Dried Squid Strips ,Thin strips of dried squid mixed in a spicy red chili pepper sauce or seasoned soy sauce.
@@ -526,12 +526,12 @@
 "국,탕",오돔미역국,Tilefish and Seaweed Soup ,A soup made of tilefish fillets cooked with seaweed. A regional specialty of Jeju-do.
 죽,옥돔죽,Rice Porridge with Tilefish ,Rice porridge with tilefish. The fish is added to the rice and simmered until thick.
 면,온면,Buckwheat Noodle Soup ,A warm buckwheat noodle soup in a beef broth served with kimchi. Also refers to all hot noodles.
-밥,온반/원반,Chicken Soup with Rice,Cooked rice in a chicken broth topped with seasoned chicken. A specialty of the Pyeongan-do region in North Korea.
+밥,온반,Chicken Soup with Rice,Cooked rice in a chicken broth topped with seasoned chicken. A specialty of the Pyeongan-do region in North Korea.
 찌개,왁저지,Braised Radish with Beef and Mushroom,Large radish pieces simmered over low heat with seasoned beef slices and mushrooms. Some variations use pork or fish instead of beef. This dish is popular during autumn when radishes are in season.
 "전,적,튀김",완자전,Pan-fried Beef Patties (2) ,"Patties of minced beef, dubu (soybean curd "
 "국,탕",완자탕,Fish or Meatball Soup ,"A soup of small beef, pork, or chicken meatballs and fish in a clear meat broth. The balls are dipped in egg before they are put in the soup."
 "국,탕",용봉탕,Chicken and Crusian Carp Soup,"A soup of chicken and crusian carp with shiitake mushrooms, jujubes (Korean dates), and chestnuts. This soup is said to be an aphrodisiac."
-"국,탕",우거짓국/우거지탕,Chinese Cabbage Soup (2) ,A soup made of the green leaves of the Chinese cabbage in a soybean paste (doenjang) broth.
+"국,탕",우거짓국,Chinese Cabbage Soup (2) ,A soup made of the green leaves of the Chinese cabbage in a soybean paste (doenjang) broth.
 찜,우둔찜,Rump Stew with Vegetables ,"A stew of beef rump with shiitake mushrooms, white radish, chestnuts and gingko nuts mixed in a seasoned soy sauce. The ingredients are simmered over a long period until the meat has absorbed the full flavor of its sauce."
 찌개,우렁된장찌개,Mud Snail and Soybean Paste Stew,A soybean paste (doenjang) stew with mud snails and vegetables.
 찜,우렁찜,Braised Mud Snails ,Mud snails braised with bean sprouts and vegetables in a dried anchovy broth thickened with flour.
@@ -541,7 +541,7 @@
 고명,웃기,Toppings ,"Toppings or garnishes, such as fruit or dried meats, used to decorate and add flavor to meal dishes or rice cakes."
 음청류,원소병,Honey Punch with Sweet Rice Balls,A traditional drink made of water and honey with small rice cake balls filled with jujubes (Korean dates) and citron peel.
 나물,원추리나물,Day Lily Namul ,"Blanched day lily stems seasoned with soybean paste (doenjang), red chili pepper paste, green onions, garlic, sesame oil, and sesame salt. This is a spring dish."
-한과,유(밀)과,Deep-fried Grain Cookies ,A variety of traditional cookies made with different kinds of flour and pan-fried or deep-fried. Each variety of cookie has a different name according to its ingredients and how it is cooked. Also called yumilgwa.
+한과,유과,Deep-fried Grain Cookies ,A variety of traditional cookies made with different kinds of flour and pan-fried or deep-fried. Each variety of cookie has a different name according to its ingredients and how it is cooked. Also called yumilgwa.
 과일류,유자,Citron ,
 한과,유자정과,Glazed Citron,Citron peel cooked in water then simmered in sugar water until glazed. The citron fruit is added during the glazing process.
 음청류,유자차,Citron Tea,A tea made by adding hot water to a mixture of citron peel and honey or sugar syrup resembling marmalade.
@@ -600,7 +600,7 @@
 패류,조개,Clam (2),
 국수,조개국수,Noodles in Clam Broth,Home-style noodles made of wheat or bean flour cooked in a clear clam broth.
 젓갈,조개젓,Pickled Small Clams,Shelled clams pickled in salt. Served as a side dish.
-"국,탕",(모시)조개탕,Clam Soup (2),"Soup with clams in their shells and vegetables in a clam broth, seasoned with red chili pepper powder."
+"국,탕",모시조개탕,Clam Soup (2),"Soup with clams in their shells and vegetables in a clam broth, seasoned with red chili pepper powder."
 어류,조기,Yellow Croaker (Yellow Corvina),
 구이,조기구이,Grilled Yellow Croaker,Croaker salted and grilled.
 "국,탕",조기매운탕,Spicy Yellow Croaker Stew,"A spicy red stew with croaker, beef and vegetables."
@@ -665,15 +665,15 @@
 무침,콩나물무침,Seasoned Soybean Sprout Namul,"Blanched bean sprouts seasoned with green onions, garlic, soy sauce and sesame oil. This is one of the most common side dishes served in Korean homes."
 밥,콩나물밥,Rice Cooked with Soybean Sprouts,White rice cooked with soybean sprouts.
 나물,콩나물잡채,Soybean Sprouts with Vegetable Medley,"A vegetable medley made of soybean sprout stems, fresh bellflower root, fiddlehead, sliced Korean pear, white radish and carrots tossed with a seasoning of green onions, garlic, vinegar, red chili pepper powder, salt and ground pine nuts. A regional specialty of southwestern Korea."
-떡,콩(찰)떡,Sweet Rice Cake with Beans,Steamed rice cake made with glutinous rice flour and black beans. Sometimes made by adding white rice flour to bean flour and water.
+떡,콩찰떡,Sweet Rice Cake with Beans,Steamed rice cake made with glutinous rice flour and black beans. Sometimes made by adding white rice flour to bean flour and water.
 밥,콩밥,Cooked Rice with Beans,"Rice cooked with various beans, such as black beans, green peas, or kidney beans. Served as an alternative to plain white rice."
 김치,콩잎김치,Soybean Leaf Kimchi,A variation of kimchi made of salted soybean leaves mixed with sliced radish and fish sauce and laid between the cabbage leaves.
-조림,콩자반 / 콩조림,Glazed Black Beans,A side dish made of black beans simmered in soy sauce and sugar until glazed.
+조림,콩자반,Glazed Black Beans,A side dish made of black beans simmered in soy sauce and sugar until glazed.
 죽,콩죽,Bean and Rice Porridge,A rice porridge made with soybeans that have been soaked in water and pureed.
 구이,콩팥구이,Grilled Beef Kidney,"Beef kidney seasoned with salt and sesame oil, then grilled."
 "국,탕",탕,Soup,The traditional word referring to soup. Dishes with names that end in ~tang are all soups that have been simmered for a long time over low heat.
 나물,탕평채,Mung Bean Jelly Mixed with Vegetables and Beef,"Slices of mung bean jelly mixed with vegetables, dried laver, and seasoned ground beef. Served cold."
-"국,탕",토란국 / 토란탕,Taro Soup,Soup of taro (a root vegetable) lightly cooked in water before adding beef and kelp.
+"국,탕",토란국,Taro Soup,Soup of taro (a root vegetable) lightly cooked in water before adding beef and kelp.
 찜,토란줄기찜,Braised Taro Stems,"Dried taro stems that have been soaked in water, dipped in flour batter, and braised with green onions, garlic and other spices."
 "국,탕",토장국,Thick Soybean Paste Soup,A thick soup made of one part soybean paste (doenjang) and red chili pepper paste added to five parts water. Vegetables added to this soup vary according to the region and the season.
 젓갈,토하젓,Pickled Freshwater Shrimps,"A fish sauce made of freshwater shrimps pickled in salt, red chili pepper powder and sometimes green chili peppers, garlic, green onions and sesame seeds."
@@ -687,12 +687,12 @@
 김치,파김치,Green Onion Kimchi,"A kimchi made with lightly salted green onions seasoned with pickled anchovy sauce, garlic and red chili pepper powder."
 해조류,파래,Grassy Seaweed,"A dark green grass-like seaweed that grows in small bunches. lt is used fresh, seasoned and dried, deep-fried, and put in soups."
 무침,파래무침,Seasoned Grassy Seaweed,"Blanched grassy seaweed seasoned with soy sauce, sugar and black pepper, or a mixture of pickled anchovy sauce, garlic, green onions and red chili pepper powder."
-"국,탕",파랫국 / 파래된장국,Grassy Seaweed Soup with Soybean Paste,A soup of grassy seaweed in a broth made of dried anchovies and soybean paste (doenjang). A regional specialty of Jeju-do.
+"국,탕",파랫국,Grassy Seaweed Soup with Soybean Paste,A soup of grassy seaweed in a broth made of dried anchovies and soybean paste (doenjang). A regional specialty of Jeju-do.
 "전,적",파전,Green Onion Pancake,"Pancakes made of an egg, wheat flour and rice flour batter pan-fried with green onions, chives, beef, clams, mussels and other ingredients."
 생채,파채,Seasoned Green Onion,"Finely copped green onions mixed with red chili pepper powder, soy sauce, vinegar, sesame salt and sesame oil. This dish is used to garnish or accompany grilled or pressed meats and is most common in southeastern Korea."
 "국,탕",팟국,Green Onion Soup,A soup of beef broth with chopped green onions. A beaten egg is added to the soup just before serving.
 곡류,팥,Red Bean(s),
-떡,팥(시루)떡,Red Bean Rice Cake,A crumbly rice cake made of layers of rice flour and ground red bean steamed together and cut into squares. This is the most common type of steamed rice cake.
+떡,시루떡,Red Bean Rice Cake,A crumbly rice cake made of layers of rice flour and ground red bean steamed together and cut into squares. This is the most common type of steamed rice cake.
 밥,팥밥,Rice with Red Beans,Rice cooked with red beans to give it flavor and color. The red beans are steamed in advance then cooked again with the rice.
 죽,팥죽,Rice and Red Bean Porridge,"A rice porridge made with red beans. After boiling the beans, they are strained to produce a liquid which is added to the cooked rice porridge. Sometimes small rice balls are added . This dish is made specially to celebrate the winter solstice."
 구이,패주구이,Grilled Scallops,Seasoned scallops often grilled with beef and mushrooms.
@@ -706,7 +706,7 @@
 채소류,풋고추,Young Green Chili Peppers,"Young green chili peppers that are picked before they turn red. Eaten fresh, or chopped and added to stews or stir-fries."
 한과,한과,Traditional Sweets,Many types of traditional Korean sweets and cookies. They vary according to ingredients and preparation method.
 기타,한정식,Korean Table d'Hote,"A traditional set menu of various dishes served with rice, soup, kimchi and side dishes."
-회,한치(물)회,Raw Cuttle fish in Water,"Fresh cuttlefish cleaned, thinly sliced, and served in chilled water."
+회,한치물회,Raw Cuttle fish in Water,"Fresh cuttlefish cleaned, thinly sliced, and served in chilled water."
 밥,한치회덮밥,Seasoned Raw Cuttle fish over Rice,Thin slices of fresh cuttlefish served over rice with vinegared red chili pepper paste and mixed before eating.
 면,함흥냉면,Hamheung-style Spicy Chilled Noodles,Chewy noodles made from potato starch and served chilled with a spicy chili sauce. The most popular version is topped with raw skate. This style of chilled noodles originates in the Hamheung region of North Korea.
 죽,합자죽,Rice Porridge with Clams and Mussels,Rice porridge served with shelled clams and mussels and seasoned with garlic juice.
@@ -729,7 +729,7 @@
 나물,호박나물,Squash Namul,"Summer squash julienned and sauteed with green chili peppers, garlic, sesame oil and soy sauce."
 죽,호박범벅,Pumpkin and Mixed Grain Porridge,"A thick porridge made of steamed and mashed pumpkin with glutinous rice flour, cooked red beans, and soybeans."
 볶음,호박볶음,Sauteed Squash,"Squash sliced into half moons and pan-fried with pickled shrimp sauce, wild sesame oil, green onions, and garlic."
-선,(애)호박선 / 애호박찜,Stuffed Summer Squash,"Squash lightly cooked, then slit lengthwise and stuffed with seasoned ground beef, sliced mushrooms, and julienned egg garnish. The stuffed squash is coated in starch, steamed, and served with a mustard sauce."
+선,애호박선,Stuffed Summer Squash,"Squash lightly cooked, then slit lengthwise and stuffed with seasoned ground beef, sliced mushrooms, and julienned egg garnish. The stuffed squash is coated in starch, steamed, and served with a mustard sauce."
 쌈,호박잎쌈,Pumpkin Leaf Wraps,Steamed pumpkin leaves used to wrap spoonfuls of rice and other food. Served with a red chili pepper paste sauce.
 전,호박전,Pan-fried Summer Squash,"Squash sliced into thin round pieces, coated in flour and egg batter, and pan-fried."
 죽,호박죽,Pumpkin Porridge,"A porridge made of fully ripe pumpkins steamed and mashed, then mixed with wheat flour or glutinous rice flour and simmered until thick. Sweetened with sugar or red beans."
