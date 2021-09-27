@@ -1,4 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const CheckboxDiv = styled.div`
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+
+`;
 
 interface CheckboxProps {
   /**
@@ -29,7 +37,11 @@ interface CheckboxProps {
   /**
    * border 설정
    */
-  border?: string;
+    border?: string;
+  /**
+   * checkbox size 
+   */
+    size?: number;
 }
 
 export const Checkbox = ({
@@ -38,21 +50,27 @@ export const Checkbox = ({
   checked,
   htmlFor,
   labelName,
-  border,
+    border,
+  size,
   ...props
 }: CheckboxProps) => {
   return (
-    <>
+    <CheckboxDiv>
       <input
         type="checkbox"
         id={id}
         name={name}
         checked={checked}
         style={{
-          border,
+            border,
+            width: size,
+            height: size
         }}
       />
-      <label htmlFor={htmlFor}>{labelName}</label>
-    </>
+          <label htmlFor={htmlFor}
+              style={{
+                fontSize: size
+          }}>{labelName}</label>
+    </CheckboxDiv>
   );
 };

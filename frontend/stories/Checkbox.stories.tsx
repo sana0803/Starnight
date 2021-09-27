@@ -26,7 +26,8 @@ DefaultCheckbox.args = {
   checked: true,
   htmlFor: 'disabled',
   labelName: "disabled",
-  border: '5px solid #2C2E43',
+  border: '15px solid #2C2E43',
+  size: 25
 };
 
 export const Checkboxs: React.VFC<{}> = () => {
