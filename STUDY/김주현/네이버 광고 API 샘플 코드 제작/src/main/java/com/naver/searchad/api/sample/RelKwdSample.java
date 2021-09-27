@@ -25,11 +25,15 @@ public class RelKwdSample {
 
     public static void main(String[] args) {
         try {
-            Properties properties = PropertiesLoader.fromResource("sample.properties");
-            String baseUrl = properties.getProperty("BASE_URL");
-            String apiKey = properties.getProperty("API_KEY");
-            String secretKey = properties.getProperty("SECRET_KEY");
-            long customerId = Long.parseLong(properties.getProperty("CUSTOMER_ID"));
+//            Properties properties = PropertiesLoader.fromResource("sample.properties");
+//            String baseUrl = properties.getProperty("BASE_URL");
+//            String apiKey = properties.getProperty("API_KEY");
+//            String secretKey = properties.getProperty("SECRET_KEY");
+//            long customerId = Long.parseLong(properties.getProperty("CUSTOMER_ID"));
+            String baseUrl = "https://api.naver.com";
+            String apiKey = "0100000000cfc97ee769249f01d372a729defe420b33fc70f0d4a171edc40e440e41519518";
+            String secretKey = "AQAAAADPyX7naSSfAdNypyne/kILQw31LMN5pW/ClK+vmKNYlA==";
+            long customerId = 2348879;
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
             RelKwdStat relKwdStat = RelKwdStats.list(rest, customerId, "소고기");
