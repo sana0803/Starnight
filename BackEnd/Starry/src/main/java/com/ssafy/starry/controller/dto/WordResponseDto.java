@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
@@ -24,7 +23,9 @@ public class WordResponseDto {
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonInclude(Include.NON_NULL)
     @NoArgsConstructor
-    static class Word {
+    @AllArgsConstructor
+    @Builder
+    public static class Word {
 
         private String relKeyword;
         private String monthlyPcQcCnt;

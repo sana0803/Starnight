@@ -41,6 +41,7 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-runtime'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     implementation group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.45'
+    implementation 'com.google.code.gson:gson:2.8.8'
 }
 
 test {
