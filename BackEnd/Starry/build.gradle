@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.5.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.asciidoctor.convert' version '1.5.8'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
     id 'java'
 }
 
@@ -13,6 +13,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    asciidoctorExtensions
 }
 
 repositories {
@@ -33,14 +34,31 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    implementation group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.7'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    implementation 'org.glassfish.jaxb:jaxb-core:3.0.2'
+    implementation 'org.glassfish.jaxb:jaxb-runtime'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    implementation group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.45'
+    implementation 'com.google.code.gson:gson:2.8.8'
 }
 
 test {
-    outputs.dir snippetsDir
     useJUnitPlatform()
+    outputs.dir snippetsDir
 }
 
 asciidoctor {
     inputs.dir snippetsDir
+    attributes 'snippets': snippetsDir
     dependsOn test
+}
+
+bootJar {
+    dependsOn asciidoctor
+    copy {
+        from "${asciidoctor.outputDir}"            // /html5를 사용하지 않는다!
+        into 'src/main/resources/static/api/docs'    // /static/docs로 복사!
+    }
 }
