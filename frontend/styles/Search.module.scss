@@ -1,0 +1,161 @@
+@mixin font-face($name, $file, $weight: normal, $style: normal) { 
+    @font-face {
+        font-family: "#{$name}";
+        src: url($file);
+        font-weight: $weight; font-style: $style; 
+    }
+}
+    
+@include font-face(esamanru, '../fonts/esamanru_medium.ttf', '', '');
+@include font-face(pretendard, '../fonts/PretendardVariable.woff2', '', '');
+
+#background {
+    min-width: 1920px;
+    min-height: 1080px;
+    padding: 0px 340px;
+    background: #EBECEF;
+}
+
+#searchBoxLine {
+    display: flex;
+    padding: 22px 0 0px 0;
+}
+
+#logoImgBox{
+    width: 50px ;
+    height: 46.5px ;
+    margin: 0px 32px 0 0 ;
+    cursor: pointer;
+}
+
+#searchBox {
+    position: relative;
+    
+}
+
+#searchInput {
+    padding: 15px;
+    width: 498px;
+    height: 38px;
+    padding-left:50px;
+    border-radius: 10px;
+    border: none;
+}
+
+#inputInsideIcon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#mentions_analysis {
+    width: 1240px;
+    height : 935px;
+    margin: 38px 0px 47px 0px;
+}
+
+#mentions_analysis_first_line {
+    display: flex;
+}
+
+#mentions_analysis_second_line {
+    display: flex;
+}
+
+#mentions_analysis_third_line {
+    display: flex;
+}
+
+#mentions_analysis_first_box_1,
+#mentions_analysis_first_box_2,
+#mentions_analysis_first_box_3,
+#mentions_analysis_second_box_1,
+#mentions_analysis_second_box_2,
+#mentions_analysis_second_box_3,
+#mentions_analysis_third_box_1,
+#mentions_analysis_third_box_2 {
+    border-radius: 20px;
+}
+
+
+#mentions_analysis_first_box_1 {
+    width: 392px;
+    height: 120px;
+    background: white;
+    color: black;
+    margin: 9px 32px 0px 0px;
+}
+
+#mentions_analysis_first_box_2 {
+    width: 392px;
+    height: 120px;
+    background: white;
+    color: black;
+    margin: 9px 0px 0px 0px;
+}
+
+#mentions_analysis_first_box_3 {
+    width: 392px;
+    height: 120px;
+    background: white;
+    color: black;
+    margin: 9px 0px 0px 32px;
+}
+
+#mentions_analysis_second_box_1 {
+    width: 286px;
+    height: 450px;
+    margin: 28px 32px 0px 0px;
+    background: white;
+}
+
+#mentions_analysis_second_box_2 {
+    width: 604px;
+    height: 450px;
+    margin: 28px 0px 0px 0px;
+    background: white;
+}
+
+#mentions_analysis_second_box_3 {
+    width: 286px;
+    height: 450px;
+    margin: 28px 0px 0px 32px;
+    background: white;
+}
+
+#mentions_analysis_third_box_1 {
+    width: 498px;
+    height: 270px;
+    margin: 28px 32px 47px 0px;
+    background: white;
+}
+
+#mentions_analysis_third_box_2 {
+    width: 710px;
+    height: 270px;
+    margin: 28px 0px 47px 0px;
+    background: white;
+}
+
+
+#mentions_analysis_title{
+    font-size: 26px;
+    font-family: esamanru;
+}
+
+#mentions_analysis_second_box_1_title, 
+#mentions_analysis_second_box_2_title,
+#mentions_analysis_second_box_3_title,
+#mentions_analysis_third_box_1_title,
+#mentions_analysis_third_box_2_title{
+    font-family: pretendard;
+    font-size: 18px;
+    margin: 24px 179px 404px 27px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 21.6px;
+}
+
+#homeContainer {
+
+} 
