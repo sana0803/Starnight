@@ -19,8 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class WordService {
@@ -38,14 +40,12 @@ public class WordService {
             String secretKey = properties.getProperty("SECRET_KEY");
             String clientId = properties.getProperty("CLIENT_ID");
             String clientSecret = properties.getProperty("CLIENTSECRET");
-            System.out.println("URL : " + baseUrl);
-            System.out.println("apiKey : " + apiKey);
-            System.out.println("secretKey : " + secretKey);
             long customerId = Long.parseLong(properties.getProperty("CUSTOMER_ID"));
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
             words = list(rest, customerId, word);
-            System.out.println(words.toString());
+
+            log.info("네이버 API에서 돌려받은 WordDto : " + words.toString());
             if (words.getKeywordList().size() > 20) {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
@@ -56,7 +56,7 @@ public class WordService {
             SearchFlowDto searchFlowDto = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
-            System.out.println(searchFlowDto);
+            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowDto);
             searchDto = new SearchDto(words, searchFlowDto);
 
         } catch (Exception e) {
@@ -93,7 +93,6 @@ public class WordService {
         JsonArray keywordList = new JsonArray();
         for (String word : keywords) {
             keywordList.add(word);
-            System.out.print(word + " ");
         }
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
