@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="introduction"><a class="link" href="#introduction">소개</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>O-GYM API</p>
+<p>별나린밤 API</p>
 </div>
 </div>
 </div>
@@ -489,11 +489,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">개발서버</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://i5b103.p.ssafy.io:8080" class="bare">https://i5b103.p.ssafy.io:8080</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://j5b103.p.ssafy.io:8080" class="bare">https://j5b103.p.ssafy.io:8080</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">운영서버</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://i5b103.p.ssafy.io" class="bare">https://i5b103.p.ssafy.io</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://j5b103.p.ssafy.io" class="bare">https://j5b103.p.ssafy.io</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -589,15 +589,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <pre class="highlightjs highlight nowrap"><code class="language-none hljs">{
   "keywordList" : [ {
     "relKeyword" : "소고기",
-    "monthlyPcQcCnt" : "10",
-    "monthlyMobileQcCnt" : "10",
-    "monthlyAvePcClkCnt" : "10",
-    "monthlyAveMobileClkCnt" : "10",
-    "monthlyAvePcCtr" : "10",
-    "monthlyAveMobileCtr" : "10",
-    "plAvgDepth" : "10",
+    "monthlyPcQcCnt" : "12500",
+    "monthlyMobileQcCnt" : "105000",
+    "monthlyAvePcClkCnt" : "83.1",
+    "monthlyAveMobileClkCnt" : "1171.5",
+    "monthlyAvePcCtr" : "0.69",
+    "monthlyAveMobileCtr" : "1.18",
+    "plAvgDepth" : "15",
     "compIdx" : "높음"
-  } ]
+  } ],
+  "timeUnit" : "month",
+  "ratios" : [ 86.08608, 82.08194, 85.22112, 82.23059, 94.73376, 88.21551, 86.95837, 100.0, 94.45168 ]
 }</code></pre>
 </div>
 </div>
@@ -623,56 +625,74 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].relKeyword</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">연관 검색어</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">연관검색어</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyPcQcCnt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 PC 쿼리 수</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sum of PC query counts in recent 30 days. If the query count is less than 10, you get "&lt;10".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 PC 검색 수</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyMobileQcCnt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 모바일 쿼리 수</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sum of Mobile query counts in recent 30 days. If the query count is less than 10, you get "&lt;10".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 모바일 검색 수</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyAvePcClkCnt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 키워드 광고당 PC 클릭 횟수 평균</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Average PC click counts per keyword&#8217;s ad in recent 4 weeks. With no data, you get 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 평균 PC 클릭 수(최근 한 달 간 사용자가 해당 키워드를 검색했을 때, 통합검색 영역에 노출된 광고가 받은 평균 클릭수)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyAveMobileClkCnt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 키워드 광고당 모바일 클릭 횟수 평균</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recent 4 weeks. With no data, you get 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 평균 모바일 클릭 수(최근 한 달 간 사용자가 해당 키워드를 검색했을 때, 통합검색 영역에 노출된 광고가 받은 평균 클릭수)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyAvePcCtr</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 PC 클릭률</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Click-through rate of PC in recent 4 weeks. With no data, you get 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 평균 PC 클릭률(클릭수 / 노출수 = 클릭률)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].monthlyAveMobileCtr</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">월별 모바일 클릭 수</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Click-through rate of Mobile in recent 4 weeks. With no data, you get 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">월간 평균 모바일 클릭률(클릭수 / 노출수 = 클릭률)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].plAvgDepth</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PC 통합검색영역에 노출된 평균 광고 개수</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Average depth of PC ad in recent 4 weeks. With no data, you get 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">최근 한 달 간 사용자가 해당 키워드를 검색했을 때, PC통합검색 영역에 노출된 평균 광고 개수입니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].compIdx</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">경쟁정도</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A competitiveness index based on PC ad. low: low competitiveness, mid: middle competitiveness, high: high competitiveness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">경쟁정도(최근 한달간 해당 키워드에 대한 경쟁정도를 PC통합검색영역 기준으로 높음/중간/낮음으로 구분한 지표입니다.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywordList[].compIdx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A competitiveness index based on PC ad. low: low competitiveness, mid: middle competitiveness, high: high competitiveness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">경쟁정도(최근 한달간 해당 키워드에 대한 경쟁정도를 PC통합검색영역 기준으로 높음/중간/낮음으로 구분한 지표입니다.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">day, month, year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">검색량 추이의 단위입니다</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ratios</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">상대값0~100의 수치로 표현됩니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">검색량 추이의 월별 리스트입니다.</p></td>
 </tr>
 </tbody>
 </table>
@@ -683,7 +703,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-28 14:31:11 +0900
+Last updated 2021-09-28 21:01:00 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

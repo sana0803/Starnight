@@ -13,7 +13,7 @@ endif::[]
 [[introduction]]
 == 소개
 
-O-GYM API
+별나린밤 API
 
 [[common]]
 == 공통 사항
@@ -26,10 +26,10 @@ API에 관계없이 아래 사항을 지켜주셔야 합니다.
 | 환경 | Domain
 
 | 개발서버
-| `https://i5b103.p.ssafy.io:8080`
+| `https://j5b103.p.ssafy.io:8080`
 
 | 운영서버
-| `https://i5b103.p.ssafy.io`
+| `https://j5b103.p.ssafy.io`
 |===
 
 === Common Response
