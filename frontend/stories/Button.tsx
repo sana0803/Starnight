@@ -1,23 +1,50 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import "./button.css";
 
 interface ButtonProps {
   /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
+   * 배경색 설정
    */
   backgroundColor?: string;
+
   /**
-   * How large should the button be?
+   * 폰트 색상
    */
-  size?: 'small' | 'medium' | 'large';
+  color?: string;
+
   /**
-   * Button contents
+   * 버튼 내부 설명
    */
   label: string;
+  /**
+   * 버튼 테두리
+   */
+  borderRadius?: number;
+
+  /**
+   * width 설정
+   */
+  width?: number;
+
+  /**
+   * height 설정
+   */
+  height?: number;
+
+  /**
+   * 폰트 사이즈 설정
+   */
+  fontSize?: number;
+
+  /**
+   * 폰트 굵기 설정
+   */
+  fontWeight?: number;
+
+  /**
+   * border 설정
+   */
+  border?: string;
   /**
    * Optional click handler
    */
@@ -28,18 +55,33 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
-  size = 'medium',
   backgroundColor,
+  color,
+  borderRadius,
   label,
+  width,
+  height,
+  fontSize,
+  fontWeight,
+  border,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
+      // className={['storybook-button', `storybook-button--${size}`, mode].join(
+      //     " ",
+      // )}
+      style={{
+        backgroundColor,
+        color,
+        width: `${width}px`,
+        height: `${height}px`,
+        borderRadius: `${borderRadius}px`,
+        fontSize,
+        fontWeight,
+        border,
+      }}
       {...props}
     >
       {label}
