@@ -6,7 +6,8 @@ import random
 import chromedriver_autoinstaller
 from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 import datetime
 import pandas as pd
 import platform
@@ -140,12 +141,15 @@ def init_driver(headless=True, proxy=None, show_images=False, option=None):
         print("using proxy : ", proxy)
     if show_images == False:
     	prefs = {"profile.managed_default_content_settings.images": 2}
-    	options.add_experimental_option("prefs", prefs)
+#    	options.add_experimental_option("prefs", prefs)
     if option is not None:
         options.add_argument(option)
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=options, executable_path=chromedriver_path)
+#    options.add_argument('start-maximized')
+    options.add_argument("--headless")
+#    driver = webdriver.Chrome(options=options, executable_path=chromedriver_path)
+    driver = webdriver.Firefox(firefox_options=options, executable_path = "/home/qwe/tacamedy/Scweet-master2/geckodriver") 
     driver.set_page_load_timeout(100)
     return driver
 
@@ -236,21 +240,11 @@ def keep_scroling(driver, data, writer, tweet_ids, scrolling, tweet_parsed, limi
             tweet = get_data(card, save_images, save_images_dir)
             temp = OrderedDict()
             if tweet is not None and tweet[0] is not None and tweet[1] is not None and tweet[2] is not None and tweet[4] is not None :
-            	#temp["userScreenName"] = tweet[0]
-            	#temp["userName"] = tweet[1]
-            	#temp["timestamp"] = tweet[2]
             	temp["text"] = tweet[4]
 
             	headers = {'Content-Type':'application/json; charset=utf-8'}
-            	requests.post("http://localhost:8080/twit/lunch",data = json.dumps(temp, ensure_ascii=False).encode('utf8'),headers=headers)
+            	#requests.post("http://localhost:8080/kafka",data = json.dumps(temp),headers=headers)
             	print(json.dumps(temp,ensure_ascii=False,indent="\t"))
-            	#print("------------")
-            	#print(tweet[0])
-            	#print(tweet[1])
-            	#print(tweet[2])
-            	#print(tweet[3])
-            	#print(tweet[5])
-            	#print("-------------")
             if tweet:
                 # check if the tweet is unique
                 tweet_id = ''.join(tweet[:-2])
@@ -267,7 +261,10 @@ def keep_scroling(driver, data, writer, tweet_ids, scrolling, tweet_parsed, limi
         while tweet_parsed < limit:
             # check scroll position
             scroll += 1
+
             print("scroll ", scroll)
+            if scroll == 250:
+            	return driver, data, writer, tweet_ids, scrolling, tweet_parsed, scroll, last_position
             sleep(random.uniform(0.5, 1.5))
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
             curr_position = driver.execute_script("return window.pageYOffset;")

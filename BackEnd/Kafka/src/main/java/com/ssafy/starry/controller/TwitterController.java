@@ -1,5 +1,6 @@
 package com.ssafy.starry.controller;
 
+import com.ssafy.starry.controller.dto.twitDto;
 import com.ssafy.starry.service.TwitProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +22,8 @@ public class TwitterController {
     @PostMapping("/lunch")
     public String sendMessage(@RequestBody String text) {
         System.out
-            .println("TwitterController message" + text);
-        this.producer.sendTwit(text);
+            .println("TwitterController message : " + twitDto.getText());
+        this.producer.sendTwit(twitDto.getText());
         return "success";
     }
 

@@ -139,7 +139,7 @@ def scrape(since, until=None, words=None, to_account=None, from_account=None, me
         dowload_images(data["Image link"], save_images_dir)
 
     # close the web driver
-    driver.close()
+    driver.quit()
 
     return data
 
