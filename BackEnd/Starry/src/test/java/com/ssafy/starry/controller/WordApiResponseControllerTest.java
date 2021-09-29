@@ -21,12 +21,11 @@ import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfig
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.starry.controller.dto.SearchDto;
 import com.ssafy.starry.controller.dto.SearchFlowDto;
-import com.ssafy.starry.controller.dto.WordResponseDto;
-import com.ssafy.starry.controller.dto.WordResponseDto.Word;
+import com.ssafy.starry.controller.dto.WordDto;
+import com.ssafy.starry.controller.dto.WordDto.WordApiResponse;
 import com.ssafy.starry.service.WordService;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -47,7 +46,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 @ExtendWith(RestDocumentationExtension.class)
 @WebMvcTest(controllers = WordController.class)
-class WordControllerTest {
+class WordApiResponseControllerTest {
 
     @MockBean
     private WordService wordService;
@@ -72,9 +71,9 @@ class WordControllerTest {
     @Test
     public void searchWord_success() throws Exception {
         //given
-        WordResponseDto wordResponseDto = new WordResponseDto();
-        List<Word> words = new ArrayList<>();
-        words.add(Word.builder()
+        WordDto wordDto = new WordDto();
+        List<WordApiResponse> wordApiResponses = new ArrayList<>();
+        wordApiResponses.add(WordApiResponse.builder()
             .relKeyword("소고기")
             .monthlyPcQcCnt("12500")
             .monthlyMobileQcCnt("105000")
@@ -85,7 +84,7 @@ class WordControllerTest {
             .plAvgDepth("15")
             .compIdx("높음")
             .build());
-        wordResponseDto.setKeywordList(words);
+        wordDto.setKeywordList(wordApiResponses);
         SearchFlowDto searchFlowDto = new SearchFlowDto();
         List<Double> ratios = Arrays.asList(86.08608,
             82.08194,
@@ -97,7 +96,7 @@ class WordControllerTest {
             100.0,
             94.45168);
 
-        SearchDto searchDto = new SearchDto(wordResponseDto, ratios);
+        SearchDto searchDto = new SearchDto(wordDto, ratios);
         given(wordService.getWordAnalysis(any())).willReturn(searchDto);
         //when
         mockMvc.perform(get("/api/word/search")
@@ -113,11 +112,6 @@ class WordControllerTest {
                     parameterWithName("word").description("검색하려는 단어")
                 ),
                 responseFields(
-//                    fieldWithPath("keywordList").type(JsonFieldType.ARRAY)
-//                        .description("연관검색어의 리스트와 상세 정보")
-//                        .attributes(key("constraint")
-//                            .value(
-//                                "20개 이상이라면 20개까지의 리스트가 반환되고, 그렇지 않은 경우 20개 이하의 리스트가 반환될 수 있습니다.")),
                     fieldWithPath("keywordList[].relKeyword").type(JsonFieldType.STRING)
                         .description("연관검색어")
                         .attributes(key("format")
@@ -184,7 +178,12 @@ class WordControllerTest {
                         .description("검색량 추이의 월별 리스트입니다.")
                         .attributes(key("format")
                             .value(
-                                " 상대값0~100의 수치로 표현됩니다."))
+                                " 상대값0~100의 수치로 표현됩니다.")),
+                    fieldWithPath("rank").type(JsonFieldType.NUMBER)
+                        .description("여러 지표를 통해 산출한 키워드 경쟁력 지수입니다")
+                        .attributes(key("format")
+                            .value(
+                                " 0~5까지 0.5 단위로 표시됩니다."))
                 )
             ));
         //then

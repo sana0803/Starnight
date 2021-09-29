@@ -2,30 +2,23 @@ package com.ssafy.starry.service;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.request.HttpRequestWithBody;
 import com.ssafy.starry.common.utils.DataLabHttp;
 import com.ssafy.starry.common.utils.PropertiesLoader;
 import com.ssafy.starry.common.utils.RestClient;
 import com.ssafy.starry.controller.dto.SearchDto;
 import com.ssafy.starry.controller.dto.SearchFlowDto;
-import com.ssafy.starry.controller.dto.WordResponseDto;
-import com.ssafy.starry.controller.dto.WordResponseDto.Word;
+import com.ssafy.starry.controller.dto.WordDto;
+import com.ssafy.starry.controller.dto.WordDto.WordApiResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,7 +30,7 @@ public class WordService {
 
     public SearchDto getWordAnalysis(String word) {
         SearchDto searchDto = null;
-        WordResponseDto words = null;
+        WordDto words = null;
         try {
             Properties properties = PropertiesLoader.fromResource("secret.properties");
             String baseUrl = properties.getProperty("BASE_URL");
@@ -57,7 +50,7 @@ public class WordService {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
             List<String> keywords = new ArrayList<>();
-            for (Word w : words.getKeywordList()) {
+            for (WordApiResponse w : words.getKeywordList()) {
                 keywords.add(w.getRelKeyword());
             }
             SearchFlowDto searchFlowDto = getDataTrend(word, keywords.toArray(new String[0]),
@@ -72,7 +65,7 @@ public class WordService {
         return searchDto;
     }
 
-    public WordResponseDto list(RestClient rest, long customerId, String hintKeywords)
+    public WordDto list(RestClient rest, long customerId, String hintKeywords)
         throws Exception {
         HttpResponse<String> response =
             rest.get(RelKwdPath, customerId)
@@ -83,7 +76,7 @@ public class WordService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         return objectMapper
-            .readValue(responseBody, WordResponseDto.class);
+            .readValue(responseBody, WordDto.class);
     }
 
     public SearchFlowDto getDataTrend(String mainWord, String[] keywords, String clientId,

@@ -1,7 +1,6 @@
 package com.ssafy.starry.controller;
 
 import com.ssafy.starry.controller.dto.SearchDto;
-import com.ssafy.starry.controller.dto.WordResponseDto;
 import com.ssafy.starry.service.WordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
