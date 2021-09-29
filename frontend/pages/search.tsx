@@ -39,14 +39,19 @@ function Search({data}) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const param = context.query.date ?? '2019';
-  const check1 = await fetch(
-      `http://apis.data.go.kr/B552061/lgStat/getRestLgStat?ServiceKey=1%2FEJ91e6fCvfjNcZwzIFg2MPmpgqoBzdVaySj2RcGHIQQhjC3zMYLETRi1EtZZt6mDeVr%2F1MnM0PcIkelqZEDA%3D%3D&searchYearCd=${param}&siDo=1100&guGun=1116&numOfRows=13&pageNo=1&type=json`,
-  );
-  const data = await check1.json();
-  // console.log(data);
+  // const param = context.query.date ?? '2019';
+  // const check1 = await fetch(
+  //     `http://apis.data.go.kr/B552061/lgStat/getRestLgStat?ServiceKey=1%2FEJ91e6fCvfjNcZwzIFg2MPmpgqoBzdVaySj2RcGHIQQhjC3zMYLETRi1EtZZt6mDeVr%2F1MnM0PcIkelqZEDA%3D%3D&searchYearCd=${param}&siDo=1100&guGun=1116&numOfRows=13&pageNo=1&type=json`,
+  // );
+  // const data = await check1.json();
+  // // console.log(data);
 
-  return {props: {data: [...data.items.item]}};
+  // return {props: {data: [...data.items.item]}};
+  return {
+    props: {
+      data: []
+    }
+  }
 };
 
 export default Search;
