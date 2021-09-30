@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
 import React from 'react';
+import GraphComponent from './GraphComponent';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -28,10 +29,16 @@ const SearchBackground = () => {
   const router = useRouter();
 
   console.log(data)
-  let keywordList = null, ratios= null, rank = null;
+  let keywordList = null, ratios = null, rank = null, graphData = null;
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
+    graphData = ratios.map((ratio, index) => {
+      return ({
+          name: `${(index+1)}월`,
+          ratio: Math.ceil(ratio),
+        });
+    });
     rank = data?.rank;
   }
 
@@ -153,17 +160,24 @@ const SearchBackground = () => {
               <div id={styles.mentions_analysis_third_box_2_title}>
                 검색량 추이 (단위:{  data &&  data.timeUnit }) </div>
                 
-                <div className={styles.mentions_analysis_third_box_2_dataBox}>{
+                <GraphComponent data={graphData}
+                  styles={{
+                    width: "100%",
+                    height: "80%"
+                  }}
+                />
+                {/* <div className={styles.mentions_analysis_third_box_2_dataBox}>{
                   ratios && 
                   ratios.map((ratio, index) => {
-                    return (<div className
+                    return (<div key={index} className
                       ={styles.mentions_analysis_third_box_2_data}>
                         <div>{index + 1}월</div>
                         <div>{Math.ceil(ratio)}%</div>
                       </div>
                     )
                   })
-                }</div>
+              }
+                </div> */}
               
             </div>
           </div>
