@@ -6,7 +6,7 @@
     "extends": [
         "next/core-web-vitals",
         "plugin:react/recommended",
-        "plugin:prettier/recommended",
+        //"plugin:prettier/recommended",
         "eslint-config-prettier",
         "google"
     ],
@@ -23,5 +23,12 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "require-jsdoc": 0,
+        "linebreak-style": ["error", "windows", "unix"]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
