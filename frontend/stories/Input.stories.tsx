@@ -21,7 +21,7 @@ export const Medium = Template.bind({});
 Medium.args = {
   size: 'medium',
   type: 'text',
-  placeholder: '아이디를 입력하세요.',
+  placeholder: '내용을 입력하세요.',
 };
 
 export const Small = Template.bind({});
