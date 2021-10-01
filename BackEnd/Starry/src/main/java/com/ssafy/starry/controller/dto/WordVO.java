@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @NoArgsConstructor
-public class WordDto {
+public class WordVO {
 
     List<WordApiResponse> keywordList;
 

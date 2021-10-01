@@ -20,9 +20,9 @@ import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfig
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.starry.controller.dto.SearchDto;
-import com.ssafy.starry.controller.dto.SearchFlowDto;
-import com.ssafy.starry.controller.dto.WordDto;
-import com.ssafy.starry.controller.dto.WordDto.WordApiResponse;
+import com.ssafy.starry.controller.dto.SearchFlowVO;
+import com.ssafy.starry.controller.dto.WordVO;
+import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
 import com.ssafy.starry.service.WordService;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,7 +71,7 @@ class WordApiResponseControllerTest {
     @Test
     public void searchWord_success() throws Exception {
         //given
-        WordDto wordDto = new WordDto();
+        WordVO wordVO = new WordVO();
         List<WordApiResponse> wordApiResponses = new ArrayList<>();
         wordApiResponses.add(WordApiResponse.builder()
             .relKeyword("소고기")
@@ -84,8 +84,8 @@ class WordApiResponseControllerTest {
             .plAvgDepth("15")
             .compIdx("높음")
             .build());
-        wordDto.setKeywordList(wordApiResponses);
-        SearchFlowDto searchFlowDto = new SearchFlowDto();
+        wordVO.setKeywordList(wordApiResponses);
+        SearchFlowVO searchFlowVO = new SearchFlowVO();
         List<Double> ratios = Arrays.asList(86.08608,
             82.08194,
             85.22112,
@@ -96,7 +96,7 @@ class WordApiResponseControllerTest {
             100.0,
             94.45168);
 
-        SearchDto searchDto = new SearchDto(wordDto, ratios);
+        SearchDto searchDto = new SearchDto(wordVO, ratios);
         given(wordService.getWordAnalysis(any())).willReturn(searchDto);
         //when
         mockMvc.perform(get("/api/word/search")

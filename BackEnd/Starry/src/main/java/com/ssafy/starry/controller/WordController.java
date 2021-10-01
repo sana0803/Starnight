@@ -1,6 +1,7 @@
 package com.ssafy.starry.controller;
 
 import com.ssafy.starry.controller.dto.SearchDto;
+import com.ssafy.starry.controller.dto.TrendDto;
 import com.ssafy.starry.service.WordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,13 @@ public class WordController {
         log.info("검색한 단어 : " + word);
         SearchDto words = wordService.getWordAnalysis(word);
         return ResponseEntity.ok(words);
+    }
+
+    @GetMapping("/trend")
+    public ResponseEntity<TrendDto> getTrendKeyword() {
+        log.info("트렌드 요청 Controller");
+        TrendDto trendKeywords = wordService.getTrendKeyword();
+        return ResponseEntity.ok(trendKeywords);
     }
 
 }

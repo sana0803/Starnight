@@ -9,10 +9,14 @@ import com.mashape.unirest.http.HttpResponse;
 import com.ssafy.starry.common.utils.DataLabHttp;
 import com.ssafy.starry.common.utils.PropertiesLoader;
 import com.ssafy.starry.common.utils.RestClient;
+import com.ssafy.starry.common.utils.rss.Feed;
+import com.ssafy.starry.common.utils.rss.FeedMessage;
+import com.ssafy.starry.common.utils.rss.RSSFeedParser;
 import com.ssafy.starry.controller.dto.SearchDto;
-import com.ssafy.starry.controller.dto.SearchFlowDto;
-import com.ssafy.starry.controller.dto.WordDto;
-import com.ssafy.starry.controller.dto.WordDto.WordApiResponse;
+import com.ssafy.starry.controller.dto.SearchFlowVO;
+import com.ssafy.starry.controller.dto.TrendDto;
+import com.ssafy.starry.controller.dto.WordVO;
+import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,10 +33,12 @@ public class WordService {
 
     static String RelKwdPath = "/keywordstool";
     static String DataLabPath = "https://openapi.naver.com/v1/datalab/search";
+    static String feedURL = "https://trends.google.co.kr/trends/trendingsearches/daily/rss?geo=KR";
 
     public SearchDto getWordAnalysis(String word) {
+        word = word.replaceAll(" ", "");
         SearchDto searchDto = null;
-        WordDto words = null;
+        WordVO words = null;
         try {
             Properties properties = PropertiesLoader.fromResource("secret.properties");
             String baseUrl = properties.getProperty("BASE_URL");
@@ -53,11 +59,11 @@ public class WordService {
             for (WordApiResponse w : words.getKeywordList()) {
                 keywords.add(w.getRelKeyword());
             }
-            SearchFlowDto searchFlowDto = getDataTrend(word, keywords.toArray(new String[0]),
+            SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
-            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowDto);
-            searchDto = new SearchDto(words, searchFlowDto);
+            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
+            searchDto = new SearchDto(words, searchFlowVO);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +71,7 @@ public class WordService {
         return searchDto;
     }
 
-    public WordDto list(RestClient rest, long customerId, String hintKeywords)
+    public WordVO list(RestClient rest, long customerId, String hintKeywords)
         throws Exception {
         HttpResponse<String> response =
             rest.get(RelKwdPath, customerId)
@@ -76,10 +82,10 @@ public class WordService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         return objectMapper
-            .readValue(responseBody, WordDto.class);
+            .readValue(responseBody, WordVO.class);
     }
 
-    public SearchFlowDto getDataTrend(String mainWord, String[] keywords, String clientId,
+    public SearchFlowVO getDataTrend(String mainWord, String[] keywords, String clientId,
         String clientSecret) throws JsonProcessingException {
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
@@ -103,7 +109,20 @@ public class WordService {
         String request = requestBody.toString();
         String responseBody = DataLabHttp.post(DataLabPath, requestHeaders, request);
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(responseBody, SearchFlowDto.class);
+        return objectMapper.readValue(responseBody, SearchFlowVO.class);
+    }
+
+    public TrendDto getTrendKeyword() {
+        RSSFeedParser parser = new RSSFeedParser(feedURL);
+        Feed feed = parser.readFeed();
+        List<String> searchWords = new ArrayList<>();
+        for (FeedMessage message : feed.getMessages()) {
+            searchWords.add(message.getTitle());
+        }
+        System.out.println(searchWords);
+        return TrendDto.builder()
+            .keywords(searchWords)
+            .build();
     }
 
 }
