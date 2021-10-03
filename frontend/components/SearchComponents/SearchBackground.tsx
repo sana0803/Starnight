@@ -22,18 +22,18 @@ const fetcher = url => fetch(url, {
 const SearchBackground = () => {
   
   const [searchText, setSearchText] = React.useState('소고기');
-  const textInput = React.useRef(null);
+  const textInput = React.useRef<any>();
 
   const { data, error } = useSWR(`http://localhost:3000/search/${searchText}`, fetcher);
 
   const router = useRouter();
 
   console.log(data)
-  let keywordList = null, ratios = null, rank = null, graphData = null;
+  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
-    graphData = ratios.map((ratio, index) => {
+    graphData = ratios?.map((ratio, index) => {
       return ({
           name: `${(index+1)}월`,
           ratio: Math.ceil(ratio),

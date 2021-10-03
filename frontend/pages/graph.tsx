@@ -5,8 +5,8 @@ const graph: NextPage = () => {
 
     return (
         <>
-            <GraphComponent />
-            <div>test</div>
+            {/* <GraphComponent />
+            <div>test</div> */}
         </>
 
     );

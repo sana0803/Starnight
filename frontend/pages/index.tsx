@@ -1,26 +1,29 @@
 import type { NextPage } from "next";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Head from 'next/head';
 import Image from 'next/image';
 // import styles from "../styles/Home.module.css";
 import styles from "../styles/Index.module.scss";
+import MainPage from "../components/MainComponents/MainPage";
 // import { useSpring, animated } from 'react-spring';
 
 const Home: NextPage = () => {
-  const mainText = useRef(null);
-  const circleBackground = useRef(null);
+  const mainText = useRef<any>();
+  const circleBackground = useRef<any>();
 
   // const circleData = useSpring({
   //   to: { borderRadius: '0%' }, from: {
   //     borderRadius: '50%'
   //   }
   // });
+  const [isLastScroll, setIsLastScroll] = useState(false);
 
   useEffect(() => {
 
     function handleScroll() {
       const scrollTop = window.scrollY;
-      console.log(scrollTop);
+      const isEndOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+      console.log(scrollTop, isEndOfPage);
       // if (scrollTop >= 1080) {
 
       // }
@@ -45,8 +48,13 @@ const Home: NextPage = () => {
       else {
         mainText.current.style.color = "#FFD523";
       }
-
       
+      if (isEndOfPage) {
+        setIsLastScroll(true);
+      }
+      else {
+        setIsLastScroll(false);
+      }
       
     }
 
@@ -68,7 +76,9 @@ const Home: NextPage = () => {
           <br></br>
           보여드릴게요
         </section>
-        <section ref={circleBackground} id={styles.firstSection}></section>
+        <section ref={circleBackground} id={styles.firstSection}>
+          {isLastScroll ? <MainPage /> : <></>}
+        </section>
       </article>
     </div>
   );

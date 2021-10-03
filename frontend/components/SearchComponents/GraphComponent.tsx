@@ -45,6 +45,16 @@ const data = [
     },
   ];
 
+interface DataInterface {
+  name: string,
+  uv: number, pv: number, amt: number
+}
+
+interface StyleInterface {
+  width: string,
+  height: string,
+}
+
 const GraphComponent = ({ data, styles }) => {
 
 
