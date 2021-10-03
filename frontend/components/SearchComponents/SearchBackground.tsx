@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
 import React from 'react';
+import GraphComponent from './GraphComponent';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -21,23 +22,30 @@ const fetcher = url => fetch(url, {
 const SearchBackground = () => {
   
   const [searchText, setSearchText] = React.useState('소고기');
-  const textInput = React.useRef(null);
+  const textInput = React.useRef<any>();
 
   const { data, error } = useSWR(`http://localhost:3000/search/${searchText}`, fetcher);
 
   const router = useRouter();
 
   console.log(data)
-  let keywordList = null, ratios= null;
+  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
+    graphData = ratios?.map((ratio, index) => {
+      return ({
+          name: `${(index+1)}월`,
+          ratio: Math.ceil(ratio),
+        });
+    });
+    rank = data?.rank;
   }
 
-  console.log(keywordList, ratios)
+ //console.log(keywordList, ratios)
 
   const submitInput = (val) => {
-    console.log(textInput.current.value)
+    //console.log(textInput.current.value)
     setSearchText(textInput.current.value);
   }
 
@@ -77,8 +85,8 @@ const SearchBackground = () => {
               <div>{ keywordList && keywordList[0].monthlyMobileQcCnt }</div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              <div className={styles.first_line_titles}>최초 언급 시기</div>
-
+              <div className={styles.first_line_titles}>키워드 경쟁력 지수</div>
+              <div>{ rank && rank }</div>
             </div>
 
           </div>
@@ -152,17 +160,24 @@ const SearchBackground = () => {
               <div id={styles.mentions_analysis_third_box_2_title}>
                 검색량 추이 (단위:{  data &&  data.timeUnit }) </div>
                 
-                <div className={styles.mentions_analysis_third_box_2_dataBox}>{
+                <GraphComponent data={graphData}
+                  styles={{
+                    width: "100%",
+                    height: "80%"
+                  }}
+                />
+                {/* <div className={styles.mentions_analysis_third_box_2_dataBox}>{
                   ratios && 
                   ratios.map((ratio, index) => {
-                    return (<div className
+                    return (<div key={index} className
                       ={styles.mentions_analysis_third_box_2_data}>
                         <div>{index + 1}월</div>
                         <div>{Math.ceil(ratio)}%</div>
                       </div>
                     )
                   })
-                }</div>
+              }
+                </div> */}
               
             </div>
           </div>

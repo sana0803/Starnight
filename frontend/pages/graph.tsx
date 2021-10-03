@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import GraphComponent from "../components/SearchComponents/GraphComponent";
 
-const info: NextPage = () => {
+const graph: NextPage = () => {
 
     return (
         <>
@@ -13,4 +13,4 @@ const info: NextPage = () => {
 
 }
 
-export default info;
+export default graph;
