@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.mashape.unirest.http.HttpResponse;
 import com.ssafy.starry.common.utils.DataLabHttp;
 import com.ssafy.starry.common.utils.PropertiesLoader;
+import com.ssafy.starry.common.utils.RedisUtil;
 import com.ssafy.starry.common.utils.RestClient;
 import com.ssafy.starry.common.utils.rss.Feed;
 import com.ssafy.starry.common.utils.rss.FeedMessage;
@@ -31,12 +32,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class WordService {
 
+    private final RedisUtil redisUtil;
     static String RelKwdPath = "/keywordstool";
     static String DataLabPath = "https://openapi.naver.com/v1/datalab/search";
     static String feedURL = "https://trends.google.co.kr/trends/trendingsearches/daily/rss?geo=KR";
 
     public SearchDto getWordAnalysis(String word) {
         word = word.replaceAll(" ", "");
+        redisUtil.set(word, "123", 1800);
         SearchDto searchDto = null;
         WordVO words = null;
         try {
