@@ -39,7 +39,7 @@ public class WordService {
 
     public SearchDto getWordAnalysis(String word) {
         word = word.replaceAll(" ", "");
-        redisUtil.set(word, "123", 1800);
+        redisUtil.addSet("searchWords", word);
         SearchDto searchDto = null;
         WordVO words = null;
         try {
