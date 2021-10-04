@@ -21,8 +21,6 @@ public class TwitterController {
 
     @PostMapping("/twit")
     public String sendMessage(@RequestBody String text) {
-        System.out
-            .println("TwitterController message : " + text);
         this.producer.sendTwit(text);
         return "success";
     }

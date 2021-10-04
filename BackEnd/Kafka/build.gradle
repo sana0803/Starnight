@@ -38,6 +38,7 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     implementation group: 'com.opencsv', name: 'opencsv', version: '4.4'
     implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.5.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 test {

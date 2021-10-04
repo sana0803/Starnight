@@ -1,12 +1,18 @@
 package com.ssafy.starry.config;
 
+import com.ssafy.starry.util.RedisUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -20,6 +26,7 @@ import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,7 +34,8 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 
     final Serde<String> stringSerde = Serdes.String();
     final Serde<Long> longSerde = Serdes.Long();
-
+    @Autowired
+    RedisUtil redisUtil;
     protected KafkaStreams kafkaStreams;
 
     @Override
@@ -36,8 +44,11 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
         KStream<String, String> textLines = streamsBuilder
             .stream("twit", Consumed.with(Serdes.String(), Serdes.String()));
 
-//        List<String> foodStrs = new ArrayList<>(CsvParseBean.foods);
-//        Pattern pattern = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
+        Set<String> searchWords = redisUtil.get("searchWords").stream().map(object -> Objects
+            .toString(object, null)).collect(Collectors.toSet());
+        for (String word : searchWords) {
+            System.out.println(word);
+        }
 
         KTable<String, Long> wordCounts = textLines
             .flatMapValues(value -> {
@@ -50,7 +61,7 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
                     }
                     for (int j = 0; j < vLen - i + 1; j++) {
                         String s = value.substring(j, j + i);
-                        if (!used[j] && CsvParseBean.foods.get(i).contains(s)) {
+                        if (!used[j] && searchWords.contains(s)) {
                             words.add(s);
                             for (int k = j; k <= j + 1; k++) {
                                 used[k] = true;
