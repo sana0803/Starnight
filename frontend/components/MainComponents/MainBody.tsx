@@ -1,8 +1,8 @@
 import React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import styles from '../../styles/MainBody.module.scss';
-
+import useSWRImmutable from 'swr/immutable'
 const fetcher = url => fetch(url, {
     method: 'GET',
     headers: {
@@ -16,7 +16,7 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    const { data, error } = useSWR(`http://localhost:3000/mention`, fetcher);
+    const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
  
     const textInput = React.useRef<any>();
 
