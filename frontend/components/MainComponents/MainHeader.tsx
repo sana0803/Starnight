@@ -9,15 +9,22 @@ const MainHeader = () => {
 
         router.push(`/`);
         
-      };
+    };
+    
+    const moveKeyword = () => {
+        router.push('/search');
+    }
 
     return (
-        <>
-            <div>Test</div>
+        <div id={styles.headerBox}>
             <div id={styles.logoImgBox} onClick={moveHome}>
                 <Image src={logo} alt="logo"/>
-          </div>
-        </>
+            </div>
+
+            <div id={styles.keyWordBox} onClick={moveKeyword}>
+                키워드 분석
+            </div>
+        </div>
     );
 }
 
