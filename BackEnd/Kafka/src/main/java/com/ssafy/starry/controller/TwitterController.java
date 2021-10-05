@@ -20,8 +20,8 @@ public class TwitterController {
     }
 
     @PostMapping("/twit")
-    public String sendMessage(@RequestBody String text) {
-        this.producer.sendTwit(text);
+    public String sendMessage(@RequestBody twitDto twit) {
+        this.producer.sendTwit(twit.getText());
         return "success";
     }
 
