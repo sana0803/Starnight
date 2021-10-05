@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable'
 import React from 'react';
 import GraphComponent from './GraphComponent';
 
@@ -24,7 +25,7 @@ const SearchBackground = () => {
   const [searchText, setSearchText] = React.useState('소고기');
   const textInput = React.useRef<any>();
 
-  const { data, error } = useSWR(`http://localhost:3000/search/${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
 
   const router = useRouter();
 
@@ -188,4 +189,3 @@ const SearchBackground = () => {
   };
   
   export default SearchBackground;
-  
