@@ -1,6 +1,7 @@
 package com.ssafy.starry.config;
 
 import com.ssafy.starry.util.RedisUtil;
+import com.ssafy.starry.util.WordFilterManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -32,12 +34,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class StreamInitializingBean implements InitializingBean, DisposableBean {
 
-    final Serde<String> stringSerde = Serdes.String();
-    final Serde<Long> longSerde = Serdes.Long();
-    @Autowired
-    RedisUtil redisUtil;
+    private final RedisUtil redisUtil;
+    private final WordFilterManager wfm;
     protected KafkaStreams kafkaStreams;
 
     @Override
@@ -46,34 +47,24 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
         KStream<String, String> textLines = streamsBuilder
             .stream("twit", Consumed.with(Serdes.String(), Serdes.String()));
 
-        Set<String> searchWords = redisUtil.get("searchWords").stream().map(object -> Objects
-            .toString(object, null)).collect(Collectors.toSet());
-        for (String word : searchWords) {
-            log.info("word text : " + word);
-        }
+//        Set<String> searchWords = redisUtil.get("searchWords").stream().map(object -> Objects
+//            .toString(object, null)).collect(Collectors.toSet());
+//        for (String word : searchWords) {
+//            log.info("word text : " + word);
+//        }
         KTable<String, Long> wordCounts = textLines
             .flatMapValues(value -> {
                 List<String> words = new ArrayList<>();
+                wfm.renewalWords();
+                for (String filter : wfm.getSearchWords()) {
+                    System.out.println(filter);
+                }
                 int vLen = value.length();
-//                boolean[] used = new boolean[vLen];
-//                for (int i = 10; i >= 1; i--) {
-//                    if (vLen < i) {
-//                        continue;
-//                    }
-//                    for (int j = 0; j < vLen - i + 1; j++) {
-//                        String s = value.substring(j, j + i);
-//                        if (!used[j] && searchWords.contains(s)) {
-//                            words.add(s);
-//                            for (int k = j; k < j + i; k++) {
-//                                used[k] = true;
-//                            }
-//                        }
-//                    }
-//                }
                 for (int i = 0; i < vLen; i++) {
                     for (int j = Math.min(10, vLen - i); j >= 1; j--) {
                         String s = value.substring(i, i + j);
-                        if (searchWords.contains(s)) {
+
+                        if (wfm.getSearchWords().contains(s)) {
                             words.add(s);
                             i += (j - 1);// 인덱스 이동
                             break;
