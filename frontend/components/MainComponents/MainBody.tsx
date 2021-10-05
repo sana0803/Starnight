@@ -16,7 +16,7 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    const { data, error } = useSWR(`http://localhost:3000/list`, fetcher);
+    const { data, error } = useSWR(`http://localhost:3000/mention`, fetcher);
  
     const textInput = React.useRef<any>();
 
@@ -28,6 +28,8 @@ const MainBody = () => {
 
     datas = datas.map((e)=> '#'+e);
 
+    console.log(data);
+
     return (
         <>
             <div id={styles.searchBox}>
@@ -38,8 +40,8 @@ const MainBody = () => {
             </div>
 
             <div id={styles.keyWordList}>
-                {datas.map(e => {
-                    return <p>{e}</p>
+                {datas.map((e,index) => {
+                    return <p key={index}>{e}</p>
                 })}
             </div>
         </>
