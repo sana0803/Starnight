@@ -39,6 +39,7 @@ public class WordService {
 
     public SearchDto getWordAnalysis(String word) {
         word = word.replaceAll(" ", "");
+        word = word.toLowerCase();
         redisUtil.addSet("searchWords", word);
         SearchDto searchDto = null;
         WordVO words = null;
