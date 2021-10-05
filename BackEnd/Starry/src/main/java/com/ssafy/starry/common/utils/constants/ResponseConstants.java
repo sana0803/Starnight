@@ -13,4 +13,13 @@ public class ResponseConstants {
 
     public static final ResponseEntity<Void> BAD_REQUEST =
         ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
+//    public static final ResponseEntity<Object> VALIDATION_FAILED =
+//        new ResponseEntity("validation_failed", HttpStatus.BAD_REQUEST);
+
+    public static final ResponseEntity<String> WORD_NOT_VALID =
+        new ResponseEntity("Word not valid: not null && 1 <= word.length <= 10", HttpStatus.BAD_REQUEST);
+
+    public static final ResponseEntity<String> FORBIDDEN =
+        new ResponseEntity("'searchWords' is forbidden", HttpStatus.BAD_REQUEST);
 }

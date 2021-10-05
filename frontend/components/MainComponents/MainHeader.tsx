@@ -21,9 +21,9 @@ const MainHeader = () => {
                 <Image src={logo} alt="logo"/>
             </div>
 
-            <div id={styles.keyWordBox} onClick={moveKeyword}>
+            {/* <div id={styles.keyWordBox} onClick={moveKeyword}>
                 키워드 분석
-            </div>
+            </div> */}
         </div>
     );
 }
