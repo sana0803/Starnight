@@ -1,4 +1,4 @@
-@mixin font-face($name, $file, $weight: normal, $style: normal) { 
+@mixin font-face($name, $file, $weight: 400, $style: normal) { 
     @font-face {
         font-family: "#{$name}";
         src: url($file);
@@ -152,21 +152,25 @@
     //margin: 24px 179px 404px 27px;
     padding: 24px 0 0 27px;
     font-weight: 500;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     line-height: 21.6px;
 }
 
 .first_line_titles {
-    text-align: center;
+    text-align: left;
+    padding: 24px 0 19px 27px;
     font-family: pretendard;
-    padding: 20px; 
     font-size: 18px;
+    letter-spacing: -0.5px;
+    // line-height: 22px;
 }
 
 .first_line_titles + div {
     text-align: center;
     font-family: pretendard;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 20px;
+    color: #595260;    
 }
 
 .mentions_analysis_second_box_1_dataBox,  .mentions_analysis_second_box_2_dataBox{

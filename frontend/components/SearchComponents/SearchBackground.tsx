@@ -73,7 +73,7 @@ const SearchBackground = () => {
         </div>
 
         <div id={styles.mentions_analysis}>
-          <div id={ styles.mentions_analysis_title}>언급량 분석</div>
+          <div id={ styles.mentions_analysis_title}>키워드 분석</div>
           <div id={ styles.mentions_analysis_first_line }>
 
             <div id={styles.mentions_analysis_first_box_1}>
