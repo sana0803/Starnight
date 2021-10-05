@@ -42,11 +42,11 @@ spring:
       on-profile: "local"
   redis:
     word:
-      host: localhost
-      port: 6379
+      host: 3.35.214.129
+      port: 6050
 
 server:
-  port: 8080
+  port: 8070
 ---
 spring:
   config:
@@ -55,7 +55,12 @@ spring:
   redis:
     word:
       host: 3.35.214.129
-      port: 6379
+      port: 6050
 
 server:
   port: 8000
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

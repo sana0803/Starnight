@@ -55,8 +55,22 @@ interface StyleInterface {
   height: string,
 }
 
-const GraphComponent = ({ data, styles }) => {
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+        {/* <p className="intro">{getIntroOfPage(label)}</p> */}
+        <p className="desc">Anything you want can be displayed here.</p>
+      </div>
+    );
+  }
 
+  return null;
+};
+
+
+const GraphComponent = ({ data, styles }) => {
 
     return (
         <div style={{
@@ -70,18 +84,20 @@ const GraphComponent = ({ data, styles }) => {
             height={300}
             data={data}
             margin={{
-            top: 5,
+            top: 15,
             right: 30,
-            left: 20,
+            left: 5,
             bottom: 5
             }}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" name="검색량 추이"/>
+            <XAxis dataKey="name" />
             <YAxis />
+            {/* <Tooltip content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />}  /> */}
             <Tooltip />
-            <Legend />
+            <Legend verticalAlign="top" height={36} />
             <Line
+              name="검색량 추이"
             type="monotone"
             dataKey="ratio"
             stroke="#8884d8"

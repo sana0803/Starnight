@@ -15,7 +15,7 @@ module.exports = {
       },
       {
         source: '/mention',
-        destination: `http://j5b103.p.ssafy.io:6060/api/mention`
+        destination: `http://j5b103.p.ssafy.io:6060/api/word/trend`
       },
 
     ]
