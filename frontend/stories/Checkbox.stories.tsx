@@ -34,7 +34,7 @@ export const Checkboxs: React.VFC<{}> = () => {
   return (
     <>
       <Checkbox
-        checked="false"
+        checked={false}
         htmlFor="able"
         id="able"
         labelName="able"

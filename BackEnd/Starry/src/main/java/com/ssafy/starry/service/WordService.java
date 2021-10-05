@@ -2,42 +2,46 @@ package com.ssafy.starry.service;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.request.HttpRequestWithBody;
 import com.ssafy.starry.common.utils.DataLabHttp;
 import com.ssafy.starry.common.utils.PropertiesLoader;
+import com.ssafy.starry.common.utils.RedisUtil;
 import com.ssafy.starry.common.utils.RestClient;
+import com.ssafy.starry.common.utils.rss.Feed;
+import com.ssafy.starry.common.utils.rss.FeedMessage;
+import com.ssafy.starry.common.utils.rss.RSSFeedParser;
 import com.ssafy.starry.controller.dto.SearchDto;
-import com.ssafy.starry.controller.dto.SearchFlowDto;
-import com.ssafy.starry.controller.dto.WordResponseDto;
-import com.ssafy.starry.controller.dto.WordResponseDto.Word;
+import com.ssafy.starry.controller.dto.SearchFlowVO;
+import com.ssafy.starry.controller.dto.TrendDto;
+import com.ssafy.starry.controller.dto.WordVO;
+import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class WordService {
 
+    private final RedisUtil redisUtil;
     static String RelKwdPath = "/keywordstool";
     static String DataLabPath = "https://openapi.naver.com/v1/datalab/search";
+    static String feedURL = "https://trends.google.co.kr/trends/trendingsearches/daily/rss?geo=KR";
 
     public SearchDto getWordAnalysis(String word) {
+        word = word.replaceAll(" ", "");
+        redisUtil.addSet("searchWords", word);
         SearchDto searchDto = null;
-        WordResponseDto words = null;
+        WordVO words = null;
         try {
             Properties properties = PropertiesLoader.fromResource("secret.properties");
             String baseUrl = properties.getProperty("BASE_URL");
@@ -45,26 +49,27 @@ public class WordService {
             String secretKey = properties.getProperty("SECRET_KEY");
             String clientId = properties.getProperty("CLIENT_ID");
             String clientSecret = properties.getProperty("CLIENTSECRET");
-            System.out.println("URL : " + baseUrl);
-            System.out.println("apiKey : " + apiKey);
-            System.out.println("secretKey : " + secretKey);
             long customerId = Long.parseLong(properties.getProperty("CUSTOMER_ID"));
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
             words = list(rest, customerId, word);
-            System.out.println(words.toString());
+
+//            log.info("네이버 API에서 돌려받은 WordDto : " + words.toString());
             if (words.getKeywordList().size() > 20) {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
             List<String> keywords = new ArrayList<>();
-            for (Word w : words.getKeywordList()) {
+            for (WordApiResponse w : words.getKeywordList()) {
                 keywords.add(w.getRelKeyword());
             }
-            SearchFlowDto searchFlowDto = getDataTrend(word, keywords.toArray(new String[0]),
+            SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
-            System.out.println(searchFlowDto);
-            searchDto = new SearchDto(words, searchFlowDto);
+//            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
+
+            log.info("redis word 값 : " + redisUtil.get(word));
+            long mention = redisUtil.get(word) == null ? 0 : Long.parseLong((String)redisUtil.get(word));
+            searchDto = new SearchDto(words, searchFlowVO, mention);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +77,7 @@ public class WordService {
         return searchDto;
     }
 
-    public WordResponseDto list(RestClient rest, long customerId, String hintKeywords)
+    public WordVO list(RestClient rest, long customerId, String hintKeywords)
         throws Exception {
         HttpResponse<String> response =
             rest.get(RelKwdPath, customerId)
@@ -83,10 +88,10 @@ public class WordService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         return objectMapper
-            .readValue(responseBody, WordResponseDto.class);
+            .readValue(responseBody, WordVO.class);
     }
 
-    public SearchFlowDto getDataTrend(String mainWord, String[] keywords, String clientId,
+    public SearchFlowVO getDataTrend(String mainWord, String[] keywords, String clientId,
         String clientSecret) throws JsonProcessingException {
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
@@ -100,7 +105,6 @@ public class WordService {
         JsonArray keywordList = new JsonArray();
         for (String word : keywords) {
             keywordList.add(word);
-            System.out.print(word + " ");
         }
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
@@ -111,7 +115,20 @@ public class WordService {
         String request = requestBody.toString();
         String responseBody = DataLabHttp.post(DataLabPath, requestHeaders, request);
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(responseBody, SearchFlowDto.class);
+        return objectMapper.readValue(responseBody, SearchFlowVO.class);
+    }
+
+    public TrendDto getTrendKeyword() {
+        RSSFeedParser parser = new RSSFeedParser(feedURL);
+        Feed feed = parser.readFeed();
+        List<String> searchWords = new ArrayList<>();
+        for (FeedMessage message : feed.getMessages()) {
+            searchWords.add(message.getTitle());
+        }
+        System.out.println(searchWords);
+        return TrendDto.builder()
+            .keywords(searchWords)
+            .build();
     }
 
 }
