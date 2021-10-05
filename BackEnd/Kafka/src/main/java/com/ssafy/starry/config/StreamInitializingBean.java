@@ -48,7 +48,9 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 
         Set<String> searchWords = redisUtil.get("searchWords").stream().map(object -> Objects
             .toString(object, null)).collect(Collectors.toSet());
-
+        for (String word : searchWords) {
+            log.info("word text : " + word);
+        }
         KTable<String, Long> wordCounts = textLines
             .flatMapValues(value -> {
                 List<String> words = new ArrayList<>();
@@ -68,10 +70,10 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 //                        }
 //                    }
 //                }
-                for(int i = 0 ; i < vLen ; i++){
-                    for(int j = Math.min(10, vLen - i) ; j >= 1 ; j--){
+                for (int i = 0; i < vLen; i++) {
+                    for (int j = Math.min(10, vLen - i); j >= 1; j--) {
                         String s = value.substring(i, i + j);
-                        if(searchWords.contains(s)){
+                        if (searchWords.contains(s)) {
                             words.add(s);
                             i += (j - 1);// 인덱스 이동
                             break;
@@ -86,7 +88,7 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
         wordCounts.toStream()
             .foreach((w, c) -> {
 //                System.out.println("word: " + w + " -> " + c);
-                log.debug("word: " + w + " -> " + c);
+                log.info("word: " + w + " -> " + c);
                 redisUtil.set(w, c + "");
             });
 
@@ -103,7 +105,7 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
     private Properties getStreamConfig() {
 //        Map<String, Object> props = new HashMap<>();
         Properties streamsConfiguration = new Properties();
-        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "twit-lunch-count");
+        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "twit-word-count");
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "3.35.214.129:9092");
         streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,
             Serdes.String().getClass().getName());

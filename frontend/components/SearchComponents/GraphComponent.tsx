@@ -77,7 +77,7 @@ const GraphComponent = ({ data, styles }) => {
             }}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="name" name="검색량 추이"/>
             <YAxis />
             <Tooltip />
             <Legend />
