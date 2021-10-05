@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,6 +20,7 @@ public class RedisUtil {
     }
 
     public Object get(String key) {
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
         return redisTemplate.opsForValue().get(key);
     }
 

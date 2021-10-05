@@ -1,9 +1,11 @@
 package com.ssafy.starry.util;
 
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,6 +21,15 @@ public class RedisUtil {
 
     public Set<Object> get(String key) {
         return redisTemplate.opsForSet().intersect(Collections.singleton(key));
+    }
+
+    public Object get(String key, boolean values) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    public void set(String key, Object o) {
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.opsForValue().set(key, o);
     }
 
     public boolean delete(String key) {

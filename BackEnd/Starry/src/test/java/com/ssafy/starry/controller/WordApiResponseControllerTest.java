@@ -96,7 +96,7 @@ class WordApiResponseControllerTest {
             100.0,
             94.45168);
 
-        SearchDto searchDto = new SearchDto(wordVO, ratios);
+        SearchDto searchDto = new SearchDto(wordVO, ratios, 100);
         given(wordService.getWordAnalysis(any())).willReturn(searchDto);
         //when
         mockMvc.perform(get("/api/word/search")
@@ -183,7 +183,12 @@ class WordApiResponseControllerTest {
                         .description("여러 지표를 통해 산출한 키워드 경쟁력 지수입니다")
                         .attributes(key("format")
                             .value(
-                                " 0~5까지 0.5 단위로 표시됩니다."))
+                                " 0~5까지 0.5 단위로 표시됩니다.")),
+                    fieldWithPath("mention").type(JsonFieldType.NUMBER)
+                        .description("SNS에 단어가 언급된 언급량입니다. 2021.10.05일 이후의 언급량입니다.")
+                        .attributes(key("format")
+                            .value(
+                                " 숫자로 표시됩니다. 언급량을 확인할 수 없는 경우 0으로 표시됩니다."))
                 )
             ));
         //then

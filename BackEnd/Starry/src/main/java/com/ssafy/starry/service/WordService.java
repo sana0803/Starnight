@@ -54,7 +54,7 @@ public class WordService {
 
             words = list(rest, customerId, word);
 
-            log.info("네이버 API에서 돌려받은 WordDto : " + words.toString());
+//            log.info("네이버 API에서 돌려받은 WordDto : " + words.toString());
             if (words.getKeywordList().size() > 20) {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
@@ -65,8 +65,11 @@ public class WordService {
             SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
-            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
-            searchDto = new SearchDto(words, searchFlowVO);
+//            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
+
+            log.info("redis word 값 : " + redisUtil.get(word));
+            long mention = redisUtil.get(word) == null ? 0 : Long.parseLong((String)redisUtil.get(word));
+            searchDto = new SearchDto(words, searchFlowVO, mention);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -46,16 +46,13 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 
         Set<String> searchWords = redisUtil.get("searchWords").stream().map(object -> Objects
             .toString(object, null)).collect(Collectors.toSet());
-        for (String word : searchWords) {
-            System.out.println(word);
-        }
 
         KTable<String, Long> wordCounts = textLines
             .flatMapValues(value -> {
                 List<String> words = new ArrayList<>();
                 int vLen = value.length();
                 boolean[] used = new boolean[vLen];
-                for (int i = 7; i >= 1; i--) {
+                for (int i = 10; i >= 1; i--) {
                     if (vLen < i) {
                         continue;
                     }
@@ -75,7 +72,10 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
             .count();
 
         wordCounts.toStream()
-            .foreach((w, c) -> System.out.println("word: " + w + " -> " + c));
+            .foreach((w, c) -> {
+                System.out.println("word: " + w + " -> " + c);
+                redisUtil.set(w, c + "");
+            });
 
         Topology topology = streamsBuilder.build();
         this.kafkaStreams = new KafkaStreams(topology, getStreamConfig());

@@ -14,11 +14,13 @@ public class SearchDto {
     private String timeUnit;
     private List<Double> ratios;
     private double rank;
+    private long mention;
 
-    public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO) {
+    public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention) {
         keywordList = wordVO.getKeywordList();
         timeUnit = searchFlowVO.getTimeUnit();
         ratios = new ArrayList<Double>();
+        this.mention = mention;
         for (Data d : searchFlowVO.results.get(0).data) {
             ratios.add(d.ratio);
         }
@@ -47,11 +49,12 @@ public class SearchDto {
 
     }
 
-    public SearchDto(WordVO wordVO, List<Double> ratios) {
+    public SearchDto(WordVO wordVO, List<Double> ratios, long mention) {
         keywordList = wordVO.getKeywordList();
         timeUnit = "month";
         this.ratios = ratios;
         this.rank = 5.0;
+        this.mention = mention;
     }
 
 
