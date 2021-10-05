@@ -21,15 +21,24 @@ const fetcher = url => fetch(url, {
 })
 
 const SearchBackground = () => {
-  
-  const [searchText, setSearchText] = React.useState('소고기');
+
+  const router = useRouter();
+  let paramData: string | undefined | string[] = '';
+  if (router.query) {
+    paramData = router.query.word;
+  }
+  else {
+    paramData = '소고기';
+  }
+  //console.log(paramData);
+
+  const [searchText, setSearchText] = React.useState(paramData);
   const textInput = React.useRef<any>();
 
   const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
 
-  const router = useRouter();
 
-  console.log(data)
+  //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
   if (data) {
     keywordList = data?.keywordList;
@@ -45,9 +54,15 @@ const SearchBackground = () => {
 
  //console.log(keywordList, ratios)
 
-  const submitInput = (val) => {
+  const submitInput = () => {
     //console.log(textInput.current.value)
-    setSearchText(textInput.current.value);
+    setSearchText(textInput.current.value.replace(/ /g,"").trim());
+  }
+
+  const goEnter = (e) => {
+    if (e.key === 'Enter') {
+      submitInput();
+    }
   }
 
   const moveHome = () => {
@@ -65,7 +80,7 @@ const SearchBackground = () => {
           </div>
 
           <div id={styles.searchBox}>
-            <input id={styles.searchInput} ref={textInput} maxLength={10}></input>
+            <input id={styles.searchInput} ref={textInput} maxLength={10} onKeyPress={goEnter}></input>
             <AiOutlineSearch id={styles.inputInsideIcon} onClick={submitInput}/>
           </div>
           <div id={styles.homeContainer}>
@@ -108,7 +123,7 @@ const SearchBackground = () => {
             </div>
             <div id={styles.mentions_analysis_second_box_2}>
               <div id={styles.mentions_analysis_second_box_2_title}>
-                SNS 언급량 추이</div>
+                연관 검색어 노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
                 {keywordList &&
                     keywordList.map(({ relKeyword, monthlyPcQcCnt, monthlyMobileQcCnt,
@@ -140,7 +155,15 @@ const SearchBackground = () => {
                   <div>모바일 클릭 수</div>
                   <div>{ keywordList && keywordList[0].monthlyAveMobileCtr }</div>
                 </div>
-
+                
+                <div id={styles.mentions_analysis_second_box_3_2_title}>
+                 플랫폼 언급량
+                </div>
+                <div className
+                    ={styles.mentions_analysis_second_box_3_2_dataBox}>
+                  <div>트위터 단어 언급량</div>
+                  <div>{ data && data.mention }</div>
+                </div>
               
               
             </div>

@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {GetServerSideProps} from 'next';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
-import {FcSearch} from 'react-icons/fc';
-import SearchBackground from '../components/SearchComponents/SearchBackground';
 import LoadingComponent from '../components/LoadingComponent/LoadingComponent';
 
 const DynamicComponent = dynamic(() =>
