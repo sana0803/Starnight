@@ -4,11 +4,12 @@ import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 import {FcSearch} from 'react-icons/fc';
 import SearchBackground from '../components/SearchComponents/SearchBackground';
+import LoadingComponent from '../components/LoadingComponent/LoadingComponent';
 
 const DynamicComponent = dynamic(() =>
-  import('../components/SearchComponents/SearchResult'), {
+  import('../components/SearchComponents/SearchBackground'), {
   loading: function loadingComponent() {
-    return <p>...</p>;
+    return <LoadingComponent />;
   },
 });
 
@@ -28,7 +29,9 @@ function Search({data}) {
   };
   return (
     <div>
-      <SearchBackground />
+      {/* <SearchBackground /> */}
+
+      <DynamicComponent />
       {/* <span style={{border: '1px solid #DDD;'}}>
         <FcSearch onClick={handleData}>Test</FcSearch>
         <input style={{border: 'none'}} onChange={handleInputChange}></input>

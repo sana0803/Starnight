@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import GraphComponent from "../components/SearchComponents/GraphComponent";
 
 const graph: NextPage = () => {
@@ -7,6 +8,7 @@ const graph: NextPage = () => {
         <>
             {/* <GraphComponent />
             <div>test</div> */}
+            <LoadingComponent />
         </>
 
     );
