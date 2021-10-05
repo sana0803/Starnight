@@ -18,6 +18,8 @@ import com.ssafy.starry.controller.dto.SearchFlowVO;
 import com.ssafy.starry.controller.dto.TrendDto;
 import com.ssafy.starry.controller.dto.WordVO;
 import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
+import com.ssafy.starry.exception.externalApi.DataTrendNullPointerException;
+import com.ssafy.starry.exception.externalApi.ListNullPointerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +56,9 @@ public class WordService {
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
             words = list(rest, customerId, word);
+            if(words == null){
+                throw new ListNullPointerException("API connection failed: LIST_NPE");
+            }
 
 //            log.info("네이버 API에서 돌려받은 WordDto : " + words.toString());
             if (words.getKeywordList().size() > 20) {
@@ -66,6 +71,9 @@ public class WordService {
             SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
+            if(searchFlowVO == null){
+                throw new DataTrendNullPointerException("API connection failed: DATA_TREND_NPE");
+            }
 //            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
 
             log.info("redis word 값 : " + redisUtil.get(word));
