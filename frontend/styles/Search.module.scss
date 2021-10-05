@@ -13,7 +13,8 @@
     min-width: 1920px;
     min-height: 1080px;
     padding: 0px 340px;
-    background: #EBECEF;
+    background: #EFF0F3;
+    // #EFF0F3
 }
 
 #searchBoxLine {
@@ -74,6 +75,7 @@
 #mentions_analysis_third_box_1,
 #mentions_analysis_third_box_2 {
     border-radius: 20px;
+    box-shadow: 4px 4px 15px rgba(63, 64, 70, 0.08);
 }
 
 
@@ -150,7 +152,7 @@
     font-family: pretendard;
     font-size: 18px;
     //margin: 24px 179px 404px 27px;
-    padding: 24px 0 0 27px;
+    padding: 24px 0 16px 27px;
     font-weight: 500;
     letter-spacing: -0.5px;
     line-height: 21.6px;
@@ -175,7 +177,7 @@
 
 .mentions_analysis_second_box_1_dataBox,  .mentions_analysis_second_box_2_dataBox{
     overflow-y: scroll;
-    height: 405px;
+    height: 370px;
 }
 
 .mentions_analysis_second_box_1_data, .mentions_analysis_second_box_2_data {
@@ -200,9 +202,10 @@
 }
 
 .mentions_analysis_third_box_1_dataBox {
-    text-align: center; 
+    text-align: center;
+    font-family: pretendard;
     padding: 40px;
-    font-size: 40px;
+    font-size: 16px;
 }
 
 .mentions_analysis_third_box_2_dataBox {

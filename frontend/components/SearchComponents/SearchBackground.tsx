@@ -85,8 +85,10 @@ const SearchBackground = () => {
               <div>{ keywordList && keywordList[0].monthlyMobileQcCnt }</div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              <div className={styles.first_line_titles}>키워드 경쟁력 지수</div>
-              <div>{ rank && rank }</div>
+              <div className={styles.first_line_titles}>키워드 경쟁력</div>
+              <div>
+                { rank && rank } / 5.0 ({ keywordList && keywordList[0].compIdx })
+              </div>
             </div>
 
           </div>
@@ -107,7 +109,7 @@ const SearchBackground = () => {
             </div>
             <div id={styles.mentions_analysis_second_box_2}>
               <div id={styles.mentions_analysis_second_box_2_title}>
-                SNS 언급량 추이</div>
+                노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
                 {keywordList &&
                     keywordList.map(({ relKeyword, monthlyPcQcCnt, monthlyMobileQcCnt,
@@ -148,10 +150,11 @@ const SearchBackground = () => {
           <div id={styles.mentions_analysis_third_line }>
             <div id={styles.mentions_analysis_third_box_1}>
               <div id={styles.mentions_analysis_third_box_1_title} >
-                트렌디 지수</div>
+                트윗 미리보기
+              </div>
                 
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
-                {keywordList && keywordList[0].compIdx}
+                미리보기 데이터
               </div>
               
               
