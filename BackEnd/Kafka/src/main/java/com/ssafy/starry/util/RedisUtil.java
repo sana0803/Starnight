@@ -20,6 +20,7 @@ public class RedisUtil {
     }
 
     public Set<Object> get(String key) {
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
         return redisTemplate.opsForSet().intersect(Collections.singleton(key));
     }
 
