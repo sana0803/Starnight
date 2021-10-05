@@ -16,6 +16,7 @@ public class RedisUtil {
 
 
     public void addSet(String key, Object o) {
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
         redisTemplate.opsForSet().add(key, o);
     }
 
