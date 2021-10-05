@@ -10,6 +10,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
+    compile.exclude module: 'spring-boot-starter-logging'
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -44,6 +45,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.5.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 }
 
 test {
