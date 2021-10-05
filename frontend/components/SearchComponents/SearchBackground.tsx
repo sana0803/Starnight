@@ -64,7 +64,7 @@ const SearchBackground = () => {
           </div>
 
           <div id={styles.searchBox}>
-            <input id={styles.searchInput} ref={textInput}></input>
+            <input id={styles.searchInput} ref={textInput} maxLength={10}></input>
             <AiOutlineSearch id={styles.inputInsideIcon} onClick={submitInput}/>
           </div>
           <div id={styles.homeContainer}>
