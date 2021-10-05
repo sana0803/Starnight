@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StarryApplication {
 
     public static void main(String[] args) {
+        System.setProperty("spring.profiles.default", "prod");
         SpringApplication.run(StarryApplication.class, args);
     }
 
