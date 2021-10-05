@@ -13,6 +13,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class StreamInitializingBean implements InitializingBean, DisposableBean {
 
@@ -51,18 +53,28 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
             .flatMapValues(value -> {
                 List<String> words = new ArrayList<>();
                 int vLen = value.length();
-                boolean[] used = new boolean[vLen];
-                for (int i = 10; i >= 1; i--) {
-                    if (vLen < i) {
-                        continue;
-                    }
-                    for (int j = 0; j < vLen - i + 1; j++) {
-                        String s = value.substring(j, j + i);
-                        if (!used[j] && searchWords.contains(s)) {
+//                boolean[] used = new boolean[vLen];
+//                for (int i = 10; i >= 1; i--) {
+//                    if (vLen < i) {
+//                        continue;
+//                    }
+//                    for (int j = 0; j < vLen - i + 1; j++) {
+//                        String s = value.substring(j, j + i);
+//                        if (!used[j] && searchWords.contains(s)) {
+//                            words.add(s);
+//                            for (int k = j; k < j + i; k++) {
+//                                used[k] = true;
+//                            }
+//                        }
+//                    }
+//                }
+                for(int i = 0 ; i < vLen ; i++){
+                    for(int j = Math.min(10, vLen - i) ; j >= 1 ; j--){
+                        String s = value.substring(i, i + j);
+                        if(searchWords.contains(s)){
                             words.add(s);
-                            for (int k = j; k <= j + 1; k++) {
-                                used[k] = true;
-                            }
+                            i += (j - 1);// 인덱스 이동
+                            break;
                         }
                     }
                 }
@@ -73,7 +85,8 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 
         wordCounts.toStream()
             .foreach((w, c) -> {
-                System.out.println("word: " + w + " -> " + c);
+//                System.out.println("word: " + w + " -> " + c);
+                log.debug("word: " + w + " -> " + c);
                 redisUtil.set(w, c + "");
             });
 
