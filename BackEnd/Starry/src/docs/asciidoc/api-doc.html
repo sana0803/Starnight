@@ -447,10 +447,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#common">공통 사항</a>
 <ul class="sectlevel2">
 <li><a href="#_domain">Domain</a></li>
-<li><a href="#_common_response">Common Response</a>
+<li><a href="#_common_response">Common Response</a></li>
+<li><a href="#_단어_검색">단어 검색</a>
 <ul class="sectlevel4">
 <li><a href="#_request_parameters">Request Parameters</a></li>
 <li><a href="#_response_data_fields">Response Data Fields</a></li>
+</ul>
+</li>
+<li><a href="#_트렌드_단어_조회">트렌드 단어 조회</a>
+<ul class="sectlevel4">
+<li><a href="#_response_data_fields_2">Response Data Fields</a></li>
 </ul>
 </li>
 </ul>
@@ -493,7 +499,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">운영서버</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://j5b103.p.ssafy.io" class="bare">https://j5b103.p.ssafy.io</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://j5b103.p.ssafy.io:6060" class="bare">https://j5b103.p.ssafy.io:6060</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -561,6 +567,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>&#160;</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_단어_검색"><a class="link" href="#_단어_검색">단어 검색</a></h3>
 <div class="sect4">
 <h5 id="_request_parameters"><a class="link" href="#_request_parameters">Request Parameters</a></h5>
 <table class="tableblock frame-all grid-all stretch">
@@ -712,12 +721,100 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_트렌드_단어_조회"><a class="link" href="#_트렌드_단어_조회">트렌드 단어 조회</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{
+  "keywords" : [ {
+    "title" : "윈도우11",
+    "description" : "윈도우 11, windows 11",
+    "link" : "https://...",
+    "pubdate" : "Tue, 05 Oct 2021 09:00:00 +0900",
+    "traffic" : "20,000+",
+    "news_title" : "MS윈도우11공식출시…10사용자는무료업그레이드",
+    "news_url" : "https://www.mk.co.kr/news/it/view/2021/10/941462/",
+    "news_source" : "매일경제"
+  } ]
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_data_fields_2"><a class="link" href="#_response_data_fields_2">Response Data Fields</a></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">양식</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">하나, 혹은 두 개의 단어로 구성되어 있습니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">트렌드 검색어 이름입니다.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">단어에 대한 간단한 설명이 기재되어 있습니다. 동의어인 영어 단어가 기재되기도 합니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">단어에 대한 간단한 설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].link</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">구글 트렌드 센터 링크가 기재되어 있습니다. 뉴스 기사 링크와 다른 점에 유의해주세요.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">구글 트렌드 센터 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].pubdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기사 발행일입니다. 요일, 일, 월, 년, 시의 순서로 기재되어 있습니다. ex) Tue, 05 Oct 2021 09:00:00 +0900</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기사 발행일</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].traffic</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20000+ 등으로 표기되어 있습니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">검색 횟수입니다.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].news_title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">관련 뉴스 기사 제목입니다. 공백이나 기타 특수 문자를 제외한 채로 주어집니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">관련 뉴스 기사 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].news_url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">관련 뉴스 기사 URL입니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">관련 뉴스 기사 URL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keywords[].news_source</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">뉴스 기사 출처 정보입니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">뉴스 기사 출처</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-28 21:01:00 +0900
+Last updated 2021-10-05 21:39:17 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

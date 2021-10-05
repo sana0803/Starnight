@@ -1,5 +1,6 @@
 package com.ssafy.starry.controller.dto;
 
+import com.ssafy.starry.common.utils.rss.FeedMessage;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,10 +8,12 @@ import lombok.Getter;
 @Getter
 public class TrendDto {
 
-    List<String> keywords;
+    List<FeedMessage> keywords;
 
     @Builder
-    public TrendDto(List<String> keywords) {
+    public TrendDto(List<FeedMessage> keywords) {
         this.keywords = keywords;
     }
+
+
 }

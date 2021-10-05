@@ -69,7 +69,8 @@ public class WordService {
 //            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
 
             log.info("redis word 값 : " + redisUtil.get(word));
-            long mention = redisUtil.get(word) == null ? 0 : Long.parseLong((String)redisUtil.get(word));
+            long mention =
+                redisUtil.get(word) == null ? 0 : Long.parseLong((String) redisUtil.get(word));
             searchDto = new SearchDto(words, searchFlowVO, mention);
 
         } catch (Exception e) {
@@ -122,13 +123,8 @@ public class WordService {
     public TrendDto getTrendKeyword() {
         RSSFeedParser parser = new RSSFeedParser(feedURL);
         Feed feed = parser.readFeed();
-        List<String> searchWords = new ArrayList<>();
-        for (FeedMessage message : feed.getMessages()) {
-            searchWords.add(message.getTitle());
-        }
-        System.out.println(searchWords);
         return TrendDto.builder()
-            .keywords(searchWords)
+            .keywords(feed.getMessages())
             .build();
     }
 
