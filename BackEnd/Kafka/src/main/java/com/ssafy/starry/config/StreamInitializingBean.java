@@ -1,5 +1,6 @@
 package com.ssafy.starry.config;
 
+import com.ssafy.starry.controller.dto.twitWordCountDto;
 import com.ssafy.starry.util.RedisUtil;
 import com.ssafy.starry.util.WordFilterManager;
 import java.util.ArrayList;
@@ -80,7 +81,17 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
             .foreach((w, c) -> {
 //                System.out.println("word: " + w + " -> " + c);
                 log.info("word: " + w + " -> " + c);
-                redisUtil.set(w, c + "");
+//                redisUtil.set(w, c + "");
+                twitWordCountDto twitCount = (twitWordCountDto) redisUtil.getTwitCount(w);
+                if(twitCount == null){
+                    twitCount = new twitWordCountDto(c);
+                    twitCount.addPreview(textLines);
+                    redisUtil.setTwitCount(w,twitCount);
+                }else{
+                    twitCount.addCount(c);
+                    twitCount.addPreview(textLines);
+                    redisUtil.setTwitCount(w,twitCount);
+                }
             });
 
         Topology topology = streamsBuilder.build();

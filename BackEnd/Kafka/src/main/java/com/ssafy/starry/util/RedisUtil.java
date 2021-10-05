@@ -1,5 +1,6 @@
 package com.ssafy.starry.util;
 
+import com.ssafy.starry.controller.dto.twitWordCountDto;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
@@ -25,12 +26,23 @@ public class RedisUtil {
         return redisTemplate.opsForSet().intersect(Collections.singleton(key));
     }
 
+    public Object getTwitCount(String key) {
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(twitWordCountDto.class));
+        return redisTemplate.opsForValue().get(key);
+    }
+
+
     public Object get(String key, boolean values) {
         return redisTemplate.opsForValue().get(key);
     }
 
     public void set(String key, Object o) {
         redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.opsForValue().set(key, o);
+    }
+
+    public void setTwitCount(String key, Object o) {
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(twitWordCountDto.class));
         redisTemplate.opsForValue().set(key, o);
     }
 
