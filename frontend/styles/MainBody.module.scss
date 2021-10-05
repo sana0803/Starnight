@@ -1,0 +1,42 @@
+@mixin font-face($name, $file, $weight: normal, $style: normal) { 
+    @font-face {
+        font-family: "#{$name}";
+        src: url($file);
+        font-weight: $weight; font-style: $style; 
+    }
+}
+    
+@include font-face(esamanru, '../fonts/esamanru_medium.ttf', '', '');
+@include font-face(pretendard, '../fonts/PretendardVariable.woff2', '', '');
+
+#searchBox {
+    position: relative;
+    width: 498px;
+    height: 45px;
+    top: 533px;
+    left: 390px;
+    box-shadow: 4px 4px 15px 0px #3F40461A;
+}
+
+#searchInput {
+    padding: 15px;
+    width: 498px;
+    height: 45px;
+    padding-left: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+#inputInsideIcon {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+
+#keyWordList {
+    width: 498px;
+    position: relative;
+    top: 590px;
+    left: 390px;
+    font-family: pretendard;
+}

@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchFlowDto {
+public class SearchFlowVO {
 
     String startDate;
     String endDate;

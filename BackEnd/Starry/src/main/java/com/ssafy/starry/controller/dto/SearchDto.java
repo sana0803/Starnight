@@ -1,27 +1,27 @@
 package com.ssafy.starry.controller.dto;
 
-import com.ssafy.starry.controller.dto.WordDto.WordApiResponse;
+import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
 import java.util.ArrayList;
 import java.util.List;
-import com.ssafy.starry.controller.dto.SearchFlowDto.Data;
+import com.ssafy.starry.controller.dto.SearchFlowVO.Data;
 import lombok.Getter;
-import lombok.Setter;
 
 
 @Getter
-@Setter
 public class SearchDto {
 
     private List<WordApiResponse> keywordList;
     private String timeUnit;
     private List<Double> ratios;
     private double rank;
+    private long mention;
 
-    public SearchDto(WordDto wordDto, SearchFlowDto searchFlowDto) {
-        keywordList = wordDto.getKeywordList();
-        timeUnit = searchFlowDto.getTimeUnit();
+    public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention) {
+        keywordList = wordVO.getKeywordList();
+        timeUnit = searchFlowVO.getTimeUnit();
         ratios = new ArrayList<Double>();
-        for (Data d : searchFlowDto.results.get(0).data) {
+        this.mention = mention;
+        for (Data d : searchFlowVO.results.get(0).data) {
             ratios.add(d.ratio);
         }
 
@@ -49,11 +49,12 @@ public class SearchDto {
 
     }
 
-    public SearchDto(WordDto wordDto, List<Double> ratios) {
-        keywordList = wordDto.getKeywordList();
+    public SearchDto(WordVO wordVO, List<Double> ratios, long mention) {
+        keywordList = wordVO.getKeywordList();
         timeUnit = "month";
         this.ratios = ratios;
         this.rank = 5.0;
+        this.mention = mention;
     }
 
 
