@@ -24,13 +24,14 @@ $shadows-big:    multiple-box-shadow(100);
   width: 100%;
   min-width: 1920px;
   min-height: 1080px;
-  max-width: 1920px;
-  max-height: 2160px;
+  // max-width: 1920px;
+  // max-height: 2160px;
   overflow-x: hidden;
   height: 1080*2px; // 아래로 화면이 추가될 때마다 곱해줘야 함
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   animation: slide 60s linear infinite;
 }
+
 
 #stars{
   width: 1px;
@@ -83,7 +84,7 @@ $shadows-big:    multiple-box-shadow(100);
     line-height: 65px;
     text-align: center;
     letter-spacing: -0.03em;
-    margin: 345px 741px 540px 741px;
+    margin: 25vh 75vh;
 }
 
 #firstSection{

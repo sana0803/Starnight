@@ -10,8 +10,11 @@
 @include font-face(pretendard, '../fonts/PretendardVariable.woff2', '', '');
 
 #headerBox {
+    position:fixed;
     display: flex;
     flex-direction: row;
+    top:2vh;
+    // height:20vh;
 }
 
 #logoImgBox{

@@ -218,6 +218,32 @@
     height: 370px;
 }
 
+.mentions_analysis_second_box_1_data {
+    // width: 100%;
+    background-color: #ECEDEE;
+    margin: 5px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+.mentions_analysis_second_box_1_data:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar {
+    width: 10px;
+}
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+
 .mentions_analysis_second_box_1_data, .mentions_analysis_second_box_2_data {
     text-align: center;
     border-radius: 20px;

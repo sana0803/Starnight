@@ -61,13 +61,19 @@ const SearchBackground = () => {
 
   const submitInput = () => {
     //console.log(textInput.current.value)
-    setSearchText(textInput.current.value.replace(/ /g,"").trim());
+    setSearchText(textInput.current.value.replace(/ /g, "").trim());
+    textInput.current.value = '';
   }
 
   const goEnter = (e) => {
     if (e.key === 'Enter') {
       submitInput();
     }
+  }
+  const goSearch = (value) => {
+    console.log(value)
+    setSearchText(value.replace(/ /g, "").trim());
+    textInput.current.value = '';
   }
 
   const moveHome = () => {
@@ -147,7 +153,9 @@ const SearchBackground = () => {
                   {keywordList &&
                     keywordList.map(({ relKeyword }, index ) => {
                       return <div key={index} className
-                        ={styles.mentions_analysis_second_box_1_data}>{relKeyword}</div>
+                        ={styles.mentions_analysis_second_box_1_data}
+                        onClick={()=>goSearch(relKeyword)}
+                      >{relKeyword}</div>
                     })
                   }
                 </div>
