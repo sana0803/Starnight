@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 // import useSWR from 'swr';
 import styles from '../../styles/MainBody.module.scss';
 import useSWRImmutable from 'swr/immutable'
 import { useRouter } from 'next/router';
+import MainGraph from './MainGraph';
 const fetcher = url => fetch(url, {
     method: 'GET',
     headers: {
@@ -21,17 +22,20 @@ const MainBody = () => {
  
     const textInput = React.useRef<any>();
     const router = useRouter();
+
+    const [click, setClick] = useState('');
+
     const submitInput = () => {
         router.push({
             pathname: '/search',
             query: { word: textInput.current.values.replace(/ /g,"").trim()}
         });
     }
-    let datas: null | string[] = null;
+    let datas: null | any[] = null;
 
     if (data) {
-        datas = data?.keywords?.map((e) => '#' + e);
-        console.log(datas)
+        datas = data?.keywords;
+        console.log(data.keywords)
     }
     
     const goEnter = (e) => {
@@ -50,9 +54,14 @@ const MainBody = () => {
             </div>
 
             <div id={styles.keyWordList}>
+                <div id={styles.keyWordTopList}>
                 { datas && datas.map((e,index) => {
-                    return <div key={index} className={styles.dataKeyword}>{e}</div>
+                    return <div key={index} className={styles.dataKeyword}>#{`${e.title}`}</div>
                 })}
+                </div>
+                <div>
+                {click === '' && data && <MainGraph data={data.keywords} />}
+                </div>
             </div>
         </>
     );
