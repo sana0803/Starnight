@@ -18,8 +18,8 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    // const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
-    const { data, error } = useSWRImmutable(`http://3.35.214.129:6060/api/word/trend`, fetcher);
+    // const { data, error } = useSWRImmutable(`/mention`, fetcher);
+    const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
  
     const textInput = React.useRef<any>();
     const router = useRouter();
@@ -29,7 +29,7 @@ const MainBody = () => {
     const submitInput = () => {
         router.push({
             pathname: '/search',
-            query: { word: textInput.current.values.replace(/ /g,"").trim()}
+            query: { word: textInput.current.value.replace(/ /g,"").trim()}
         });
     }
     let datas: null | any[] = null;
