@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import LoadingComponent from '../components/LoadingComponent/LoadingComponent';
+import Head from 'next/head'
 
 const DynamicComponent = dynamic(() =>
 import('../components/IndexPageComponent/IndexPage'), {
@@ -11,7 +12,12 @@ loading: function loadingComponent() {
 const Index = () => {
   
   return (
-    <DynamicComponent />
+    <>
+      <Head>
+      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      </Head>
+      <DynamicComponent />
+    </>
   );
 }
 
