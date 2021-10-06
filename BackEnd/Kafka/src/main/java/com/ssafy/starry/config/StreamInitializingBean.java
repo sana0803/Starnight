@@ -1,23 +1,12 @@
 package com.ssafy.starry.config;
 
-import com.ssafy.starry.controller.dto.twitWordCountDto;
 import com.ssafy.starry.util.RedisUtil;
 import com.ssafy.starry.util.WordFilterManager;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Properties;
-import java.util.Set;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -27,10 +16,8 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.Grouped;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
-import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -67,6 +54,7 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
 
                         if (wfm.getSearchWords().contains(s)) {
                             words.add(s);
+                            setWord(s,value);
                             i += (j - 1);// 인덱스 이동
                             break;
                         }
@@ -81,17 +69,17 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
             .foreach((w, c) -> {
 //                System.out.println("word: " + w + " -> " + c);
                 log.info("word: " + w + " -> " + c);
-//                redisUtil.set(w, c + "");
-                twitWordCountDto twitCount = (twitWordCountDto) redisUtil.getTwitCount(w);
-                if(twitCount == null){
-                    twitCount = new twitWordCountDto(c);
-                    twitCount.addPreview(textLines);
-                    redisUtil.setTwitCount(w,twitCount);
-                }else{
-                    twitCount.addCount(c);
-                    twitCount.addPreview(textLines);
-                    redisUtil.setTwitCount(w,twitCount);
-                }
+                redisUtil.set(w, c + "");
+//                twitWordCountDto twitCount = (twitWordCountDto) redisUtil.getTwitCount(w);
+//                if(twitCount == null){
+//                    twitCount = new twitWordCountDto(c);
+//                    twitCount.addPreview(textLines);
+//                    redisUtil.setTwitCount(w,twitCount);
+//                }else{
+//                    twitCount.addCount(c);
+//                    twitCount.addPreview(textLines);
+//                    redisUtil.setTwitCount(w,twitCount);
+//                }
             });
 
         Topology topology = streamsBuilder.build();
@@ -114,5 +102,18 @@ public class StreamInitializingBean implements InitializingBean, DisposableBean 
         streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
             Serdes.String().getClass().getName());
         return streamsConfiguration;
+    }
+    private void setWord(String word, String value){
+        redisUtil.setTwit(word+"@twitText", value);
+//        twitWordCountDto twitCount = (twitWordCountDto) redisUtil.getTwitCount(word);
+//        if(twitCount == null){
+//            twitCount = new twitWordCountDto(1);
+//            twitCount.addPreview(value);
+//            redisUtil.setTwitCount(word,twitCount);
+//        }else{
+//            twitCount.addCount(1);
+//            twitCount.addPreview(value);
+//            redisUtil.setTwitCount(word,twitCount);
+//        }
     }
 }
