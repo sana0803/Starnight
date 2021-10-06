@@ -1,6 +1,10 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
+import pcIcon from '../../images/pc.svg';
+import mobileIcon from '../../images/mobile.svg';
+import graphIcon from '../../images/graph.svg';
+import twitterIcon from '../../images/twitter.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -96,20 +100,50 @@ const SearchBackground = () => {
         </div>
 
         <div id={styles.mentions_analysis}>
-          <div id={ styles.mentions_analysis_title}>언급량 분석</div>
+          <div id={ styles.mentions_analysis_title}>키워드 분석</div>
           <div id={ styles.mentions_analysis_first_line }>
-
             <div id={styles.mentions_analysis_first_box_1}>
-              <div className={styles.first_line_titles}>PC 검색량</div>
-              <div>{ keywordList && keywordList[0].monthlyPcQcCnt }</div>
+              <div className={styles.first_box_wrap}>
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={pcIcon} alt="pc"  />
+                  </div>
+                </div>
+                <div className={styles.first_line_titles}>월간 PC 검색량</div>
+                <div>
+                  { keywordList && keywordList[0].monthlyPcQcCnt }
+                </div>
+              </div>
             </div>
             <div id={styles.mentions_analysis_first_box_2}>
-              <div className={styles.first_line_titles}>모바일 검색량</div>
-              <div>{ keywordList && keywordList[0].monthlyMobileQcCnt }</div>
+              <div className={styles.first_box_wrap}>
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={mobileIcon} alt="mobile" />
+                  </div>
+                </div>
+                <div className={styles.first_line_titles}>월간 모바일 검색량</div>
+                <div>
+                { keywordList && keywordList[0].monthlyMobileQcCnt }
+                </div>
+              </div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              <div className={styles.first_line_titles}>키워드 경쟁력 지수</div>
-              <div>{ rank && rank }</div>
+              <div className={styles.first_box_wrap}>
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={graphIcon} alt="graph" />   
+                  </div>         
+                </div>
+                <div className={styles.first_line_titles}>키워드 경쟁력</div>
+                <div>
+                  { rank && rank }
+                </div>
+                <span className={styles.first_box_3_txt_1}> / 5.0 </span>
+                <span className={styles.first_box_3_txt_2}>
+                  ({ keywordList && keywordList[0].compIdx })
+                </span>                
+              </div>
             </div>
 
           </div>
@@ -149,42 +183,55 @@ const SearchBackground = () => {
               
               
             </div>
-            <div id={styles.mentions_analysis_second_box_3}>
-                
+            <div id={styles.mentions_analysis_second_box_3}>                
                 <div id={styles.mentions_analysis_second_box_3_title}>
-                  클릭 수
+                  월간 클릭률
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div>PC 클릭 수</div>
-                  <div>{ keywordList && keywordList[0].monthlyAvePcCtr }</div>
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={pcIcon} alt="pc" /></div>
+                    <div>
+                      <div>PC 클릭률</div>
+                      <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
+                    </div>
+                  </div>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div>모바일 클릭 수</div>
-                  <div>{ keywordList && keywordList[0].monthlyAveMobileCtr }</div>
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={mobileIcon} alt="mobile" /></div>
+                    <div>
+                      <div>모바일 클릭률</div>
+                      <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
+                    </div>
+                  </div>
                 </div>
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
-                 플랫폼 언급량
+                 플랫폼 언급량 (설명추가 필요)
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
-                  <div>트위터 단어 언급량</div>
-                  <div>{ data && data.mention }</div>
-                </div>
-              
-              
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={twitterIcon} alt="twitter" /></div>
+                    <div>
+                      <div>트위터 내 언급량</div>
+                      <span>{ data && data.mention }</span>
+                    </div>
+                  </div>
+                </div>                            
             </div>
           </div>
 
           <div id={styles.mentions_analysis_third_line }>
             <div id={styles.mentions_analysis_third_box_1}>
               <div id={styles.mentions_analysis_third_box_1_title} >
-                트렌디 지수</div>
+                트윗 미리보기
+              </div>
                 
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
-                {keywordList && keywordList[0].compIdx}
+                미리보기 데이터
               </div>
               
               
