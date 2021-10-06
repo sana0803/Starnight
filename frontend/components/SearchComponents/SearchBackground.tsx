@@ -35,9 +35,9 @@ const SearchBackground = () => {
   const [searchText, setSearchText] = React.useState(paramData);
   const textInput = React.useRef<any>();
 
-  const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
   // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`http://3.35.214.129:6060/api/word/search?word=${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://3.35.214.129:6060/api/word/search?word=${searchText}`, fetcher);
 
   //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
