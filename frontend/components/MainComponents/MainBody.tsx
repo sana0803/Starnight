@@ -19,7 +19,7 @@ const fetcher = url => fetch(url, {
 const MainBody = () => {
 
     // const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
-    const { data, error } = useSWRImmutable(`https://localhost:6060/api/word/trend`, fetcher);
+    const { data, error } = useSWRImmutable(`https://172.26.12.14:6060/api/word/trend`, fetcher);
  
     const textInput = React.useRef<any>();
     const router = useRouter();
