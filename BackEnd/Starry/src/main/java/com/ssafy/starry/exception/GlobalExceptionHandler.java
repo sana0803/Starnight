@@ -1,9 +1,13 @@
 package com.ssafy.starry.exception;
 
 import static com.ssafy.starry.common.utils.constants.ResponseConstants.BAD_REQUEST;
+import static com.ssafy.starry.common.utils.constants.ResponseConstants.DATA_TREND_NPE;
 import static com.ssafy.starry.common.utils.constants.ResponseConstants.FORBIDDEN;
+import static com.ssafy.starry.common.utils.constants.ResponseConstants.LIST_NPE;
 import static com.ssafy.starry.common.utils.constants.ResponseConstants.WORD_NOT_VALID;
 
+import com.ssafy.starry.exception.externalApi.DataTrendNullPointerException;
+import com.ssafy.starry.exception.externalApi.ListNullPointerException;
 import com.ssafy.starry.exception.valid.ForbiddenWordException;
 import com.ssafy.starry.exception.valid.WordNotValidException;
 import lombok.extern.slf4j.Slf4j;
@@ -20,15 +24,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-//    // Valid 조건을 만족하지 못한 요청에 대한 에러 핸들러
-//    @Override
-//    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-//        MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status,
-//        WebRequest request) {
-//        log.debug("Vaildation failed", ex);
-//        return VALIDATION_FAILED;
-//    }
-
+    /*
+    금지된 단어가 입력되었을 때 발생하는 Exception _ searchWords
+     */
     @ExceptionHandler(ForbiddenWordException.class)
     public ResponseEntity<String> handleForbiddenWordException(
         ForbiddenWordException ex
@@ -37,12 +35,37 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return FORBIDDEN;
     }
 
+    /*
+    검색어가 null이거나 길이가 10 이상인 단어를 검색한 경우 발생하는 Exception
+     */
     @ExceptionHandler(WordNotValidException.class)
     public ResponseEntity<String> handleForbiddenWordException(
         WordNotValidException ex
     ){
         log.debug("Word not valid: not null && 1 <= word.length <= 10", ex);
         return WORD_NOT_VALID;
+    }
+
+    /*
+    WordService _ getDataTrend method가 null을 반환할 때 발생하는 Exception
+     */
+    @ExceptionHandler(DataTrendNullPointerException.class)
+    public ResponseEntity<String> handleDataTrendNullPointerException(
+        DataTrendNullPointerException ex
+    ){
+        log.debug("API connection failed: LIST_NPE", ex);
+        return DATA_TREND_NPE;
+    }
+
+    /*
+    WordService _ list method가 null을 반환할 때 발생하는 Exception
+     */
+    @ExceptionHandler(ListNullPointerException.class)
+    public ResponseEntity<String> handleListNullPointerException(
+        ListNullPointerException ex
+    ){
+        log.debug("API connection failed: DATA_TREND_NPE", ex);
+        return LIST_NPE;
     }
 
     // 5xx error handler : 서버에서 발생한 전반적인 에러에 대한 핸들러
