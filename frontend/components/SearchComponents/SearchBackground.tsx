@@ -4,7 +4,7 @@ import logo from '../../images/logo.png';
 import pcIcon from '../../images/pc.svg';
 import mobileIcon from '../../images/mobile.svg';
 import graphIcon from '../../images/graph.svg';
-import twitterIcon from '../../images/twitter.svg';
+import twitterIcon from '../../images/twitter.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -40,8 +40,8 @@ const SearchBackground = () => {
   const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
@@ -104,7 +104,9 @@ const SearchBackground = () => {
                 </div>
               </div>
               <div className={styles.first_line_titles}>월간 PC 검색량</div>
-              <div>{ keywordList && keywordList[0].monthlyPcQcCnt }</div>
+              <div>
+                { keywordList && keywordList[0].monthlyPcQcCnt }
+              </div>
             </div>
             <div id={styles.mentions_analysis_first_box_2}>
               <div id={styles.yellowBox}>
@@ -113,18 +115,26 @@ const SearchBackground = () => {
                 </div>
               </div>
               <div className={styles.first_line_titles}>월간 모바일 검색량</div>
-              <div>{ keywordList && keywordList[0].monthlyMobileQcCnt }</div>
+              <div>
+                { keywordList && keywordList[0].monthlyMobileQcCnt }
+              </div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              {/* <div> */}
+              <div>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
                     <Image src={graphIcon} alt="graph" />   
                   </div>         
                 </div>
                 <div className={styles.first_line_titles}>키워드 경쟁력</div>
-                { rank && rank } / 5.0 ({ keywordList && keywordList[0].compIdx })
-              {/* </div> */}
+                <div>
+                  { rank && rank }
+                </div>
+                <span className={styles.first_box_3_txt_1}> / 5.0 </span>
+                <span className={styles.first_box_3_txt_2}>
+                  ({ keywordList && keywordList[0].compIdx })
+                </span>                
+              </div>
             </div>
 
           </div>
@@ -165,29 +175,36 @@ const SearchBackground = () => {
             <div id={styles.mentions_analysis_second_box_3}>
                 
                 <div id={styles.mentions_analysis_second_box_3_title}>
-                  클릭 수
+                  월간 클릭률
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div>PC 클릭 수</div>
-                  <div>{ keywordList && keywordList[0].monthlyAvePcCtr }</div>
+                  <div><Image src={pcIcon} alt="pc" /></div>
+                  <div>
+                    <div>PC 클릭률</div>
+                    <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
+                  </div>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div>모바일 클릭 수</div>
-                  <div>{ keywordList && keywordList[0].monthlyAveMobileCtr }</div>
+                  <div><Image src={mobileIcon} alt="mobile" /></div>
+                  <div>
+                    <div>모바일 클릭률</div>
+                    <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
+                  </div>
                 </div>
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
-                 플랫폼 언급량
+                 플랫폼 언급량 (설명추가 필요)
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
-                  <div>트위터 단어 언급량</div>
-                  <div>{ data && data.mention }</div>
-                </div>
-              
-              
+                  <div><Image src={twitterIcon} alt="twitter" /></div>
+                  <div>
+                    <div>트위터 단어 언급량</div>
+                    <span>{ data && data.mention }</span>
+                  </div>
+                </div>                            
             </div>
           </div>
 
