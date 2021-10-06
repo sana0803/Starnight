@@ -1,6 +1,10 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
+import pcIcon from '../../images/pc.svg';
+import mobileIcon from '../../images/mobile.svg';
+import graphIcon from '../../images/graph.svg';
+import twitterIcon from '../../images/twitter.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -93,18 +97,33 @@ const SearchBackground = () => {
           <div id={ styles.mentions_analysis_first_line }>
 
             <div id={styles.mentions_analysis_first_box_1}>
-              <div className={styles.first_line_titles}>PC 검색량</div>
+              <div id={styles.yellowBox}>
+                <div className={styles.icon_img}>
+                  <Image src={pcIcon} alt="pc"  />
+                </div>
+              </div>
+              <div className={styles.first_line_titles}>월간 PC 검색량</div>
               <div>{ keywordList && keywordList[0].monthlyPcQcCnt }</div>
             </div>
             <div id={styles.mentions_analysis_first_box_2}>
-              <div className={styles.first_line_titles}>모바일 검색량</div>
+              <div id={styles.yellowBox}>
+                <div className={styles.icon_img}>
+                  <Image src={mobileIcon} alt="mobile" />
+                </div>
+              </div>
+              <div className={styles.first_line_titles}>월간 모바일 검색량</div>
               <div>{ keywordList && keywordList[0].monthlyMobileQcCnt }</div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              <div className={styles.first_line_titles}>키워드 경쟁력</div>
-              <div>
+              {/* <div> */}
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={graphIcon} alt="graph" />   
+                  </div>         
+                </div>
+                <div className={styles.first_line_titles}>키워드 경쟁력</div>
                 { rank && rank } / 5.0 ({ keywordList && keywordList[0].compIdx })
-              </div>
+              {/* </div> */}
             </div>
 
           </div>
