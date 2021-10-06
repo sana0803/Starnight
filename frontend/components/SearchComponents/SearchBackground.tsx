@@ -12,6 +12,7 @@ import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable'
 import React from 'react';
 import GraphComponent from './GraphComponent';
+import MiddlePieGraph from './MiddlePieGraph';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -29,7 +30,13 @@ const SearchBackground = () => {
   const router = useRouter();
   let paramData: string | undefined | string[] = '';
   if (router.query) {
-    paramData = router.query.word;
+
+    if (router.query.word === '') {
+      paramData = '한복'
+    }
+    else {
+      paramData = router.query.word;
+    }
   }
   else {
     paramData = '소고기';
@@ -168,16 +175,12 @@ const SearchBackground = () => {
               <div id={styles.mentions_analysis_second_box_2_title}>
                 연관 검색어 노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
-                {keywordList &&
-                    keywordList.map(({ relKeyword, monthlyPcQcCnt, monthlyMobileQcCnt,
-                      monthlyAvePcClkCnt, monthlyAveMobileClkCnt, monthlyAvePcCtr,
-                      monthlyAveMobileCtr, plAvgDepth
-                    }, index) => {
-                      return <div key={ index } className
-                        ={styles.mentions_analysis_second_box_2_data}>
-                        {relKeyword} / {monthlyPcQcCnt} / {monthlyMobileQcCnt} / { plAvgDepth}
-                      </div>
-                  })
+                {keywordList ?
+                   <MiddlePieGraph data={
+                        keywordList
+                      } />
+                   :
+                  <></>
                 }
                 </div>
               

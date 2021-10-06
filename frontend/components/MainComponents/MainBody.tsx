@@ -5,6 +5,8 @@ import styles from '../../styles/MainBody.module.scss';
 import useSWRImmutable from 'swr/immutable'
 import { useRouter } from 'next/router';
 import MainGraph from './MainGraph';
+import { GiRank3 } from "react-icons/gi";
+import { FaFileWord } from "react-icons/fa";
 const fetcher = url => fetch(url, {
     method: 'GET',
     headers: {
@@ -23,8 +25,6 @@ const MainBody = () => {
  
     const textInput = React.useRef<any>();
     const router = useRouter();
-
-    const [click, setClick] = useState('');
 
     const submitInput = () => {
         router.push({
@@ -46,10 +46,14 @@ const MainBody = () => {
     }
 
     const getNews = (e) => {
-       // console.log(e);
-        window.open(e.news_url, e.news_title,
-            "resizable,scrollbars,status"
-        );
+       
+        router.push({
+            pathname: '/search',
+            query: { word: e.title.replace(/ /g,"").trim()}
+        });
+        // window.open(e.news_url, e.news_title,
+        //     "resizable,scrollbars,status"
+        // );
     }
     return (
         <>
@@ -62,15 +66,34 @@ const MainBody = () => {
             </div>
 
             <div id={styles.keyWordList}>
-                <div id={styles.keyWordTopList}>
-                { datas && datas.map((e,index) => {
-                    return <div key={index} className={styles.dataKeyword}
-                        onClick={()=>getNews(e)}
-                    >#{`${e.title}`}</div>
-                })}
+                <div id={styles.keyWordListBox}>
+                <div className={styles.rankBox}>
+                                <FaFileWord className={styles.rankIcon}/>
+                                <h2 className={styles.rankTitle}>TOP 20</h2>
+                            </div>
+
+                    <div id={styles.keyWordTopList}>
+                        
+                    { datas && datas.map((e,index) => {
+                        return <div key={index} className={styles.dataKeyword}
+                            onClick={()=>getNews(e)}
+                        >#{`${e.title}`}</div>
+                    })}
+                    </div>
                 </div>
                 <div>
-                {click === '' && data && <MainGraph data={data.keywords} />}
+                    {data ?
+                        <>
+                            <div className={styles.rankBox}>
+                                <GiRank3 className={styles.rankIcon}/>
+                                <h2 className={styles.rankTitle}>검색어 순위</h2>
+                            </div>
+                            <MainGraph data={data.keywords} />
+                        </>
+                        :
+                        <></>
+                    
+                    }
                 </div>
             </div>
         </>
