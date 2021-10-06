@@ -29,7 +29,7 @@ const MainBody = () => {
     const submitInput = () => {
         router.push({
             pathname: '/search',
-            query: { word: textInput.current.values.replace(/ /g,"").trim()}
+            query: { word: textInput.current.value.replace(/ /g,"").trim()}
         });
     }
     let datas: null | any[] = null;
