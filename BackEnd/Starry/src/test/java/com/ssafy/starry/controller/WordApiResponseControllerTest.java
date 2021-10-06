@@ -96,8 +96,11 @@ class WordApiResponseControllerTest {
             86.95837,
             100.0,
             94.45168);
-
-        SearchDto searchDto = new SearchDto(wordVO, ratios, 100);
+        List<String> twits = new ArrayList<>();
+        twits.add("트윗1");
+        twits.add("트윗2");
+        twits.add("트윗3");
+        SearchDto searchDto = new SearchDto(wordVO, ratios, 100, twits);
         given(wordService.getWordAnalysis(any())).willReturn(searchDto);
         //when
         mockMvc.perform(get("/api/word/search")
@@ -189,7 +192,12 @@ class WordApiResponseControllerTest {
                         .description("SNS에 단어가 언급된 언급량입니다. 2021.10.05일 이후의 언급량입니다.")
                         .attributes(key("format")
                             .value(
-                                " 숫자로 표시됩니다. 언급량을 확인할 수 없는 경우 0으로 표시됩니다."))
+                                " 숫자로 표시됩니다. 언급량을 확인할 수 없는 경우 0으로 표시됩니다.")),
+                    fieldWithPath("twit").type(JsonFieldType.ARRAY)
+                        .description("트위터에서 가장 최근에 언급된 5개의 트윗을 가져옵니다.")
+                        .attributes(key("format")
+                            .value(
+                                "5개 이하로 보이는 경우가 있을 수 있습니다."))
                 )
             ));
     }
