@@ -36,8 +36,8 @@ const SearchBackground = () => {
   const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
@@ -57,13 +57,19 @@ const SearchBackground = () => {
 
   const submitInput = () => {
     //console.log(textInput.current.value)
-    setSearchText(textInput.current.value.replace(/ /g,"").trim());
+    setSearchText(textInput.current.value.replace(/ /g, "").trim());
+    textInput.current.value = '';
   }
 
   const goEnter = (e) => {
     if (e.key === 'Enter') {
       submitInput();
     }
+  }
+  const goSearch = (value) => {
+    console.log(value)
+    setSearchText(value.replace(/ /g, "").trim());
+    textInput.current.value = '';
   }
 
   const moveHome = () => {
@@ -116,7 +122,9 @@ const SearchBackground = () => {
                   {keywordList &&
                     keywordList.map(({ relKeyword }, index ) => {
                       return <div key={index} className
-                        ={styles.mentions_analysis_second_box_1_data}>{relKeyword}</div>
+                        ={styles.mentions_analysis_second_box_1_data}
+                        onClick={()=>goSearch(relKeyword)}
+                      >{relKeyword}</div>
                     })
                   }
                 </div>
