@@ -102,31 +102,34 @@ const SearchBackground = () => {
         <div id={styles.mentions_analysis}>
           <div id={ styles.mentions_analysis_title}>키워드 분석</div>
           <div id={ styles.mentions_analysis_first_line }>
-
             <div id={styles.mentions_analysis_first_box_1}>
-              <div id={styles.yellowBox}>
-                <div className={styles.icon_img}>
-                  <Image src={pcIcon} alt="pc"  />
+              <div className={styles.first_box_wrap}>
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={pcIcon} alt="pc"  />
+                  </div>
                 </div>
-              </div>
-              <div className={styles.first_line_titles}>월간 PC 검색량</div>
-              <div>
-                { keywordList && keywordList[0].monthlyPcQcCnt }
+                <div className={styles.first_line_titles}>월간 PC 검색량</div>
+                <div>
+                  { keywordList && keywordList[0].monthlyPcQcCnt }
+                </div>
               </div>
             </div>
             <div id={styles.mentions_analysis_first_box_2}>
-              <div id={styles.yellowBox}>
-                <div className={styles.icon_img}>
-                  <Image src={mobileIcon} alt="mobile" />
+              <div className={styles.first_box_wrap}>
+                <div id={styles.yellowBox}>
+                  <div className={styles.icon_img}>
+                    <Image src={mobileIcon} alt="mobile" />
+                  </div>
                 </div>
-              </div>
-              <div className={styles.first_line_titles}>월간 모바일 검색량</div>
-              <div>
+                <div className={styles.first_line_titles}>월간 모바일 검색량</div>
+                <div>
                 { keywordList && keywordList[0].monthlyMobileQcCnt }
+                </div>
               </div>
             </div>
             <div id={styles.mentions_analysis_first_box_3}>
-              <div>
+              <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
                     <Image src={graphIcon} alt="graph" />   
@@ -180,25 +183,28 @@ const SearchBackground = () => {
               
               
             </div>
-            <div id={styles.mentions_analysis_second_box_3}>
-                
+            <div id={styles.mentions_analysis_second_box_3}>                
                 <div id={styles.mentions_analysis_second_box_3_title}>
                   월간 클릭률
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div><Image src={pcIcon} alt="pc" /></div>
-                  <div>
-                    <div>PC 클릭률</div>
-                    <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={pcIcon} alt="pc" /></div>
+                    <div>
+                      <div>PC 클릭률</div>
+                      <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
+                    </div>
                   </div>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
-                  <div><Image src={mobileIcon} alt="mobile" /></div>
-                  <div>
-                    <div>모바일 클릭률</div>
-                    <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={mobileIcon} alt="mobile" /></div>
+                    <div>
+                      <div>모바일 클릭률</div>
+                      <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -207,10 +213,12 @@ const SearchBackground = () => {
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
-                  <div><Image src={twitterIcon} alt="twitter" /></div>
-                  <div>
-                    <div>트위터 단어 언급량</div>
-                    <span>{ data && data.mention }</span>
+                  <div className={styles.second_box_wrap}>
+                    <div><Image src={twitterIcon} alt="twitter" /></div>
+                    <div>
+                      <div>트위터 내 언급량</div>
+                      <span>{ data && data.mention }</span>
+                    </div>
                   </div>
                 </div>                            
             </div>
