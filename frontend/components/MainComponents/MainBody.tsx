@@ -44,6 +44,13 @@ const MainBody = () => {
             submitInput();
         }
     }
+
+    const getNews = (e) => {
+       // console.log(e);
+        window.open(e.news_url, e.news_title,
+            "resizable,scrollbars,status"
+        );
+    }
     return (
         <>
             <div id={styles.searchBox}>
@@ -57,7 +64,9 @@ const MainBody = () => {
             <div id={styles.keyWordList}>
                 <div id={styles.keyWordTopList}>
                 { datas && datas.map((e,index) => {
-                    return <div key={index} className={styles.dataKeyword}>#{`${e.title}`}</div>
+                    return <div key={index} className={styles.dataKeyword}
+                        onClick={()=>getNews(e)}
+                    >#{`${e.title}`}</div>
                 })}
                 </div>
                 <div>
