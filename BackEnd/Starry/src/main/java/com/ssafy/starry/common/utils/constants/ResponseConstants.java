@@ -21,5 +21,11 @@ public class ResponseConstants {
         new ResponseEntity("Word not valid: not null && 1 <= word.length <= 10", HttpStatus.BAD_REQUEST);
 
     public static final ResponseEntity<String> FORBIDDEN =
-        new ResponseEntity("'searchWords' is forbidden", HttpStatus.BAD_REQUEST);
+        new ResponseEntity("'searchWords' is forbidden", HttpStatus.FORBIDDEN);
+
+    public static final ResponseEntity<String> LIST_NPE =
+        new ResponseEntity("API connection failed: List", HttpStatus.INTERNAL_SERVER_ERROR);
+
+    public static final ResponseEntity<String> DATA_TREND_NPE =
+        new ResponseEntity("API connection failed: DataTrend", HttpStatus.INTERNAL_SERVER_ERROR);
 }
