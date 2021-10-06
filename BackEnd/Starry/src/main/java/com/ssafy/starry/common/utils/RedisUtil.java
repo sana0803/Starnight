@@ -1,6 +1,7 @@
 package com.ssafy.starry.common.utils;
 
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -23,6 +24,11 @@ public class RedisUtil {
     public Object get(String key) {
         redisTemplate.setValueSerializer(new StringRedisSerializer());
         return redisTemplate.opsForValue().get(key);
+    }
+
+    public List<Object> getTwit(String key){
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        return redisTemplate.opsForList().range(key,0,4);
     }
 
     public boolean delete(String key) {

@@ -15,8 +15,8 @@ public class SearchDto {
     private List<Double> ratios;
     private double rank;
     private long mention;
-
-    public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention) {
+    private List<String> twiw;
+    public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention ,List<String> twiw) {
         keywordList = wordVO.getKeywordList();
         timeUnit = searchFlowVO.getTimeUnit();
         ratios = new ArrayList<Double>();
@@ -46,7 +46,7 @@ public class SearchDto {
         if (average > ratios.get(ratios.size() - 1)) {
             rank -= 0.5;
         }
-
+        this.twiw = twiw;
     }
 
     public SearchDto(WordVO wordVO, List<Double> ratios, long mention) {
