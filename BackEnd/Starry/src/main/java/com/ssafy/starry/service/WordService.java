@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -56,7 +58,7 @@ public class WordService {
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
             words = list(rest, customerId, word);
-            if(words == null){
+            if (words == null) {
                 throw new ListNullPointerException("API connection failed: LIST_NPE");
             }
 
@@ -71,15 +73,19 @@ public class WordService {
             SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
                 clientId,
                 clientSecret);
-            if(searchFlowVO == null){
+            if (searchFlowVO == null) {
                 throw new DataTrendNullPointerException("API connection failed: DATA_TREND_NPE");
             }
 //            log.info("검색량 추이에 대한 데이터 API Return " + searchFlowVO);
 
             log.info("redis word 값 : " + redisUtil.get(word));
+            List<String> twit = redisUtil.getTwit(word + "@twitText").stream()
+                .map(object -> Objects.toString(object, null)).collect(
+                    Collectors.toList());
+//            System.out.println(twit);
             long mention =
                 redisUtil.get(word) == null ? 0 : Long.parseLong((String) redisUtil.get(word));
-            searchDto = new SearchDto(words, searchFlowVO, mention);
+            searchDto = new SearchDto(words, searchFlowVO, mention,twit);
 
         } catch (Exception e) {
             e.printStackTrace();
