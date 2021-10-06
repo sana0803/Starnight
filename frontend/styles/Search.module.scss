@@ -1,4 +1,4 @@
-@mixin font-face($name, $file, $weight: normal, $style: normal) { 
+@mixin font-face($name, $file, $weight: 400, $style: normal) { 
     @font-face {
         font-family: "#{$name}";
         src: url($file);
@@ -13,7 +13,8 @@
     min-width: 1920px;
     min-height: 1080px;
     padding: 0px 340px;
-    background: #EBECEF;
+    background: #EFF0F3;
+    // #EFF0F3
 }
 
 #searchBoxLine {
@@ -47,6 +48,25 @@
     top: 10px;
 }
 
+#yellowBox {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    margin: 28px 25px 28px 32px;
+    background: rgba(255, 213, 35, 0.15);
+    border-radius: 33px;
+}
+
+.icon_img {    
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    // align-self: center;
+    // align-content: center;
+    // background-color: #595260;
+}
+
 #mentions_analysis {
     width: 1240px;
     height : 935px;
@@ -74,6 +94,7 @@
 #mentions_analysis_third_box_1,
 #mentions_analysis_third_box_2 {
     border-radius: 20px;
+    box-shadow: 4px 4px 15px rgba(63, 64, 70, 0.08);
 }
 
 
@@ -81,7 +102,7 @@
     width: 392px;
     height: 120px;
     background: white;
-    color: black;
+    color: #333;
     margin: 9px 32px 0px 0px;
 }
 
@@ -89,7 +110,7 @@
     width: 392px;
     height: 120px;
     background: white;
-    color: black;
+    color: #333;
     margin: 9px 0px 0px 0px;
 }
 
@@ -97,8 +118,26 @@
     width: 392px;
     height: 120px;
     background: white;
-    color: black;
+    color: #333;
     margin: 9px 0px 0px 32px;
+}
+
+.first_box_3_txt_1 {
+    text-align: left;
+    margin: auto 6px auto 8px;
+    padding-top: 3px;
+    font-family: pretendard;
+    color: #595260;
+    font-size: 16px;
+}
+
+.first_box_3_txt_2 {
+    text-align: left;
+    margin: auto 0;
+    padding-top: 3px;
+    font-family: pretendard;
+    color: #2C2E43;
+    font-size: 17px;
 }
 
 #mentions_analysis_second_box_1 {
@@ -145,33 +184,66 @@
 #mentions_analysis_second_box_1_title, 
 #mentions_analysis_second_box_2_title,
 #mentions_analysis_second_box_3_title,
+#mentions_analysis_second_box_3_2_title,
 #mentions_analysis_third_box_1_title,
 #mentions_analysis_third_box_2_title{
     font-family: pretendard;
     font-size: 18px;
     //margin: 24px 179px 404px 27px;
-    padding: 24px 0 0 27px;
+    padding: 24px 0 16px 27px;
     font-weight: 500;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     line-height: 21.6px;
 }
 
 .first_line_titles {
-    text-align: center;
+    text-align: left;
+    display: inline-block;
+    margin: auto 0;
     font-family: pretendard;
-    padding: 20px; 
     font-size: 18px;
+    letter-spacing: -0.5px;
+    // line-height: 22px;
 }
 
 .first_line_titles + div {
-    text-align: center;
+    display: inline-block;
+    text-align: left;
+    margin: auto 0 auto 20px;
     font-family: pretendard;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 20px;
+    color: #2C2E43;    
 }
 
 .mentions_analysis_second_box_1_dataBox,  .mentions_analysis_second_box_2_dataBox{
     overflow-y: scroll;
-    height: 405px;
+    height: 370px;
+}
+
+.mentions_analysis_second_box_1_data {
+    // width: 100%;
+    background-color: #ECEDEE;
+    margin: 5px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+.mentions_analysis_second_box_1_data:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar {
+    width: 10px;
+}
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+.mentions_analysis_second_box_1_dataBox::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
 }
 
 .mentions_analysis_second_box_1_data, .mentions_analysis_second_box_2_data {
@@ -182,23 +254,63 @@
 }
 
 .mentions_analysis_second_box_3_dataBox {
-    text-align: center;
+    width: 100%;
+    height: 90px;
+    text-align: left;
     font-family: pretendard;
-    padding: 40px;
+    padding: 3px 40px 0px 45px;
+    margin-bottom: 5px;
 
-    div:last-child {
-        font-size: 25px;
+    div:last-child > span {     
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        color: #222;
     }
 }
 
-.mentions_analysis_second_box_3_dataBox > div:first-child {
-    margin-bottom: 25px;
+.mentions_analysis_second_box_3_2_dataBox {
+    width: 100%;
+    height: 90px;
+    text-align: left;
+    font-family: pretendard;
+    font-size: 16px;
+    padding: 3px 35px 0 45px;
+
+    div:last-child > span {        
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        color: #222;
+    }
+}
+
+.second_box_wrap {
+    display: flex;
+    margin: auto 0;
+    height: 100%;
+}
+
+.second_box_wrap > div:first-child,
+.second_box_wrap > div:first-child {
+    display: inline-block;
+    margin: auto 0;
+    padding: 2px;
+}
+
+.second_box_wrap > div:last-child,
+.second_box_wrap > div:last-child {
+    display: inline-block;
+    margin: auto 0;
+    margin-left: 40px;
+    color: #333;
 }
 
 .mentions_analysis_third_box_1_dataBox {
-    text-align: center; 
+    text-align: center;
+    font-family: pretendard;
     padding: 40px;
-    font-size: 40px;
+    font-size: 16px;
 }
 
 .mentions_analysis_third_box_2_dataBox {
@@ -217,6 +329,8 @@
     align-content: center;
 }
 
-#homeContainer {
+.first_box_wrap {
+    display: flex;
+    margin: auto 0;    
+}
 
-} 

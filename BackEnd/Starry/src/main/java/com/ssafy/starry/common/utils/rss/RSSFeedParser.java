@@ -23,6 +23,12 @@ public class RSSFeedParser {
     static final String PUB_DATE = "pubDate";
     static final String GUID = "guid";
     static final String PUBDATE = "pubdate";
+    static final String TRAFFIC = "approx_traffic";
+    static final String NEWS_ITEM_TITLE = "news_item_title";
+    static final String NEWS_ITEM_SNIPPET = "news_item_snippet";
+    static final String NEWS_ITEM_URL = "news_item_url";
+    static final String NEWS_ITEM_SOURCE = "news_item_source";
+
 
     final URL url;
 
@@ -44,9 +50,12 @@ public class RSSFeedParser {
             String link = "";
             String language = "";
             String copyright = "";
-            String author = "";
             String pubdate = "";
-            String guid = "";
+            String traffic = "";
+            StringBuilder news_title = new StringBuilder();
+            String news_url = "";
+            String news_source = "";
+            StringBuilder sb = new StringBuilder();
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -77,35 +86,57 @@ public class RSSFeedParser {
                         case LINK:
                             link = getCharacterData(event, eventReader);
                             break;
-                        case GUID:
-                            guid = getCharacterData(event, eventReader);
-                            break;
                         case LANGUAGE:
                             language = getCharacterData(event, eventReader);
-                            break;
-                        case AUTHOR:
-                            author = getCharacterData(event, eventReader);
                             break;
                         case PUB_DATE:
                         case PUBDATE:
                             pubdate = getCharacterData(event, eventReader);
                             break;
-                        case COPYRIGHT:
-                            copyright = getCharacterData(event, eventReader);
+                        case TRAFFIC:
+                            traffic = getCharacterData(event, eventReader);
+                            break;
+                        case NEWS_ITEM_TITLE:
+                            news_title = new StringBuilder(getCharacterData(event, eventReader));
+                            break;
+                        case NEWS_ITEM_SOURCE:
+                            news_source = getCharacterData(event, eventReader);
+                            break;
+                        case NEWS_ITEM_URL:
+                            news_url = getCharacterData(event, eventReader);
                             break;
 
                     }
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart().equals(ITEM)) {
                         FeedMessage message = new FeedMessage();
-                        message.setAuthor(author);
                         message.setDescription(description);
-                        message.setGuid(guid);
                         message.setLink(link);
                         message.setTitle(title);
                         message.setPubdate(pubdate);
+                        message.setNews_source(news_source);
+                        message.setNews_title(
+                            news_title.toString().replaceAll("(\r\n|\r|\n|\n\r|\\p{Z}|\\t)", "")
+                                .replaceAll("&quot;", "").replaceAll("&#39;", "")
+                                .replaceAll("&nbsp;", "").replaceAll("&amp;", "")
+                                .replaceAll("&lt;", "").replaceAll("&gt;", "")
+                                .replaceAll("&quot;", "").replaceAll("#39;", ""));
+                        message.setNews_url(news_url);
+                        message.setTraffic(traffic);
+                        assert feed != null;
                         feed.getMessages().add(message);
                         event = eventReader.nextEvent();
+                    } else {
+                        String localPart = event.asEndElement().getName()
+                            .getLocalPart();
+                        if (NEWS_ITEM_TITLE.equals(localPart)) {
+                            news_title.append(sb.toString());
+                        }
+                    }
+                    sb.setLength(0);
+                } else {
+                    if (event.isCharacters()) {
+                        sb.append(event.asCharacters().getData());
                     }
                 }
             }

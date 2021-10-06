@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import styles from '../../styles/MainBody.module.scss';
-
+import useSWRImmutable from 'swr/immutable'
+import { useRouter } from 'next/router';
+import MainGraph from './MainGraph';
 const fetcher = url => fetch(url, {
     method: 'GET',
     headers: {
@@ -16,31 +18,51 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    const { data, error } = useSWR(`http://localhost:3000/list`, fetcher);
+    const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
+    // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
  
     const textInput = React.useRef<any>();
+    const router = useRouter();
+
+    const [click, setClick] = useState('');
 
     const submitInput = () => {
-        
-
+        router.push({
+            pathname: '/search',
+            query: { word: textInput.current.value.replace(/ /g,"").trim()}
+        });
     }
-    let datas = ['소고기'];
+    let datas: null | any[] = null;
 
-    datas = datas.map((e)=> '#'+e);
-
+    if (data) {
+        datas = data?.keywords;
+        console.log(data.keywords)
+    }
+    
+    const goEnter = (e) => {
+        if (e.key === 'Enter') {
+            submitInput();
+        }
+    }
     return (
         <>
             <div id={styles.searchBox}>
-                <input id={styles.searchInput} ref={textInput}
+                <input id={styles.searchInput} ref={textInput} maxLength={10}
                     placeholder="이 곳을 눌러 키워드 분석을 시작해보세요."
+                    onKeyPress={goEnter}
                 ></input>
                 <AiOutlineSearch id={styles.inputInsideIcon} onClick={submitInput}/>
             </div>
 
             <div id={styles.keyWordList}>
-                {datas.map(e => {
-                    return <p>{e}</p>
+                <div id={styles.keyWordTopList}>
+                { datas && datas.map((e,index) => {
+                    return <div key={index} className={styles.dataKeyword}>#{`${e.title}`}</div>
                 })}
+                </div>
+                <div>
+                {click === '' && data && <MainGraph data={data.keywords} />}
+                </div>
             </div>
         </>
     );

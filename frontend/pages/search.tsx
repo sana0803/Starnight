@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {GetServerSideProps} from 'next';
+import { GetServerSideProps } from 'next';
+import Head from "next/head";
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
-import {FcSearch} from 'react-icons/fc';
-import SearchBackground from '../components/SearchComponents/SearchBackground';
 import LoadingComponent from '../components/LoadingComponent/LoadingComponent';
 
 const DynamicComponent = dynamic(() =>
@@ -30,7 +29,9 @@ function Search({data}) {
   return (
     <div>
       {/* <SearchBackground /> */}
-
+      <Head>
+      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      </Head>
       <DynamicComponent />
       {/* <span style={{border: '1px solid #DDD;'}}>
         <FcSearch onClick={handleData}>Test</FcSearch>

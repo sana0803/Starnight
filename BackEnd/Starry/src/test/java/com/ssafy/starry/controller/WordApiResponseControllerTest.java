@@ -19,8 +19,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfigurer.sharedHttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.starry.common.utils.rss.FeedMessage;
 import com.ssafy.starry.controller.dto.SearchDto;
 import com.ssafy.starry.controller.dto.SearchFlowVO;
+import com.ssafy.starry.controller.dto.TrendDto;
 import com.ssafy.starry.controller.dto.WordVO;
 import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
 import com.ssafy.starry.service.WordService;
@@ -85,7 +87,6 @@ class WordApiResponseControllerTest {
             .compIdx("높음")
             .build());
         wordVO.setKeywordList(wordApiResponses);
-        SearchFlowVO searchFlowVO = new SearchFlowVO();
         List<Double> ratios = Arrays.asList(86.08608,
             82.08194,
             85.22112,
@@ -95,8 +96,11 @@ class WordApiResponseControllerTest {
             86.95837,
             100.0,
             94.45168);
-
-        SearchDto searchDto = new SearchDto(wordVO, ratios, 100);
+        List<String> twits = new ArrayList<>();
+        twits.add("트윗1");
+        twits.add("트윗2");
+        twits.add("트윗3");
+        SearchDto searchDto = new SearchDto(wordVO, ratios, 100, twits);
         given(wordService.getWordAnalysis(any())).willReturn(searchDto);
         //when
         mockMvc.perform(get("/api/word/search")
@@ -188,10 +192,83 @@ class WordApiResponseControllerTest {
                         .description("SNS에 단어가 언급된 언급량입니다. 2021.10.05일 이후의 언급량입니다.")
                         .attributes(key("format")
                             .value(
-                                " 숫자로 표시됩니다. 언급량을 확인할 수 없는 경우 0으로 표시됩니다."))
+                                " 숫자로 표시됩니다. 언급량을 확인할 수 없는 경우 0으로 표시됩니다.")),
+                    fieldWithPath("twit").type(JsonFieldType.ARRAY)
+                        .description("트위터에서 가장 최근에 언급된 5개의 트윗을 가져옵니다.")
+                        .attributes(key("format")
+                            .value(
+                                "5개 이하로 보이는 경우가 있을 수 있습니다."))
                 )
             ));
-        //then
     }
 
+    @DisplayName("일일 인기 검색어 조회 - 성공")
+    @Test
+    public void getTrend_success() throws Exception {
+        List<FeedMessage> feeds = new ArrayList<>();
+        feeds.add(new FeedMessage("윈도우11", "윈도우 11, windows 11", "https://...",
+            "Tue, 05 Oct 2021 09:00:00 +0900", "20,000+", "MS윈도우11공식출시…10사용자는무료업그레이드",
+            "https://www.mk.co.kr/news/it/view/2021/10/941462/", "매일경제"));
+        TrendDto trendDto = TrendDto.builder()
+            .keywords(feeds)
+            .build();
+
+        given(wordService.getTrendKeyword()).willReturn(trendDto);
+
+        mockMvc.perform(get("/api/word/trend")
+            .accept(MediaType.APPLICATION_JSON))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andDo(document("WordApi/getTrend/success",
+                getDocumentRequest(),
+                getDocumentResponse(),
+                responseFields(
+                    fieldWithPath("keywords[].title").type(JsonFieldType.STRING)
+                        .description("트렌드 검색어 이름입니다.")
+                        .attributes(key("format")
+                            .value(
+                                "하나, 혹은 두 개의 단어로 구성되어 있습니다.")),
+                    fieldWithPath("keywords[].description").type(JsonFieldType.STRING)
+                        .description(
+                            "단어에 대한 간단한 설명")
+                        .attributes(key("format")
+                            .value(
+                                "단어에 대한 간단한 설명이 기재되어 있습니다. 동의어인 영어 단어가 기재되기도 합니다.")),
+                    fieldWithPath("keywords[].link").type(JsonFieldType.STRING)
+                        .description("구글 트렌드 센터 링크")
+                        .attributes(key("format")
+                            .value(
+                                "구글 트렌드 센터 링크가 기재되어 있습니다. 뉴스 기사 링크와 다른 점에 유의해주세요.")),
+                    fieldWithPath("keywords[].pubdate").type(JsonFieldType.STRING)
+                        .description(
+                            "기사 발행일")
+                        .attributes(key("format")
+                            .value(
+                                "기사 발행일입니다. 요일, 일, 월, 년, 시의 순서로 기재되어 있습니다. ex) Tue, 05 Oct 2021 09:00:00 +0900")),
+                    fieldWithPath("keywords[].traffic").type(JsonFieldType.STRING)
+                        .description(
+                            "검색 횟수입니다.")
+                        .attributes(key("format")
+                            .value(
+                                "20000+ 등으로 표기되어 있습니다.")),
+                    fieldWithPath("keywords[].news_title").type(JsonFieldType.STRING)
+                        .description(
+                            "관련 뉴스 기사 제목")
+                        .attributes(key("format")
+                            .value(
+                                "관련 뉴스 기사 제목입니다. 공백이나 기타 특수 문자를 제외한 채로 주어집니다.")),
+                    fieldWithPath("keywords[].news_url").type(JsonFieldType.STRING)
+                        .description(
+                            "관련 뉴스 기사 URL")
+                        .attributes(key("format")
+                            .value(
+                                "관련 뉴스 기사 URL입니다.")),
+                    fieldWithPath("keywords[].news_source").type(JsonFieldType.STRING)
+                        .description("뉴스 기사 출처")
+                        .attributes(key("format")
+                            .value(
+                                "뉴스 기사 출처 정보입니다."))
+                )
+            ));
+    }
 }

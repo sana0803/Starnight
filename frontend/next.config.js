@@ -11,8 +11,13 @@ module.exports = {
     return [
       {
         source: '/search/:target*',
-        destination: `http://j5b103.p.ssafy.io:8080/api/word/search?word=:target*`
-      }
+        destination: `http://j5b103.p.ssafy.io:6060/api/word/search?word=:target*`
+      },
+      {
+        source: '/mention',
+        destination: `http://j5b103.p.ssafy.io:6060/api/word/trend`
+      },
+
     ]
   }
 
