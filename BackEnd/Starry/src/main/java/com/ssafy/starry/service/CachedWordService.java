@@ -28,7 +28,6 @@ public class CachedWordService {
     @Cacheable(key = "#hintKeywords", value = "list")
     public WordVO list(RestClient rest, long customerId, String hintKeywords)
         throws Exception {
-        System.out.println("list()");
         HttpResponse<String> response =
             rest.get(RelKwdPath, customerId)
                 .queryString("showDetail", 1)
@@ -41,10 +40,9 @@ public class CachedWordService {
             .readValue(responseBody, WordVO.class);
     }
 
-    @Cacheable(key = "#mainWord", value = "trend")
+//    @Cacheable(key = "#mainWord", value = "trend")
     public SearchFlowVO getDataTrend(String mainWord, String clientId,
         String clientSecret) throws JsonProcessingException {
-        System.out.println("getDataTrend()");
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
