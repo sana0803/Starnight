@@ -53,16 +53,17 @@
 }
 
 #keyWordTopList::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
+
 #keyWordTopList::-webkit-scrollbar-thumb {
     background-color: #2f3542;
     border-radius: 10px;
 }
 #keyWordTopList::-webkit-scrollbar-track {
-    background-color: grey;
+    background-color: #D7D7DD;
     border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
+    // box-shadow: inset 0px 0px 5px white;
 }
 .rankBox {
     display: flex;
