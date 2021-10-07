@@ -39,6 +39,14 @@
     cursor: pointer;
 }
 
+.dataKeyword:hover {
+    background-color: #2C2E43; 
+    color: #FFD523;  
+    padding : 10px;
+    //width: 100%;
+    cursor: pointer;
+}
+
 #keyWordTopList {
     height: 100%;
     overflow-y: scroll;
