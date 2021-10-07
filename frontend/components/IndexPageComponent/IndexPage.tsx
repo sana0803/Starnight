@@ -38,6 +38,9 @@ const IndexPage: NextPage = () => {
       // if (scrollTop >= 1080) {
 
       // }
+      if (!circleBackground.current) {
+        return;
+      }
       circleBackground.current.style.width = `${830+ 2* scrollTop}px`;
       circleBackground.current.style.height = `${830 + 2* scrollTop}px`;
       
