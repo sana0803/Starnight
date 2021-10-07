@@ -168,6 +168,7 @@
 #mentions_analysis_title{
     font-size: 26px;
     font-family: esamanru;
+    color: #222;
 }
 
 #mentions_analysis_second_box_1_title, 
@@ -176,13 +177,14 @@
 #mentions_analysis_second_box_3_2_title,
 #mentions_analysis_third_box_1_title,
 #mentions_analysis_third_box_2_title{
-    font-family: pretendard;
+    font-family: pretendard500;
     font-size: 18px;
     //margin: 24px 179px 404px 27px;
     padding: 24px 0 16px 27px;
     font-weight: 500;
     letter-spacing: -0.5px;
     line-height: 21.6px;
+    color: #222;
 }
 
 .first_line_titles {
@@ -199,9 +201,8 @@
     display: inline-block;
     text-align: left;
     margin: auto 0 auto 20px;
-    font-family: pretendard;
-    font-weight: 600;
-    font-size: 20px;
+    font-family: pretendard600;
+    font-size: 22px;
     color: #2C2E43;    
 }
 
@@ -215,14 +216,22 @@
 
 .mentions_analysis_second_box_1_data {
     // width: 100%;
-    background-color: #ECEDEE;
-    margin: 5px;
-    border: 2px solid lightgray;
-    border-radius: 10px;
+    background-color: #fff;
+    margin: 3px 5px;
+    font-weight: 600;
+    color: #2C2E43;
+    border-radius: 1px;
 }
 .mentions_analysis_second_box_1_data:hover {
-    background-color: gray;
+    background-color: #2C2E43; 
+    color: #FFD523;    
     cursor: pointer;
+    border-radius: 1px;
+}
+
+.mentions_analysis_second_box_1_data:active {
+    background-color: #ECEDEE;
+    color: #2C2E43;
 }
 
 .mentions_analysis_second_box_1_dataBox::-webkit-scrollbar {
@@ -254,7 +263,7 @@
     margin-bottom: 5px;
 
     div:last-child > span {     
-        font-family: esamanru300;
+        font-family: pretendard500;
         font-size: 22px;
         line-height: 28px;
         color: #222;
@@ -269,8 +278,8 @@
     font-size: 16px;
     padding: 3px 35px 0 45px;
 
-    div:last-child > span {        
-        font-weight: 500;
+    div:last-child > span {   
+        font-family: pretendard500;     
         font-size: 22px;
         line-height: 28px;
         color: #222;
@@ -299,10 +308,47 @@
 }
 
 .mentions_analysis_third_box_1_dataBox {
+    overflow-y: scroll;
+    height: 200px;
     text-align: center;
     font-family: pretendard;
-    padding: 40px;
-    font-size: 16px;
+    margin: 0 0px 0 27px;
+    // padding: 40px;
+    font-size: 16px;    
+    // background-color: #eee;
+}
+
+.twit_wrap {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    width: 100%;
+    // background-color: #ffc5db;
+    margin: 0 0px 10px 0;
+}
+
+.twit_icon {
+    margin-top: 6px;
+    // background-color: yellowgreen;
+    width: 7%;
+    height: 34px;
+}
+
+.twit_box {
+    display: inline-block;
+    background-color: #EFF0F3;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0px 8px 0px 0px;
+    width: 89%;
+    color: #333;
+    font-size: 15px;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.twit_box:hover {
+    cursor: pointer;
 }
 
 .mentions_analysis_third_box_2_dataBox {

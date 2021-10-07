@@ -77,7 +77,7 @@ const MainBody = () => {
                     { datas && datas.map((e,index) => {
                         return <div key={index} className={styles.dataKeyword}
                             onClick={()=>getNews(e)}
-                        >#{`${e.title}`}</div>
+                        ># {`${e.title}`}</div>
                     })}
                     </div>
                 </div>
