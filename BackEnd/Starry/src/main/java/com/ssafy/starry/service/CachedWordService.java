@@ -52,6 +52,7 @@ public class CachedWordService {
         requestBody.addProperty("endDate", "2021-09-30");
         requestBody.addProperty("timeUnit", "month");
         JsonArray keywordList = new JsonArray();
+        // MainKeyword ADD
         keywordList.add(mainWord);
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
