@@ -9,7 +9,7 @@ const MiddlePieGraph = ({ data }) => {
         monthlyPcQcCnt,
         monthlyMobileQcCnt,
         plAvgDepth } = data;
-    console.log(data)
+    //console.log(data)
 
     data.sort((e1, e2) => {
         return parseInt(e2.monthlyPcQcCnt) - parseInt(e1.monthlyPcQcCnt)  
