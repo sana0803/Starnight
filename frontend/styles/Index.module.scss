@@ -1,7 +1,7 @@
 @function multiple-box-shadow($n){
-  $value: '#{random(2000)}px #{random(20000)}px #FFF';
-  @for $i from 2 through $n{
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  $value: '#{random(100)}vw #{random(100)}vh #FFF';
+  @for $i from 2 through $n*4{
+    $value: '#{$value} , #{random(100)}vw #{random(1000)}vh #FFF';
   }
   @return unquote($value);
 } 
@@ -33,7 +33,7 @@ $shadows-big:    multiple-box-shadow(100);
   &:after {
     content: " ";
     position: absolute;
-    top: 2000px;
+    top: 200vh;
     width: 1px;
     height: 1px;
     background: transparent;
@@ -73,10 +73,10 @@ $shadows-big:    multiple-box-shadow(100);
     // font-weight: 300;
     // font-size: 56px;
     font-size: 3vw;
-    line-height: 3vw;
+    line-height: 3.4vw;
     text-align: center;
     letter-spacing: -0.03em;
-    padding: 17vh 29vw;
+    padding: 10vh 29vw 5vh 29vh;
 }
 
 #firstSection{
