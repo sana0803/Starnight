@@ -27,20 +27,6 @@ const LabelListComponent = (props) => {
 
 }
 
-const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-    //console.log(active, payload, label)
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{label}</p>
-          <p className="intro">{payload[0].payload.name}</p>
-        </div>
-      );
-    }
-  
-    return null;
-};
-
 const CustomizedYAxis = (props) => {
     //console.log(props)
     const { x, y,index } = props;
@@ -62,7 +48,7 @@ const CustomizedYAxis = (props) => {
         </>
     );
 }
-
+let xAxis = ['매우 낮음', '낮음', '중간', '높음', '매우 높음'];
 const MainGraph = ({ data }) => {
     
     
@@ -98,10 +84,13 @@ const MainGraph = ({ data }) => {
     return (
         <>
             {data ? 
-
+                
                 <BarChart width={730} layout="vertical" height={250} data={data.slice(0,3)}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
+                    <XAxis type="number" dataKey="traffic" tickFormatter={(e,index) => {
+                        
+                        return xAxis[index];
+                    }}/>
                     <YAxis
                         type="category"
                         dataKey="grade"
@@ -109,9 +98,13 @@ const MainGraph = ({ data }) => {
                     />
                     <Tooltip
                         position={{
-                            x: 500, y:150
+                            x: 500, y: 150
                         }}
-                        content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />} />
+                        formatter={(value, name, props) => {
+                            console.log(props)
+                            const { payload } = props;
+                            return [payload.name, payload.grade]
+                        }} />
                     {/* /<Legend /> */}
                     <Bar dataKey="traffic" >
                     {

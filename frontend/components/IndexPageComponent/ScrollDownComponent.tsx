@@ -14,11 +14,14 @@ const ScrollDownComponent = () => {
         from: { opacity: 0, color: 'red' },
       })
 
+    const goBottom = () => {
+        window.scrollTo(0,10000);
+    }
 
     return (
-        <animated.div style={ animationStyles }>
-            <div id={styles.scrollBox}>
-                <div id={styles.scrollText}>Scroll Down</div>
+        <animated.div style={ animationStyles } >
+            <div id={styles.scrollBox} onClick={goBottom}>
+                <div id={styles.scrollText}>Click Here</div>
                 <AiOutlineArrowDown id={styles.arrowDown}/>
             </div>
         </animated.div>

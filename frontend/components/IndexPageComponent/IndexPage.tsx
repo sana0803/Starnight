@@ -4,8 +4,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 // import styles from "../styles/Home.module.css";
 import styles from "../../styles/Index.module.scss";
-import MainPage from "../MainComponents/MainPage";
+//import MainPage from "../MainComponents/MainPage";
 import ScrollDownComponent from "./ScrollDownComponent";
+
+import dynamic from 'next/dynamic';
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+
+const MainPage = dynamic(() =>
+import('../MainComponents/MainPage'), {
+loading: function loadingComponent() {
+  return <LoadingComponent />;
+},
+});
 
 const IndexPage: NextPage = () => {
   const mainText = useRef<any>();
@@ -14,11 +24,10 @@ const IndexPage: NextPage = () => {
   const [isLastScroll, setIsLastScroll] = useState(false);
   const [isScrollTop, setIsScrollTop] = useState(true);
   useEffect(() => {
-  
+    window.scrollTo(0,0);
     function handleScroll() {
       const scrollTop = window.scrollY;
       const isEndOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-      
       
       // window.resizeTo(
       //   1920, 1080
@@ -36,12 +45,13 @@ const IndexPage: NextPage = () => {
         
         circleBackground.current.style.marginLeft = `${545 - scrollTop}px`;
         circleBackground.current.style.borderRadius = `50%`;
-        circleBackground.current.style.marginTop = `${1000 + (scrollTop/3)}px`;
+        circleBackground.current.style.marginTop = `${110}vh`;
         
       }
       else if((545 - scrollTop <= 0)){
         circleBackground.current.style.marginLeft = `0px`;
         circleBackground.current.style.borderRadius = `0%`;
+        // circleBackground.current.style.marginTop = `${0}px`;
       }``
       
       if (scrollTop <= 790) {
@@ -52,9 +62,12 @@ const IndexPage: NextPage = () => {
       }
       
       if (isEndOfPage) {
+        circleBackground.current.style.height = `1080px`;
+        mainText.current.style.margin = "15vh 75vh 20vh";
         setIsLastScroll(true);
       }
       else {
+        mainText.current.style.margin = "25vh 75vh";
         setIsLastScroll(false);
       }
 
@@ -85,7 +98,7 @@ const IndexPage: NextPage = () => {
           보여드릴게요
           {
           isScrollTop ?
-            <ScrollDownComponent /> :
+              <ScrollDownComponent /> :
             <></>
         }
         </section>
