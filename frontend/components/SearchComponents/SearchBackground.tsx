@@ -167,7 +167,7 @@ const SearchBackground = () => {
                 <div>
                   { rank && rank }
                 </div>
-                <span className={styles.first_box_3_txt_1}> / 5.0 </span>
+                <span className={styles.first_box_3_txt_1}>/ 5.0 </span>
                 <span className={styles.first_box_3_txt_2}>
                   ({ keywordList && keywordList[0].compIdx })
                 </span>                
@@ -280,7 +280,8 @@ const SearchBackground = () => {
                       <TwitterIcon />
                     </div>
                     <div className={styles.twit_box}>
-                      { twit.split("Quote Tweet")}
+                      { twit.split(
+                        "The following media includes potentially sensitive content. Change settings View")}
                     </div>
                   </div>
                   )                    
