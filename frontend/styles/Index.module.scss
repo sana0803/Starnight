@@ -66,6 +66,7 @@ $shadows-big:    multiple-box-shadow(100);
     z-index: 3;
     width: 100vw;
     height: 100vh;
+    margin-top: 10vh;
     color: #fff;
     font-family: esamanru;
     font-style: normal;
@@ -75,7 +76,7 @@ $shadows-big:    multiple-box-shadow(100);
     line-height: 3vw;
     text-align: center;
     letter-spacing: -0.03em;
-    padding: 23vh 29vw;
+    padding: 17vh 29vw;
 }
 
 #firstSection{
@@ -85,6 +86,7 @@ $shadows-big:    multiple-box-shadow(100);
     background: white;
     border-radius: 50%;
     overflow: hidden;
+    margin-top:110vh;
     // animation: firstSection 50s linear infinite;
 }
 
