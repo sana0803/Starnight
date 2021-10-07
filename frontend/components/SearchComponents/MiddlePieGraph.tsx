@@ -39,7 +39,7 @@ const MiddlePieGraph = ({ data }) => {
                 <YAxis />
                     <Tooltip formatter={
                         (value, name, props) => {
-                            console.log(props);
+                           // console.log(props);
                             return [value, legendObject[name]]
                         }
                     }
