@@ -68,11 +68,8 @@ public class WordService {
             if (words.getKeywordList().size() > 20) {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
-            List<String> keywords = new ArrayList<>();
-            for (WordApiResponse w : words.getKeywordList()) {
-                keywords.add(w.getRelKeyword());
-            }
-            SearchFlowVO searchFlowVO = cachedWordService.getDataTrend(word, keywords.toArray(new String[0]),
+
+            SearchFlowVO searchFlowVO = cachedWordService.getDataTrend(word,
                 clientId,
                 clientSecret);
             if (searchFlowVO == null) {
@@ -87,7 +84,7 @@ public class WordService {
 //            System.out.println(twit);
             long mention =
                 redisUtil.get(word) == null ? 0 : Long.parseLong((String) redisUtil.get(word));
-            searchDto = new SearchDto(words, searchFlowVO, mention,twit);
+            searchDto = new SearchDto(words, searchFlowVO, mention, twit);
 
         } catch (Exception e) {
             e.printStackTrace();
