@@ -43,6 +43,7 @@ public class CachedWordService {
     @Cacheable(key = "#mainWord", value = "trend")
     public SearchFlowVO getDataTrend(String mainWord, String clientId,
         String clientSecret) throws JsonProcessingException {
+        log.info("mainWord : " + mainWord);
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
