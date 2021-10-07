@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import styles from '../../styles/GraphComponent.module.scss';
 
 interface DataInterface {
   name: string,
@@ -31,7 +32,20 @@ const CustomizedAxisTick = (props) => {
 
   return (
     <g>
-          <text x={x} y={y} dx={15} dy={20} textAnchor="end" fill="#666">
+          <text x={x} y={y}  dy={18} className={styles.xAxisText} textAnchor="middle" fill="#666">
+        {payload.value}
+      </text>
+    </g>
+  );
+}
+
+const CustomizedYAxisTick = (props) => {
+     
+  const { x, y, stroke, payload } = props;
+
+  return (
+    <g>
+          <text x={x} y={y} dx={-8} dy={5} className={styles.xAxisText} textAnchor="end" fill="#666">
         {payload.value}
       </text>
     </g>
@@ -60,7 +74,7 @@ const GraphComponent = ({ data, styles }) => {
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
-            <YAxis />
+            <YAxis tick={<CustomizedYAxisTick />}/>
             {/* <Tooltip content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />}  /> */}
             <Tooltip />
             <Line

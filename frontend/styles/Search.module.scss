@@ -172,6 +172,13 @@
     background: white;
 }
 
+.mentions_analysis_third_box_2_text {
+    font-family: pretendard500;
+    font-size: 0.75vw;
+    color: #a9a8b0;
+    margin-left: 2px;
+}
+
 #mentions_analysis_title{
     font-size: 1.3vw;
     font-family: esamanru;
@@ -359,7 +366,7 @@
     background-color: #EFF0F3;
     border-radius: 10px;
     padding: 1.3vh 0.78vw;
-    margin: 0px 0.41vw 0px 0px;
+    margin: 0px 0.55vw 0px 0px;
     width: 89%;
     color: #333;
     font-size: 0.78vw;
@@ -371,7 +378,7 @@
 }
 
 .twit_box:hover {
-    cursor: pointer;
+    // cursor: pointer;
 }
 
 .mentions_analysis_third_box_2_dataBox {

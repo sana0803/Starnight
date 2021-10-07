@@ -9,12 +9,25 @@ const CustomizedAxisTick = (props) => {
   
       return (
         <g>
-              <text x={x} y={y} dx={15} dy={20} textAnchor="end" fill="#666">
+              <text x={x} y={y} dy={18} textAnchor="middle" className={styles.xAxisText} fill="#666">
             {payload.value}
           </text>
         </g>
       );
 }
+
+const CustomizedYAxisTick = (props) => {
+     
+    const { x, y, stroke, payload } = props;
+  
+    return (
+      <g>
+            <text x={x} y={y} dx={-8} dy={5} className={styles.xAxisText} textAnchor="end" fill="#666">
+          {payload.value}
+        </text>
+      </g>
+    );
+  }
 const MiddlePieGraph = ({ data }) => {
     
     const { relKeyword,
@@ -50,7 +63,7 @@ const MiddlePieGraph = ({ data }) => {
                     <XAxis dataKey="relKeyword"
                         tick={<CustomizedAxisTick />}
                     />
-                <YAxis />
+                <YAxis tick={<CustomizedYAxisTick />}/>
                     <Tooltip formatter={
                         (value, name, props) => {
                            // console.log(props);
