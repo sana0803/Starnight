@@ -47,7 +47,7 @@ public class CachedWordService {
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-        requestHeaders.put("Content-Type", "application/json");
+        requestHeaders.put("Content-Type", "application/json;charset=UTF-8");
         JsonObject requestBody = new JsonObject();
         requestBody.addProperty("startDate", "2021-01-01");
         requestBody.addProperty("endDate", "2021-09-30");

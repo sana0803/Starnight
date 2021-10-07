@@ -22,7 +22,6 @@ public class DataLabHttp {
 
         try {
             con.setRequestMethod("POST");
-            log.info("DataLabHttp Encoding" + con.getContentEncoding());
             for (Map.Entry<String, String> header : requestHeaders.entrySet()) {
                 con.setRequestProperty(header.getKey(), header.getValue());
             }
