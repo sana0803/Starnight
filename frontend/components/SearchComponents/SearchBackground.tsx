@@ -1,9 +1,9 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
-import pcIcon from '../../images/pc.svg';
-import mobileIcon from '../../images/mobile.svg';
-import graphIcon from '../../images/graph.svg';
+// import pcIcon from '../../images/pc.svg';
+// import mobileIcon from '../../images/mobile.svg';
+// import graphIcon from '../../images/graph.svg';
 import twitterIcon from '../../images/twitter.png';
 import PcIcon from '../../images/pc.svg';
 import MobileIcon from '../../images/mobile.svg';
@@ -62,13 +62,8 @@ const SearchBackground = () => {
   const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
   // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
-<<<<<<< HEAD
-  console.log(data)
-  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
-=======
   //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;
->>>>>>> 33df674d935c458ee65ac31c5149378ccaa0076b
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
