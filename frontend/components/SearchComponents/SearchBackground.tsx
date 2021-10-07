@@ -12,6 +12,7 @@ import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable'
 import React from 'react';
 import GraphComponent from './GraphComponent';
+import MiddlePieGraph from './MiddlePieGraph';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -29,7 +30,13 @@ const SearchBackground = () => {
   const router = useRouter();
   let paramData: string | undefined | string[] = '';
   if (router.query) {
-    paramData = router.query.word;
+
+    if (router.query.word === '') {
+      paramData = '한복'
+    }
+    else {
+      paramData = router.query.word;
+    }
   }
   else {
     paramData = '소고기';
@@ -40,8 +47,8 @@ const SearchBackground = () => {
   const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
-  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
@@ -169,16 +176,12 @@ const SearchBackground = () => {
               <div id={styles.mentions_analysis_second_box_2_title}>
                 연관 검색어 노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
-                {keywordList &&
-                    keywordList.map(({ relKeyword, monthlyPcQcCnt, monthlyMobileQcCnt,
-                      monthlyAvePcClkCnt, monthlyAveMobileClkCnt, monthlyAvePcCtr,
-                      monthlyAveMobileCtr, plAvgDepth
-                    }, index) => {
-                      return <div key={ index } className
-                        ={styles.mentions_analysis_second_box_2_data}>
-                        {relKeyword} / {monthlyPcQcCnt} / {monthlyMobileQcCnt} / { plAvgDepth}
-                      </div>
-                  })
+                {keywordList ?
+                   <MiddlePieGraph data={
+                        keywordList
+                      } />
+                   :
+                  <></>
                 }
                 </div>
               
