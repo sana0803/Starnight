@@ -5,10 +5,11 @@ import pcIcon from '../../images/pc.svg';
 import mobileIcon from '../../images/mobile.svg';
 import graphIcon from '../../images/graph.svg';
 import twitterIcon from '../../images/twitter.png';
+import PcIcon from '../../images/pc.svg';
+import MobileIcon from '../../images/mobile.svg';
+import GraphIcon from '../../images/graph.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import axios from 'axios';
-import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable'
 import React from 'react';
 import GraphComponent from './GraphComponent';
@@ -113,7 +114,8 @@ const SearchBackground = () => {
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    <Image src={pcIcon} alt="pc"  />
+                    {/* <Image src={pcIcon} alt="pc" /> */}
+                    <PcIcon />
                   </div>
                 </div>
                 <div className={styles.first_line_titles}>월간 PC 검색량</div>
@@ -126,7 +128,8 @@ const SearchBackground = () => {
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    <Image src={mobileIcon} alt="mobile" />
+                    {/* <Image src={mobileIcon} alt="mobile" /> */}
+                    <MobileIcon />
                   </div>
                 </div>
                 <div className={styles.first_line_titles}>월간 모바일 검색량</div>
@@ -139,7 +142,8 @@ const SearchBackground = () => {
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    <Image src={graphIcon} alt="graph" />   
+                    {/* <Image src={graphIcon} alt="graph" /> */}
+                    <GraphIcon />
                   </div>         
                 </div>
                 <div className={styles.first_line_titles}>키워드 경쟁력</div>
@@ -193,7 +197,8 @@ const SearchBackground = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    <div><Image src={pcIcon} alt="pc" /></div>
+                    {/* <div><Image src={pcIcon} alt="pc" /></div> */}
+                    <div><PcIcon /></div>
                     <div>
                       <div>PC 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
@@ -203,7 +208,8 @@ const SearchBackground = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    <div><Image src={mobileIcon} alt="mobile" /></div>
+                    {/* <div><Image src={mobileIcon} alt="mobile" /></div> */}
+                    <div><MobileIcon /></div>
                     <div>
                       <div>모바일 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
