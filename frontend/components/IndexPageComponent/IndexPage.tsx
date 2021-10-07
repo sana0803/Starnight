@@ -72,7 +72,7 @@ const IndexPage: NextPage = () => {
         setIsLastScroll(true);
       }
       else {
-        mainText.current.style.padding = "10vh 29vh 5vh 29vh";
+        mainText.current.style.padding = "10vh 29vw 5vh 29vw";
         setIsLastScroll(false);
       }
 
