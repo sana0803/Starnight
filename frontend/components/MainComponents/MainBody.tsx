@@ -29,8 +29,8 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
-    // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
+    //const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
+    const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
  
     const textInput = React.useRef<any>();
     const router = useRouter();
@@ -45,7 +45,7 @@ const MainBody = () => {
 
     if (data) {
         datas = data?.keywords;
-        console.log(data.keywords)
+        //console.log(data.keywords)
     }
     
     const goEnter = (e) => {
@@ -58,7 +58,7 @@ const MainBody = () => {
         
         
         let target = event.target.innerText.replace(/ /g, "");
-        console.log(target);
+        //console.log(target);
 
         if (target.length === 5 && target.includes('>')) {
             window.open(e.news_url, e.news_title,
