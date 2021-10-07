@@ -1,13 +1,3 @@
-@mixin font-face($name, $file, $weight: normal, $style: normal) { 
-@font-face {
-    font-family: "#{$name}";
-    src: url('../fonts/esamanru_medium.ttf');
-    font-weight: $weight; font-style: $style; 
-}
-}
-
-@include font-face(esamanru, '', '', '');
-
 @function multiple-box-shadow($n){
   $value: '#{random(2000)}px #{random(20000)}px #FFF';
   @for $i from 2 through $n{

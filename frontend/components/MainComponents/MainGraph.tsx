@@ -104,7 +104,9 @@ const MainGraph = ({ data }) => {
                             console.log(props)
                             const { payload } = props;
                             return [payload.name, payload.grade]
-                        }} />
+                        }}
+                        cursor={false}
+                    />
                     {/* /<Legend /> */}
                     <Bar dataKey="traffic" >
                     {

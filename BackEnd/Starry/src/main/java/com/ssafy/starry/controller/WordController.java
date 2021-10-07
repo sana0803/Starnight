@@ -36,7 +36,7 @@ public class WordController {
             throw new WordNotValidException("Word not valid: not null && 1 <= word.length <= 10");
         }
 
-        log.info("검색한 단어 : " + word);
+        log.info("analysisWord input word : " + word);
         SearchDto words = wordService.getWordAnalysis(word);
         return ResponseEntity.ok(words);
     }

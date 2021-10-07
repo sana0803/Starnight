@@ -1,14 +1,3 @@
-@mixin font-face($name, $file, $weight: normal, $style: normal) { 
-    @font-face {
-        font-family: "#{$name}";
-        src: url($file);
-        font-weight: $weight; font-style: $style; 
-    }
-}
-    
-@include font-face(esamanru, '../fonts/esamanru_medium.ttf', '', '');
-@include font-face(pretendard, '../fonts/PretendardVariable.woff2', '', '');
-
 #headerBox {
     position:fixed;
     display: flex;

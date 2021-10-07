@@ -15,6 +15,9 @@ import useSWRImmutable from 'swr/immutable'
 import React from 'react';
 import GraphComponent from './GraphComponent';
 import MiddlePieGraph from './MiddlePieGraph';
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import ReactHover, { Trigger, Hover } from "react-hover";
+import ResultManual from './ResultManual';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -26,6 +29,13 @@ const fetcher = url => fetch(url, {
   let data = await res.json();
   return data;
 })
+
+const optionsCursorTrueWithMargin = {
+  followCursor: true,
+  shiftX: 20,
+  shiftY: 0
+};
+
 
 const SearchBackground = () => {
 
@@ -52,8 +62,13 @@ const SearchBackground = () => {
   const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
   // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
+<<<<<<< HEAD
   console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
+=======
+  //console.log(data)
+  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;
+>>>>>>> 33df674d935c458ee65ac31c5149378ccaa0076b
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
@@ -64,6 +79,10 @@ const SearchBackground = () => {
         });
     });
     rank = data?.rank;
+
+    if (rank && !(rank+'').includes('.')) {
+      rank = (rank+'').concat('.0');
+    }
   }
 
  //console.log(keywordList, ratios)
@@ -109,7 +128,8 @@ const SearchBackground = () => {
         </div>
 
         <div id={styles.mentions_analysis}>
-          <div id={ styles.mentions_analysis_title}>키워드 분석</div>
+          <div id={styles.mentions_analysis_title}>키워드 분석
+          </div>
           <div id={ styles.mentions_analysis_first_line }>
             <div id={styles.mentions_analysis_first_box_1}>
               <div className={styles.first_box_wrap}>
@@ -193,7 +213,16 @@ const SearchBackground = () => {
             </div>
             <div id={styles.mentions_analysis_second_box_3}>                
                 <div id={styles.mentions_analysis_second_box_3_title}>
-                  월간 클릭률
+                월간 클릭률
+                <ReactHover options={optionsCursorTrueWithMargin}>
+                <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon}/>
+                  {/* <TriggerComponent /> */}
+                </Trigger>
+                <Hover type="hover">
+                  <ResultManual />
+                </Hover>
+              </ReactHover>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
@@ -219,7 +248,8 @@ const SearchBackground = () => {
                 </div>
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
-                 플랫폼 언급량
+                플랫폼 언급량
+                <AiOutlineQuestionCircle className={styles.questionIcon}/>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>

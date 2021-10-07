@@ -1,14 +1,3 @@
-@mixin font-face($name, $file, $weight: 400, $style: normal) { 
-    @font-face {
-        font-family: "#{$name}";
-        src: url($file);
-        font-weight: $weight; font-style: $style; 
-    }
-}
-    
-@include font-face(esamanru, '../fonts/esamanru_medium.ttf', '', '');
-@include font-face(pretendard, '../fonts/PretendardVariable.woff2', '', '');
-
 #background {
     min-width: 1920px;
     min-height: 1080px;
@@ -216,9 +205,12 @@
     color: #2C2E43;    
 }
 
-.mentions_analysis_second_box_1_dataBox,  .mentions_analysis_second_box_2_dataBox{
+.mentions_analysis_second_box_1_dataBox {
     overflow-y: scroll;
     height: 370px;
+}
+.mentions_analysis_second_box_2_dataBox {
+   height: 370px; 
 }
 
 .mentions_analysis_second_box_1_data {
@@ -271,7 +263,7 @@
     margin-bottom: 5px;
 
     div:last-child > span {     
-        font-weight: 500;
+        font-family: esamanru300;
         font-size: 22px;
         line-height: 28px;
         color: #222;
@@ -379,3 +371,8 @@
     margin: auto 0;    
 }
 
+.questionIcon {
+    margin-left: 10px;
+    color: #2C2E43;
+    font-size: 17px;
+}

@@ -42,10 +42,10 @@ const MiddlePieGraph = ({ data }) => {
                             console.log(props);
                             return [value, legendObject[name]]
                         }
-                    }/>
-                    <Legend formatter={(value, entry, index) => (
-                        legendName[index]
-                )}/>
+                    }
+                        cursor={false}
+                    />
+                
                 <Bar dataKey="monthlyPcQcCnt" fill="#2C2E43" />
                 <Bar dataKey="monthlyMobileQcCnt" fill="#D7D7DD" />
                 </BarChart>
