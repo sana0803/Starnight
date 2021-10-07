@@ -16,7 +16,8 @@ import GraphComponent from './GraphComponent';
 import MiddlePieGraph from './MiddlePieGraph';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import ReactHover, { Trigger, Hover } from "react-hover";
-import ResultManual from './ResultManual';
+import ClickRateResultManual from './ClickRateResultManual';
+import MentionRateResultManual from './MentionRateResultManual';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -31,8 +32,8 @@ const fetcher = url => fetch(url, {
 
 const optionsCursorTrueWithMargin = {
   followCursor: true,
-  shiftX: 20,
-  shiftY: 0
+  shiftX: 25,
+  shiftY: -25
 };
 
 
@@ -195,10 +196,10 @@ const SearchBackground = () => {
                 연관 검색어 노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
                 {keywordList ?
-                   <MiddlePieGraph data={
+                  <MiddlePieGraph data={
                         keywordList
                       } />
-                   :
+                  :
                   <></>
                 }
                 </div>
@@ -209,12 +210,11 @@ const SearchBackground = () => {
                 <div id={styles.mentions_analysis_second_box_3_title}>
                 월간 클릭률
                 <ReactHover options={optionsCursorTrueWithMargin}>
-                <Trigger type="trigger">
-                <AiOutlineQuestionCircle className={styles.questionIcon}/>
-                  {/* <TriggerComponent /> */}
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon1}/>
                 </Trigger>
                 <Hover type="hover">
-                  <ResultManual />
+                  <ClickRateResultManual />
                 </Hover>
               </ReactHover>
                 </div>
@@ -243,7 +243,14 @@ const SearchBackground = () => {
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
                 플랫폼 언급량
-                <AiOutlineQuestionCircle className={styles.questionIcon}/>
+                <ReactHover options={optionsCursorTrueWithMargin}>
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon2}/>
+                </Trigger>
+                <Hover type="hover">
+                  <MentionRateResultManual />
+                </Hover>
+              </ReactHover>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>

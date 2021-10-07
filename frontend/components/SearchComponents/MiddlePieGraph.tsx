@@ -28,10 +28,10 @@ const MiddlePieGraph = ({ data }) => {
                 height={300}
                 data={sortedThreeData }
                 margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
+                    top: 10,
+                    right: 35,
+                    left: 35,
+                    bottom: 10,
                 }}
                 >
                 <CartesianGrid strokeDasharray="3 3" />
