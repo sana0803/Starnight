@@ -3,6 +3,18 @@ import React, { memo } from "react";
 import styles from '../../styles/MiddlePieGraph.module.scss';
 
 
+const CustomizedAxisTick = (props) => {
+     
+      const { x, y, stroke, payload } = props;
+  
+      return (
+        <g>
+              <text x={x} y={y} dx={15} dy={20} textAnchor="end" fill="#666">
+            {payload.value}
+          </text>
+        </g>
+      );
+}
 const MiddlePieGraph = ({ data }) => {
     
     const { relKeyword,
@@ -26,7 +38,7 @@ const MiddlePieGraph = ({ data }) => {
                 <BarChart
                 width={500}
                 height={300}
-                data={sortedThreeData }
+                data={sortedThreeData}
                 margin={{
                     top: 10,
                     right: 35,
@@ -35,7 +47,9 @@ const MiddlePieGraph = ({ data }) => {
                 }}
                 >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="relKeyword" />
+                    <XAxis dataKey="relKeyword"
+                        tick={<CustomizedAxisTick />}
+                    />
                 <YAxis />
                     <Tooltip formatter={
                         (value, name, props) => {

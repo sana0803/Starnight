@@ -1,18 +1,19 @@
 #searchBox {
     position: relative;
-    width: 26vw;
+    width: 24vw;
     height: 4.2vh;
     top: 49.3vh;
-    left: 20.3vw;
+    left: 22vw;
+    border-radius: 15px;
     box-shadow: 4px 4px 15px 0px #3F40461A;
 }
 
 #searchInput {
     padding: 1.3vh;
-    width: 26vw;
+    width: 24vw;
     height: 4vh;
     padding-left: 2vw;
-    border-radius: 10px;
+    border-radius: 15px;
     border: none;
 }
 
@@ -25,11 +26,11 @@
 }
 
 #keyWordList {
-    width: 23.5vw;
+    width: 24vw;
     height: 37vh;
     position: relative;
     top: 52.8vh;
-    left: 22.7vw;
+    left: 22vw;
     font-family: pretendard;
     display: inline-flex;
     flex-wrap: wrap;
@@ -73,31 +74,31 @@
 #keyWordTitle {
     width: 100%;
     font-family: pretendard600;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 0.93vw;
+    line-height: 2.03vh;
     letter-spacing: -0.03em;
     padding: 2vh 21vh 4vh 2.5vh;
     display: flex;
 }
 
 .questionIcon1 {
-    margin-left: 7px;
+    margin-left: 0.36vw;
     color: #2C2E43;
-    font-size: 17px;
+    font-size: 0.9vw;
 }
 
 #keyWordTitle > div > div:last-child {
     left:10.3vw !important;
     top: 0.7vh !important;
     font-family: pretendard300;
-    font-size: 14px;
-    line-height: 17px; 
+    font-size: 0.72vw;
+    line-height: 0.88vw; 
     display: flex;
     align-items: center;
     letter-spacing: -0.03em;
     width: 15vw;
     height: 5vh;
-    margin-left: 13px;
+    margin-left: 0.67vw;
 }
 
 .hoverBox{

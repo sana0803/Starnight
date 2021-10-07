@@ -68,11 +68,11 @@ const IndexPage: NextPage = () => {
       if (isEndOfPage) {
         circleBackground.current.style.height = `100vh`;
         // mainText.current.style.margin= "15vh 75vh 20vh";
-        mainText.current.style.height= "49.3vh";
+        mainText.current.style.height= "39vh";
         setIsLastScroll(true);
       }
       else {
-        mainText.current.style.padding = "17vh 29vh";
+        mainText.current.style.padding = "10vh 29vh";
         setIsLastScroll(false);
       }
 

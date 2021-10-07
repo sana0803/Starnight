@@ -25,6 +25,18 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
+const CustomizedAxisTick = (props) => {
+     
+  const { x, y, stroke, payload } = props;
+
+  return (
+    <g>
+          <text x={x} y={y} dx={15} dy={20} textAnchor="end" fill="#666">
+        {payload.value}
+      </text>
+    </g>
+  );
+}
 
 const GraphComponent = ({ data, styles }) => {
 
@@ -34,7 +46,7 @@ const GraphComponent = ({ data, styles }) => {
             height: styles.height
         }}>
             
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="90%">
             <LineChart
             width={500}
             height={300}
@@ -47,11 +59,10 @@ const GraphComponent = ({ data, styles }) => {
             }}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
             <YAxis />
             {/* <Tooltip content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />}  /> */}
             <Tooltip />
-            <Legend verticalAlign="bottom" height={36} />
             <Line
               name="검색량 추이"
             type="monotone"
