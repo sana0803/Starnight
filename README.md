@@ -4,9 +4,11 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 ## Quick Links 
 
+------
 
 
-- [PJT명](#프로젝트명) 
+
+- [PJT명](#프로젝트명)
 
 - [프로젝트 목표](#프로젝트-목표)
 
@@ -18,19 +20,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 
 
-
-
-------
-
-
-
-
-
-
-
 # 프로젝트 목표
-
-
 
 ------
 
@@ -46,27 +36,17 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 
 
-
-
 # 기술 스택
 
+---
 
-
-------
-
-
-
-
+![image-20211007173306543](C:\Users\kimgd\AppData\Roaming\Typora\typora-user-images\image-20211007173306543.png)
 
 
 
 # WIKI
 
-
-
 ------
-
-
 
 프로젝트의 모든 정보는 [WIKI](https://lab.ssafy.com/s05-bigdata-dist/S05P21B103/-/wikis/Home)를 통해 참고하실 수 있습니다.
 
@@ -74,9 +54,11 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 # Architecture
 
-
-
 ---
+
+![Image Pasted at 2021-10-6 20-58](C:\Users\kimgd\OneDrive\바탕 화면\새 폴더\Image Pasted at 2021-10-6 20-58.png)
+
+
 
 # Writer
 
