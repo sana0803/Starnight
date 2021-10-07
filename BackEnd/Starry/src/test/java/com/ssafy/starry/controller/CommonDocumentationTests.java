@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfig
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.starry.CustomResponseFieldsSnippet;
 import com.ssafy.starry.api.controller.EnumViewController;
+import com.ssafy.starry.common.utils.notification.NotificationManager;
 import java.util.Arrays;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.FieldDescriptor;
@@ -39,8 +41,12 @@ class CommonDocumentationTests {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private NotificationManager notificationManager;
+
     @Autowired
     ObjectMapper objectMapper;
+
     @BeforeEach
     public void setup(WebApplicationContext webApplicationContext,
         RestDocumentationContextProvider restDocumentation) {
