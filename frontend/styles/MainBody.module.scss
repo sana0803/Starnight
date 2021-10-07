@@ -35,6 +35,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border-radius: 20px;
+    background-color: aquamarine;
     box-shadow: 4px 4px 15px 0px #3F40461A;
 }
 
@@ -45,13 +46,21 @@
 }
 
 .dataKeyword{
-    padding : 10px;
-    //width: 100%;
-    cursor: pointer;
+    padding : 10px 6px;
     display:flex;
     justify-content: space-between;
 }
 
+.dataKeyWordTitle {
+    font-family: pretendard500;
+    color: #2C2E43;
+}
+
+.dataKeyWordTitle:hover {
+    // background-color: #2C2E43; 
+    color: #FFD523;  
+    cursor: pointer;
+}
 
 .dataKeyWordLink {
     font-family: pretendard500;
@@ -59,16 +68,23 @@
     line-height: 16px;
     letter-spacing: -0.03em;
     color: #a9a8b0;
+    cursor: pointer;
     z-index: 2;
 }
 
-.dataKeyword:hover {
-    background-color: #2C2E43; 
-    color: #FFD523;  
-    padding : 10px;
-    //width: 100%;
+.dataKeyWordLink:hover {
+    font-family: pretendard500;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+    color: #2C2E43;
     cursor: pointer;
+    z-index: 2;
+    transform: translateX(4px);
+    transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
 }
+
+
 
 #keyWordTitle {
     width: 100%;
@@ -109,7 +125,7 @@
     width: 100%;
     height: 23vh;
     overflow-y: scroll;
-    margin: 0vh 1.4vw 7vh 1.4vw;
+    margin: 0vh 1.4vw 5vh 1.4vw;
 }
 
 #keyWordTopList::-webkit-scrollbar {

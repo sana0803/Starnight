@@ -60,8 +60,8 @@ const SearchBackground = () => {
   const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
-  //const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   //console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;

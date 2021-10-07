@@ -29,8 +29,8 @@ const fetcher = url => fetch(url, {
 
 const MainBody = () => {
 
-    //const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
-    const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
+    const { data, error } = useSWRImmutable(`http://localhost:3000/mention`, fetcher);
+    // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/trend`, fetcher);
  
     const textInput = React.useRef<any>();
     const router = useRouter();
@@ -112,11 +112,9 @@ const MainBody = () => {
                         onClick={(event)=>getNews(e, event)}
                     >
                         <div className={styles.dataKeyWordTitle}># {`${e.title}`}</div>
-                        <div className={styles.dataKeyWordLink}
-                            
-                        >관련 기사 &#62;</div>
-                        
-                        </div>
+                        <div className={styles.dataKeyWordLink}                            
+                        >관련 기사 &#62;</div>                        
+                    </div>
                 })}
                 </div>
             </div>
