@@ -19,6 +19,7 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 import ReactHover, { Trigger, Hover } from "react-hover";
 import ClickRateResultManual from './ClickRateResultManual';
 import MentionRateResultManual from './MentionRateResultManual';
+import KeywordSearchManual from './KeywordSearchManual';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -86,7 +87,7 @@ const SearchBackground = () => {
   const submitInput = () => {
     //console.log(textInput.current.value)
     setSearchText(textInput.current.value.replace(/ /g, "").trim());
-    textInput.current.value = '';
+    //textInput.current.value = '';
   }
 
   const goEnter = (e) => {
@@ -97,7 +98,7 @@ const SearchBackground = () => {
   const goSearch = (value) => {
     // console.log(value)
     setSearchText(value.replace(/ /g, "").trim());
-    textInput.current.value = '';
+    textInput.current.value = value.replace(/ /g, "").trim();
   }
 
   const moveHome = () => {
@@ -125,6 +126,14 @@ const SearchBackground = () => {
 
         <div id={styles.mentions_analysis}>
           <div id={styles.mentions_analysis_title}>키워드 분석
+          <ReactHover options={optionsCursorTrueWithMargin}>
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon1}/>
+                </Trigger>
+                <Hover type="hover">
+                  <KeywordSearchManual />
+                </Hover>
+              </ReactHover>
           </div>
           <div id={ styles.mentions_analysis_first_line }>
             <div id={styles.mentions_analysis_first_box_1}>
@@ -273,7 +282,11 @@ const SearchBackground = () => {
               </div>
                 
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
-              {data &&
+                {data ?
+
+                  (data.twit.length !== 0 ? 
+
+
                 data.twit.map((twit, index ) => {
                   return (<div key={index} className ={styles.twit_wrap}>
                     <div className={styles.twit_icon}>
@@ -284,8 +297,19 @@ const SearchBackground = () => {
                         "The following media includes potentially sensitive content. Change settings View")}
                     </div>
                   </div>
+                    
                   )                    
                 })
+                   : 
+                  <>
+                    앗! 아직 트윗을 찾지 못했어요.
+                    </>
+                  )
+                  :
+                  
+                    <>
+                      트윗을 불러오는 중입니다.
+                    </>
               }
               </div>
               
