@@ -29,17 +29,24 @@ const LabelListComponent = (props) => {
 
 const CustomizedYAxis = (props) => {
     //console.log(props)
-    const { x, y,index } = props;
+    const { x, y, index } = props;
+    
+    const filteredProps = props;
+
+    delete filteredProps['tickformatter']
+    delete filteredProps['visibletickscount']
+    delete filteredProps['verticalanchor']
+
     return (
         <>
-            {<FaMedal {...props} x={x - 27} y={y - 27}
+            {<FaMedal x={x - 27} y={y - 27}
                 style={{
                     fill: `${color[index]}`,
                     fontSize: "30px"
                 }}
             />}
     
-            <text {...props} fill={`${color[index]}`} x={55+2*index}>
+            <text fill={`${color[index]}`} x={x-23} y={y}>
                 
                 <tspan dy="1.3em">{props.payload.value}</tspan>
             </text>
@@ -78,7 +85,6 @@ const MainGraph = ({ data }) => {
             }
         });
 
-        //console.log(data)
     }
 
     return (
@@ -101,7 +107,6 @@ const MainGraph = ({ data }) => {
                             x: 500, y: 150
                         }}
                         formatter={(value, name, props) => {
-                            console.log(props)
                             const { payload } = props;
                             return [payload.name, payload.grade]
                         }}
