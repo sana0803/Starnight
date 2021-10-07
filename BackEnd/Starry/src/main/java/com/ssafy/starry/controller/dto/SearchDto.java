@@ -32,6 +32,7 @@ public class SearchDto {
                 month++;
             }
             ratios.add(d.ratio);
+            month++;
         }
         while (month < 9) {
             ratios.add((double) 0);
