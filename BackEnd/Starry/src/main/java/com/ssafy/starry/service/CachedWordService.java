@@ -40,22 +40,19 @@ public class CachedWordService {
             .readValue(responseBody, WordVO.class);
     }
     @Cacheable(key="#mainWord", value = "trend")
-    public SearchFlowVO getDataTrend(String mainWord, String[] keywords, String clientId,
+    public SearchFlowVO getDataTrend(String mainWord, String clientId,
         String clientSecret) throws JsonProcessingException {
         System.out.println("getDataTrend()");
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         requestHeaders.put("Content-Type", "application/json");
-//        String requestBody =
         JsonObject requestBody = new JsonObject();
         requestBody.addProperty("startDate", "2021-01-01");
-        requestBody.addProperty("endDate", "2021-09-28");
+        requestBody.addProperty("endDate", "2021-09-30");
         requestBody.addProperty("timeUnit", "month");
         JsonArray keywordList = new JsonArray();
-        for (String word : keywords) {
-            keywordList.add(word);
-        }
+        keywordList.add(mainWord);
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
         keywordGroup.add("keywords", keywordList);
