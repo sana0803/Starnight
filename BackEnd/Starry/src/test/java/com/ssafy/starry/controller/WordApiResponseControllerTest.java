@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfigurer.sharedHttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.starry.common.utils.notification.NotificationManager;
 import com.ssafy.starry.common.utils.rss.FeedMessage;
 import com.ssafy.starry.controller.dto.SearchDto;
 import com.ssafy.starry.controller.dto.SearchFlowVO;
@@ -36,15 +37,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-
 
 @ExtendWith(RestDocumentationExtension.class)
 @WebMvcTest(controllers = WordController.class)
@@ -52,6 +54,9 @@ class WordApiResponseControllerTest {
 
     @MockBean
     private WordService wordService;
+
+    @MockBean
+    private NotificationManager notificationManager;
 
     @Autowired
     private MockMvc mockMvc;
