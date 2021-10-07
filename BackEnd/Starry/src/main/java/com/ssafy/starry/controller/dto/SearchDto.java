@@ -1,9 +1,6 @@
 package com.ssafy.starry.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.ssafy.starry.controller.dto.WordVO.WordApiResponse;
-import java.beans.ConstructorProperties;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.ssafy.starry.controller.dto.SearchFlowVO.Data;
@@ -20,8 +17,6 @@ public class SearchDto {
     private long mention;
     private List<String> twit;
 
-//    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
-//    @JsonCreator
     public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention, List<String> twit) {
         keywordList = wordVO.getKeywordList();
         timeUnit = searchFlowVO.getTimeUnit();
@@ -55,8 +50,6 @@ public class SearchDto {
         this.twit = twit;
     }
 
-//    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
-//    @JsonCreator
     public SearchDto(WordVO wordVO, List<Double> ratios, long mention, List<String> twit) {
         keywordList = wordVO.getKeywordList();
         timeUnit = "month";
@@ -66,8 +59,7 @@ public class SearchDto {
         this.twit = twit;
     }
 
-//    @JsonCreator
-    public SearchDto(){
+    public SearchDto() {
         keywordList = new ArrayList<>();
         ratios = new ArrayList<>();
         twit = new ArrayList<>();

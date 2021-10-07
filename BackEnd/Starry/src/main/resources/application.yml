@@ -34,6 +34,10 @@ logging:
   charset:
     console: UTF-8
 
+notification:
+  mattermost:
+    enabled: true
+    webhook-url: "https://meeting.ssafy.com/hooks/mq9cont4itymjxw84u1fydg3wh"
 
 
 
