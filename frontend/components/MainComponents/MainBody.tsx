@@ -112,11 +112,9 @@ const MainBody = () => {
                         onClick={(event)=>getNews(e, event)}
                     >
                         <div className={styles.dataKeyWordTitle}># {`${e.title}`}</div>
-                        <div className={styles.dataKeyWordLink}
-                            
-                        >관련 기사 &#62;</div>
-                        
-                        </div>
+                        <div className={styles.dataKeyWordLink}                            
+                        >관련 기사 &#62;</div>                        
+                    </div>
                 })}
                 </div>
             </div>

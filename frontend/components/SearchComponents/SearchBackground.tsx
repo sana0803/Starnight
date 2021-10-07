@@ -12,7 +12,7 @@ import TwitterIcon from '../../images/twitter_orig.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useSWRImmutable from 'swr/immutable'
-import React from 'react';
+import React, { useEffect } from 'react';
 import GraphComponent from './GraphComponent';
 import MiddlePieGraph from './MiddlePieGraph';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -40,7 +40,8 @@ const optionsCursorTrueWithMargin = {
 
 
 const SearchBackground = () => {
-
+  
+  const textInput = React.useRef<any>();
   const router = useRouter();
   let paramData: string | undefined | string[] = '';
   if (router.query) {
@@ -55,10 +56,10 @@ const SearchBackground = () => {
   else {
     paramData = '소고기';
   }
+  
   //console.log(paramData);
 
   const [searchText, setSearchText] = React.useState(paramData);
-  const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
   const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
@@ -106,6 +107,10 @@ const SearchBackground = () => {
     router.push(`/`);
     
   };
+
+  useEffect(()=>{
+    textInput.current.value = paramData;
+  }, [])
     return (
       <div id={styles.background}>
         
@@ -286,7 +291,6 @@ const SearchBackground = () => {
 
                   (data.twit.length !== 0 ? 
 
-
                 data.twit.map((twit, index ) => {
                   return (<div key={index} className ={styles.twit_wrap}>
                     <div className={styles.twit_icon}>
@@ -296,8 +300,7 @@ const SearchBackground = () => {
                       { twit.split(
                         "The following media includes potentially sensitive content. Change settings View")}
                     </div>
-                  </div>
-                    
+                  </div>                    
                   )                    
                 })
                    : 
@@ -317,7 +320,11 @@ const SearchBackground = () => {
             </div>
             <div id={styles.mentions_analysis_third_box_2}>
               <div id={styles.mentions_analysis_third_box_2_title}>
-                검색량 추이 (단위:{  data &&  data.timeUnit }) </div>
+                검색량 추이
+                <span className={styles.mentions_analysis_third_box_2_text}>
+                  (단위: { data &&  data.timeUnit })
+                </span>
+              </div>
                 
                 <GraphComponent data={graphData}
                   styles={{
