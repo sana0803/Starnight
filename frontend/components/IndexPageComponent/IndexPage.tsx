@@ -54,6 +54,7 @@ const IndexPage: NextPage = () => {
       else if((545 - scrollTop <= 0)){
         circleBackground.current.style.marginLeft = `0px`;
         circleBackground.current.style.borderRadius = `0%`;
+        circleBackground.current.style.marginTop = `${110}vh`;
         // circleBackground.current.style.marginTop = `${0}px`;
       }``
       
@@ -71,7 +72,7 @@ const IndexPage: NextPage = () => {
         setIsLastScroll(true);
       }
       else {
-        mainText.current.style.padding = "23vh 29vh";
+        mainText.current.style.padding = "17vh 29vh";
         setIsLastScroll(false);
       }
 
