@@ -41,12 +41,12 @@ const IndexPage: NextPage = () => {
       if (!circleBackground.current) {
         return;
       }
-      circleBackground.current.style.width = `${830+ 2* scrollTop}px`;
-      circleBackground.current.style.height = `${830 + 2* scrollTop}px`;
+      circleBackground.current.style.width = `${100}vw`;
+      circleBackground.current.style.height = `${100}vh`;
       
       if (545 - scrollTop > 0) {
         
-        circleBackground.current.style.marginLeft = `${545 - scrollTop}px`;
+        //circleBackground.current.style.marginLeft = `${37 - scrollTop}vw`;
         circleBackground.current.style.borderRadius = `50%`;
         circleBackground.current.style.marginTop = `${110}vh`;
         
@@ -65,12 +65,13 @@ const IndexPage: NextPage = () => {
       }
       
       if (isEndOfPage) {
-        circleBackground.current.style.height = `1080px`;
-        mainText.current.style.margin = "15vh 75vh 20vh";
+        circleBackground.current.style.height = `100vh`;
+        // mainText.current.style.margin= "15vh 75vh 20vh";
+        mainText.current.style.height= "49.3vh";
         setIsLastScroll(true);
       }
       else {
-        mainText.current.style.margin = "25vh 75vh";
+        mainText.current.style.padding = "23vh 29vh";
         setIsLastScroll(false);
       }
 

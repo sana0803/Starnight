@@ -1,13 +1,14 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
-import pcIcon from '../../images/pc.svg';
-import mobileIcon from '../../images/mobile.svg';
-import graphIcon from '../../images/graph.svg';
+// import pcIcon from '../../images/pc.svg';
+// import mobileIcon from '../../images/mobile.svg';
+// import graphIcon from '../../images/graph.svg';
 import twitterIcon from '../../images/twitter.png';
 import PcIcon from '../../images/pc.svg';
 import MobileIcon from '../../images/mobile.svg';
 import GraphIcon from '../../images/graph.svg';
+import TwitterIcon from '../../images/twitter_orig.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useSWRImmutable from 'swr/immutable'
@@ -166,7 +167,7 @@ const SearchBackground = () => {
                 <div>
                   { rank && rank }
                 </div>
-                <span className={styles.first_box_3_txt_1}> / 5.0 </span>
+                <span className={styles.first_box_3_txt_1}>/ 5.0 </span>
                 <span className={styles.first_box_3_txt_2}>
                   ({ keywordList && keywordList[0].compIdx })
                 </span>                
@@ -185,7 +186,7 @@ const SearchBackground = () => {
                       return <div key={index} className
                         ={styles.mentions_analysis_second_box_1_data}
                         onClick={()=>goSearch(relKeyword)}
-                      >{relKeyword}</div>
+                      ># {relKeyword}</div>
                     })
                   }
                 </div>
@@ -272,7 +273,20 @@ const SearchBackground = () => {
               </div>
                 
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
-                미리보기 데이터
+              {data &&
+                data.twit.map((twit, index ) => {
+                  return (<div key={index} className ={styles.twit_wrap}>
+                    <div className={styles.twit_icon}>
+                      <TwitterIcon />
+                    </div>
+                    <div className={styles.twit_box}>
+                      { twit.split(
+                        "The following media includes potentially sensitive content. Change settings View")}
+                    </div>
+                  </div>
+                  )                    
+                })
+              }
               </div>
               
               

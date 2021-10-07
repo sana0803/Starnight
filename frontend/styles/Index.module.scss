@@ -17,7 +17,7 @@ $shadows-big:    multiple-box-shadow(100);
   // max-width: 1920px;
   // max-height: 2160px;
   overflow-x: hidden;
-  height: 1080*2px; // 아래로 화면이 추가될 때마다 곱해줘야 함
+  height: 200vh; // 아래로 화면이 추가될 때마다 곱해줘야 함
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   animation: slide 60s linear infinite;
 }
@@ -64,28 +64,26 @@ $shadows-big:    multiple-box-shadow(100);
 #mainText {
     position: fixed;
     z-index: 3;
-    width: 438px;
-    height: 195px;
+    width: 100vw;
+    height: 100vh;
     color: #fff;
     font-family: esamanru;
     font-style: normal;
     // font-weight: 300;
-    font-size: 56px;
-    line-height: 65px;
+    // font-size: 56px;
+    font-size: 3vw;
+    line-height: 3vw;
     text-align: center;
     letter-spacing: -0.03em;
-    margin: 25vh 75vh;
+    padding: 23vh 29vw;
 }
 
 #firstSection{
     position: absolute;
-    width: 830px;
-    height: 830px;
-    max-height: 1080px;
-    max-width: 1920px;
+    width: 100vw;
+    height: 100vh;
     background: white;
     border-radius: 50%;
-    margin: 1000px 545px 0 545px;
     overflow: hidden;
     // animation: firstSection 50s linear infinite;
 }
