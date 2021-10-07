@@ -223,14 +223,23 @@
 
 .mentions_analysis_second_box_1_data {
     // width: 100%;
-    background-color: #ECEDEE;
-    margin: 5px;
-    border: 2px solid lightgray;
-    border-radius: 10px;
+    background-color: #fff;
+    margin: 3px 5px;
+    font-weight: 600;
+    color: #2C2E43;
+    border-radius: 1px;
 }
 .mentions_analysis_second_box_1_data:hover {
-    background-color: gray;
+    background-color: #2C2E43; 
+    color: #FFD523; 
+    
     cursor: pointer;
+    border-radius: 1px;
+}
+
+.mentions_analysis_second_box_1_data:active {
+    background-color: #ECEDEE;
+    color: #2C2E43;
 }
 
 .mentions_analysis_second_box_1_dataBox::-webkit-scrollbar {
@@ -311,29 +320,42 @@
     height: 200px;
     text-align: center;
     font-family: pretendard;
-    margin: 0 27px 0 27px;
+    margin: 0 0px 0 27px;
     // padding: 40px;
     font-size: 16px;    
-    background-color: #ffc5db;
-}
-
-.twit_icon {
-    display: inline-block;
-    background-color: yellowgreen;
-    width: 30px;
-    height: 100%;
+    // background-color: #eee;
 }
 
 .twit_wrap {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    width: 100%;
+    // background-color: #ffc5db;
+    margin: 0 0px 10px 0;
+}
+
+.twit_icon {
+    margin-top: 6px;
+    // background-color: yellowgreen;
+    width: 7%;
+    height: 34px;
+}
+
+.twit_box {
     display: inline-block;
     background-color: #EFF0F3;
     border-radius: 10px;
     padding: 15px;
-    margin: 0px 0 10px 0px;
-    width: 370px;
+    margin: 0px 8px 0px 0px;
+    width: 89%;
     color: #333;
     font-size: 15px;
     text-align: left;  
+}
+
+.twit_box:hover {
+    cursor: pointer;
 }
 
 .mentions_analysis_third_box_2_dataBox {

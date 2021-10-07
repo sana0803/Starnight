@@ -8,6 +8,7 @@ import twitterIcon from '../../images/twitter.png';
 import PcIcon from '../../images/pc.svg';
 import MobileIcon from '../../images/mobile.svg';
 import GraphIcon from '../../images/graph.svg';
+import TwitterIcon from '../../images/twitter_orig.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useSWRImmutable from 'swr/immutable'
@@ -48,8 +49,8 @@ const SearchBackground = () => {
   const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   console.log(data)
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
@@ -63,7 +64,6 @@ const SearchBackground = () => {
         });
     });
     rank = data?.rank;
-    // twit = data?.twit;
   }
 
  //console.log(keywordList, ratios)
@@ -170,7 +170,7 @@ const SearchBackground = () => {
                       return <div key={index} className
                         ={styles.mentions_analysis_second_box_1_data}
                         onClick={()=>goSearch(relKeyword)}
-                      >{relKeyword}</div>
+                      ># {relKeyword}</div>
                     })
                   }
                 </div>
@@ -219,7 +219,7 @@ const SearchBackground = () => {
                 </div>
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
-                 플랫폼 언급량 (설명추가 필요)
+                 플랫폼 언급량
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
@@ -243,20 +243,17 @@ const SearchBackground = () => {
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
               {data &&
                 data.twit.map((twit, index ) => {
-                  return (<div key={index}>
-                    <div className ={styles.twit_icon}>
-                      <Image src={twitterIcon} alt="twitter" />
+                  return (<div key={index} className ={styles.twit_wrap}>
+                    <div className={styles.twit_icon}>
+                      <TwitterIcon />
                     </div>
-                    <div className ={styles.twit_wrap}>
-                      { twit }
+                    <div className={styles.twit_box}>
+                      { twit.split("Quote Tweet")}
                     </div>
                   </div>
                   )                    
                 })
               }
-                {/* <div className={styles.twit_wrap}>
-                  { data && data.twit[4] }
-                </div>               */}
               </div>
               
               
