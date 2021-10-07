@@ -31,6 +31,8 @@ logging:
     root: info
   pattern:
     console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+  charset:
+    console: UTF-8
 
 
 

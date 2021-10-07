@@ -10,7 +10,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 public class DataLabHttp {
 
     public static String post(String apiUrl, Map<String, String> requestHeaders,
@@ -19,6 +22,7 @@ public class DataLabHttp {
 
         try {
             con.setRequestMethod("POST");
+            log.info("DataLabHttp Encoding" + con.getContentEncoding());
             for (Map.Entry<String, String> header : requestHeaders.entrySet()) {
                 con.setRequestProperty(header.getKey(), header.getValue());
             }
