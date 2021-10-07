@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    overflow: hidden;
 }
 
 .pie1, .pie2, .pie3 {
@@ -13,4 +14,9 @@
 
 .pie3 {
     margin : 0 auto;
+}
+
+.xAxisText{
+    font-family: pretendard400;
+    font-size: 14px;
 }

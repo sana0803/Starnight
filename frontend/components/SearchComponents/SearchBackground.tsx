@@ -1,19 +1,25 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
-import pcIcon from '../../images/pc.svg';
-import mobileIcon from '../../images/mobile.svg';
-import graphIcon from '../../images/graph.svg';
+// import pcIcon from '../../images/pc.svg';
+// import mobileIcon from '../../images/mobile.svg';
+// import graphIcon from '../../images/graph.svg';
 import twitterIcon from '../../images/twitter.png';
 import PcIcon from '../../images/pc.svg';
 import MobileIcon from '../../images/mobile.svg';
 import GraphIcon from '../../images/graph.svg';
+import TwitterIcon from '../../images/twitter_orig.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useSWRImmutable from 'swr/immutable'
-import React from 'react';
+import React, { useEffect } from 'react';
 import GraphComponent from './GraphComponent';
 import MiddlePieGraph from './MiddlePieGraph';
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import ReactHover, { Trigger, Hover } from "react-hover";
+import ClickRateResultManual from './ClickRateResultManual';
+import MentionRateResultManual from './MentionRateResultManual';
+import KeywordSearchManual from './KeywordSearchManual';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -26,8 +32,16 @@ const fetcher = url => fetch(url, {
   return data;
 })
 
-const SearchBackground = () => {
+const optionsCursorTrueWithMargin = {
+  followCursor: true,
+  shiftX: 25,
+  shiftY: -25
+};
 
+
+const SearchBackground = () => {
+  
+  const textInput = React.useRef<any>();
   const router = useRouter();
   let paramData: string | undefined | string[] = '';
   if (router.query) {
@@ -42,17 +56,17 @@ const SearchBackground = () => {
   else {
     paramData = '소고기';
   }
+  
   //console.log(paramData);
 
   const [searchText, setSearchText] = React.useState(paramData);
-  const textInput = React.useRef<any>();
 
   // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
   // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
   const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
 
   //console.log(data)
-  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank = null, graphData : null | any[] | undefined = null;
+  let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;
   if (data) {
     keywordList = data?.keywordList;
     ratios = data?.ratios;
@@ -63,6 +77,10 @@ const SearchBackground = () => {
         });
     });
     rank = data?.rank;
+
+    if (rank && !(rank+'').includes('.')) {
+      rank = (rank+'').concat('.0');
+    }
   }
 
  //console.log(keywordList, ratios)
@@ -70,7 +88,7 @@ const SearchBackground = () => {
   const submitInput = () => {
     //console.log(textInput.current.value)
     setSearchText(textInput.current.value.replace(/ /g, "").trim());
-    textInput.current.value = '';
+    //textInput.current.value = '';
   }
 
   const goEnter = (e) => {
@@ -79,9 +97,9 @@ const SearchBackground = () => {
     }
   }
   const goSearch = (value) => {
-    console.log(value)
+    // console.log(value)
     setSearchText(value.replace(/ /g, "").trim());
-    textInput.current.value = '';
+    textInput.current.value = value.replace(/ /g, "").trim();
   }
 
   const moveHome = () => {
@@ -89,6 +107,10 @@ const SearchBackground = () => {
     router.push(`/`);
     
   };
+
+  useEffect(()=>{
+    textInput.current.value = paramData;
+  }, [])
     return (
       <div id={styles.background}>
         
@@ -108,7 +130,16 @@ const SearchBackground = () => {
         </div>
 
         <div id={styles.mentions_analysis}>
-          <div id={ styles.mentions_analysis_title}>키워드 분석</div>
+          <div id={styles.mentions_analysis_title}>키워드 분석
+          <ReactHover options={optionsCursorTrueWithMargin}>
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon1}/>
+                </Trigger>
+                <Hover type="hover">
+                  <KeywordSearchManual />
+                </Hover>
+              </ReactHover>
+          </div>
           <div id={ styles.mentions_analysis_first_line }>
             <div id={styles.mentions_analysis_first_box_1}>
               <div className={styles.first_box_wrap}>
@@ -150,7 +181,7 @@ const SearchBackground = () => {
                 <div>
                   { rank && rank }
                 </div>
-                <span className={styles.first_box_3_txt_1}> / 5.0 </span>
+                <span className={styles.first_box_3_txt_1}>/ 5.0 </span>
                 <span className={styles.first_box_3_txt_2}>
                   ({ keywordList && keywordList[0].compIdx })
                 </span>                
@@ -169,7 +200,7 @@ const SearchBackground = () => {
                       return <div key={index} className
                         ={styles.mentions_analysis_second_box_1_data}
                         onClick={()=>goSearch(relKeyword)}
-                      >{relKeyword}</div>
+                      ># {relKeyword}</div>
                     })
                   }
                 </div>
@@ -180,10 +211,10 @@ const SearchBackground = () => {
                 연관 검색어 노출 횟수</div>
                 <div className={styles.mentions_analysis_second_box_2_dataBox}>
                 {keywordList ?
-                   <MiddlePieGraph data={
+                  <MiddlePieGraph data={
                         keywordList
                       } />
-                   :
+                  :
                   <></>
                 }
                 </div>
@@ -192,7 +223,15 @@ const SearchBackground = () => {
             </div>
             <div id={styles.mentions_analysis_second_box_3}>                
                 <div id={styles.mentions_analysis_second_box_3_title}>
-                  월간 클릭률
+                월간 클릭률
+                <ReactHover options={optionsCursorTrueWithMargin}>
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon1}/>
+                </Trigger>
+                <Hover type="hover">
+                  <ClickRateResultManual />
+                </Hover>
+              </ReactHover>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
@@ -218,7 +257,15 @@ const SearchBackground = () => {
                 </div>
                 
                 <div id={styles.mentions_analysis_second_box_3_2_title}>
-                 플랫폼 언급량 (설명추가 필요)
+                플랫폼 언급량
+                <ReactHover options={optionsCursorTrueWithMargin}>
+                  <Trigger type="trigger">
+                <AiOutlineQuestionCircle className={styles.questionIcon2}/>
+                </Trigger>
+                <Hover type="hover">
+                  <MentionRateResultManual />
+                </Hover>
+              </ReactHover>
                 </div>
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
@@ -240,14 +287,44 @@ const SearchBackground = () => {
               </div>
                 
               <div className={styles.mentions_analysis_third_box_1_dataBox}>
-                미리보기 데이터
+                {data ?
+
+                  (data.twit.length !== 0 ? 
+
+                data.twit.map((twit, index ) => {
+                  return (<div key={index} className ={styles.twit_wrap}>
+                    <div className={styles.twit_icon}>
+                      <TwitterIcon />
+                    </div>
+                    <div className={styles.twit_box}>
+                      { twit.split(
+                        "The following media includes potentially sensitive content. Change settings View")}
+                    </div>
+                  </div>                    
+                  )                    
+                })
+                   : 
+                  <>
+                    앗! 아직 트윗을 찾지 못했어요.
+                    </>
+                  )
+                  :
+                  
+                    <>
+                      트윗을 불러오는 중입니다.
+                    </>
+              }
               </div>
               
               
             </div>
             <div id={styles.mentions_analysis_third_box_2}>
               <div id={styles.mentions_analysis_third_box_2_title}>
-                검색량 추이 (단위:{  data &&  data.timeUnit }) </div>
+                검색량 추이
+                <span className={styles.mentions_analysis_third_box_2_text}>
+                  (단위: { data &&  data.timeUnit })
+                </span>
+              </div>
                 
                 <GraphComponent data={graphData}
                   styles={{

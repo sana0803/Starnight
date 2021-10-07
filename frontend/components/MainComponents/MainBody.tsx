@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineQuestionCircle, AiOutlineSearch } from 'react-icons/ai';
 // import useSWR from 'swr';
 import styles from '../../styles/MainBody.module.scss';
 import useSWRImmutable from 'swr/immutable'
@@ -7,6 +7,9 @@ import { useRouter } from 'next/router';
 import MainGraph from './MainGraph';
 import { GiRank3 } from "react-icons/gi";
 import { FaFileWord } from "react-icons/fa";
+import ReactHover, { Trigger, Hover } from "react-hover";
+import KeyWordManual from './KeyWordManual';
+
 const fetcher = url => fetch(url, {
     method: 'GET',
     headers: {
@@ -16,7 +19,13 @@ const fetcher = url => fetch(url, {
     //console.log(res.json())
     let data = await res.json();
     return data;
-})
+  })
+
+  const optionsCursorTrueWithMargin = {
+    followCursor: true,
+    shiftX: 20,
+    shiftY: -25
+  };
 
 const MainBody = () => {
 
@@ -36,7 +45,7 @@ const MainBody = () => {
 
     if (data) {
         datas = data?.keywords;
-        console.log(data.keywords)
+        //console.log(data.keywords)
     }
     
     const goEnter = (e) => {
@@ -45,16 +54,34 @@ const MainBody = () => {
         }
     }
 
-    const getNews = (e) => {
-       
-        router.push({
-            pathname: '/search',
-            query: { word: e.title.replace(/ /g,"").trim()}
-        });
-        // window.open(e.news_url, e.news_title,
-        //     "resizable,scrollbars,status"
-        // );
+    const getNews = (e,event) => {
+        
+        
+        let target = event.target.innerText.replace(/ /g, "");
+        //console.log(target);
+
+        if (target.length === 5 && target.includes('>')) {
+            window.open(e.news_url, e.news_title,
+                "resizable,scrollbars,status"
+            );
+        }
+        else {
+            router.push({
+                pathname: '/search',
+                query: { word: e.title.replace(/ /g,"").trim()}
+            });
+            
+        }
+
     }
+    const getLink = (e) => {
+    
+        window.open(e.news_url, e.news_title,
+            "resizable,scrollbars,status"
+        );
+    }
+
+
     return (
         <>
             <div id={styles.searchBox}>
@@ -66,34 +93,29 @@ const MainBody = () => {
             </div>
 
             <div id={styles.keyWordList}>
-                <div id={styles.keyWordListBox}>
-                <div className={styles.rankBox}>
-                                <FaFileWord className={styles.rankIcon}/>
-                                <h2 className={styles.rankTitle}>TOP 20</h2>
-                            </div>
 
-                    <div id={styles.keyWordTopList}>
-                        
-                    { datas && datas.map((e,index) => {
-                        return <div key={index} className={styles.dataKeyword}
-                            onClick={()=>getNews(e)}
-                        >#{`${e.title}`}</div>
-                    })}
-                    </div>
+                <div id={styles.keyWordTitle}>
+                    인기 검색어 Top 20
+                    <ReactHover options={optionsCursorTrueWithMargin}>
+                        <Trigger type="trigger">
+                            <AiOutlineQuestionCircle className={styles.questionIcon1}/>
+                        </Trigger>
+                        <Hover type="hover" className={styles.hoverBox}>
+                            <KeyWordManual />
+                        </Hover>
+                    </ReactHover>
                 </div>
-                <div>
-                    {data ?
-                        <>
-                            <div className={styles.rankBox}>
-                                <GiRank3 className={styles.rankIcon}/>
-                                <h2 className={styles.rankTitle}>검색어 순위</h2>
-                            </div>
-                            <MainGraph data={data.keywords} />
-                        </>
-                        :
-                        <></>
+                <div id={styles.keyWordTopList}>
                     
-                    }
+                { datas && datas.map((e,index) => {
+                    return <div key={index} className={styles.dataKeyword}
+                        onClick={(event)=>getNews(e, event)}
+                    >
+                        <div className={styles.dataKeyWordTitle}># {`${e.title}`}</div>
+                        <div className={styles.dataKeyWordLink}                            
+                        >관련 기사 &#62;</div>                        
+                    </div>
+                })}
                 </div>
             </div>
         </>

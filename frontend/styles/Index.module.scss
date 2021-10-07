@@ -1,17 +1,7 @@
-@mixin font-face($name, $file, $weight: normal, $style: normal) { 
-@font-face {
-    font-family: "#{$name}";
-    src: url('../fonts/esamanru_medium.ttf');
-    font-weight: $weight; font-style: $style; 
-}
-}
-
-@include font-face(esamanru, '', '', '');
-
 @function multiple-box-shadow($n){
-  $value: '#{random(2000)}px #{random(20000)}px #FFF';
-  @for $i from 2 through $n{
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  $value: '#{random(100)}vw #{random(100)}vh #FFF';
+  @for $i from 2 through $n*4{
+    $value: '#{$value} , #{random(100)}vw #{random(1000)}vh #FFF';
   }
   @return unquote($value);
 } 
@@ -27,7 +17,7 @@ $shadows-big:    multiple-box-shadow(100);
   // max-width: 1920px;
   // max-height: 2160px;
   overflow-x: hidden;
-  height: 1080*2px; // 아래로 화면이 추가될 때마다 곱해줘야 함
+  height: 200vh; // 아래로 화면이 추가될 때마다 곱해줘야 함
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   animation: slide 60s linear infinite;
 }
@@ -43,7 +33,7 @@ $shadows-big:    multiple-box-shadow(100);
   &:after {
     content: " ";
     position: absolute;
-    top: 2000px;
+    top: 200vh;
     width: 1px;
     height: 1px;
     background: transparent;
@@ -74,29 +64,29 @@ $shadows-big:    multiple-box-shadow(100);
 #mainText {
     position: fixed;
     z-index: 3;
-    width: 438px;
-    height: 195px;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 10vh;
     color: #fff;
     font-family: esamanru;
     font-style: normal;
     // font-weight: 300;
-    font-size: 56px;
-    line-height: 65px;
+    // font-size: 56px;
+    font-size: 3vw;
+    line-height: 3.4vw;
     text-align: center;
     letter-spacing: -0.03em;
-    margin: 25vh 75vh;
+    padding: 10vh 29vw 5vh 29vh;
 }
 
 #firstSection{
     position: absolute;
-    width: 830px;
-    height: 830px;
-    max-height: 1080px;
-    max-width: 1920px;
+    width: 100vw;
+    height: 100vh;
     background: white;
     border-radius: 50%;
-    margin: 1000px 545px 0 545px;
     overflow: hidden;
+    margin-top:110vh;
     // animation: firstSection 50s linear infinite;
 }
 
