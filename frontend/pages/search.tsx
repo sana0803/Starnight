@@ -31,7 +31,7 @@ function Search({data}) {
       {/* <SearchBackground /> */}
       <Head>
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      </Head>
+      <meta name="google-site-verification" content="KvlcKlucdM-Fvv2b8dOcmUWynCBXhySnSl2l2qK0zao" />      </Head>
       <DynamicComponent />
       {/* <span style={{border: '1px solid #DDD;'}}>
         <FcSearch onClick={handleData}>Test</FcSearch>

@@ -29,6 +29,8 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -37,9 +39,9 @@ import org.springframework.stereotype.Service;
 public class WordService {
 
     private final RedisUtil redisUtil;
-    static String RelKwdPath = "/keywordstool";
-    static String DataLabPath = "https://openapi.naver.com/v1/datalab/search";
     static String feedURL = "https://trends.google.co.kr/trends/trendingsearches/daily/rss?geo=KR";
+
+    private final CachedWordService cachedWordService;
 
     public SearchDto getWordAnalysis(String word) {
         word = word.replaceAll(" ", "");
@@ -57,7 +59,7 @@ public class WordService {
             long customerId = Long.parseLong(properties.getProperty("CUSTOMER_ID"));
             RestClient rest = RestClient.of(baseUrl, apiKey, secretKey);
 
-            words = list(rest, customerId, word);
+            words = cachedWordService.list(rest, customerId, word);
             if (words == null) {
                 throw new ListNullPointerException("API connection failed: LIST_NPE");
             }
@@ -66,11 +68,8 @@ public class WordService {
             if (words.getKeywordList().size() > 20) {
                 words.setKeywordList(words.getKeywordList().subList(0, 20));
             }
-            List<String> keywords = new ArrayList<>();
-            for (WordApiResponse w : words.getKeywordList()) {
-                keywords.add(w.getRelKeyword());
-            }
-            SearchFlowVO searchFlowVO = getDataTrend(word, keywords.toArray(new String[0]),
+
+            SearchFlowVO searchFlowVO = cachedWordService.getDataTrend(word,
                 clientId,
                 clientSecret);
             if (searchFlowVO == null) {
@@ -85,7 +84,7 @@ public class WordService {
 //            System.out.println(twit);
             long mention =
                 redisUtil.get(word) == null ? 0 : Long.parseLong((String) redisUtil.get(word));
-            searchDto = new SearchDto(words, searchFlowVO, mention,twit);
+            searchDto = new SearchDto(words, searchFlowVO, mention, twit);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,46 +92,6 @@ public class WordService {
         return searchDto;
     }
 
-    public WordVO list(RestClient rest, long customerId, String hintKeywords)
-        throws Exception {
-        HttpResponse<String> response =
-            rest.get(RelKwdPath, customerId)
-                .queryString("showDetail", 1)
-                .queryString("hintKeywords", hintKeywords)
-                .asString();
-        String responseBody = response.getBody();
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        return objectMapper
-            .readValue(responseBody, WordVO.class);
-    }
-
-    public SearchFlowVO getDataTrend(String mainWord, String[] keywords, String clientId,
-        String clientSecret) throws JsonProcessingException {
-        Map<String, String> requestHeaders = new HashMap<>();
-        requestHeaders.put("X-Naver-Client-Id", clientId);
-        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-        requestHeaders.put("Content-Type", "application/json");
-//        String requestBody =
-        JsonObject requestBody = new JsonObject();
-        requestBody.addProperty("startDate", "2021-01-01");
-        requestBody.addProperty("endDate", "2021-09-28");
-        requestBody.addProperty("timeUnit", "month");
-        JsonArray keywordList = new JsonArray();
-        for (String word : keywords) {
-            keywordList.add(word);
-        }
-        JsonObject keywordGroup = new JsonObject();
-        keywordGroup.addProperty("groupName", mainWord);
-        keywordGroup.add("keywords", keywordList);
-        JsonArray keywordGroups = new JsonArray();
-        keywordGroups.add(keywordGroup);
-        requestBody.add("keywordGroups", keywordGroups);
-        String request = requestBody.toString();
-        String responseBody = DataLabHttp.post(DataLabPath, requestHeaders, request);
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(responseBody, SearchFlowVO.class);
-    }
 
     public TrendDto getTrendKeyword() {
         RSSFeedParser parser = new RSSFeedParser(feedURL);

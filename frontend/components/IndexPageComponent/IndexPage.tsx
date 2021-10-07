@@ -4,8 +4,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 // import styles from "../styles/Home.module.css";
 import styles from "../../styles/Index.module.scss";
-import MainPage from "../MainComponents/MainPage";
+//import MainPage from "../MainComponents/MainPage";
 import ScrollDownComponent from "./ScrollDownComponent";
+
+import dynamic from 'next/dynamic';
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+
+const MainPage = dynamic(() =>
+import('../MainComponents/MainPage'), {
+loading: function loadingComponent() {
+  return <LoadingComponent />;
+},
+});
 
 const IndexPage: NextPage = () => {
   const mainText = useRef<any>();
@@ -14,7 +24,7 @@ const IndexPage: NextPage = () => {
   const [isLastScroll, setIsLastScroll] = useState(false);
   const [isScrollTop, setIsScrollTop] = useState(true);
   useEffect(() => {
-  
+    window.scrollTo(0,0);
     function handleScroll() {
       const scrollTop = window.scrollY;
       const isEndOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
