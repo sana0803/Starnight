@@ -45,7 +45,7 @@ const MainBody = () => {
 
     if (data) {
         datas = data?.keywords;
-        console.log(data.keywords)
+        //console.log(data.keywords)
     }
     
     const goEnter = (e) => {
@@ -58,7 +58,7 @@ const MainBody = () => {
         
         
         let target = event.target.innerText.replace(/ /g, "");
-        console.log(target);
+        //console.log(target);
 
         if (target.length === 5 && target.includes('>')) {
             window.open(e.news_url, e.news_title,

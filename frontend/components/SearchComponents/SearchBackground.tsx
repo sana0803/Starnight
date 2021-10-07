@@ -95,7 +95,7 @@ const SearchBackground = () => {
     }
   }
   const goSearch = (value) => {
-    console.log(value)
+    // console.log(value)
     setSearchText(value.replace(/ /g, "").trim());
     textInput.current.value = '';
   }
