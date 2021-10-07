@@ -40,7 +40,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 ---
 
-![image-20211007173306543](C:\Users\kimgd\AppData\Roaming\Typora\typora-user-images\image-20211007173306543.png)
+![image](/uploads/fe53bf6e79cef9754071b4d7263e5d53/image.png)
 
 
 
@@ -56,7 +56,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 ---
 
-![Image Pasted at 2021-10-6 20-58](C:\Users\kimgd\OneDrive\바탕 화면\새 폴더\Image Pasted at 2021-10-6 20-58.png)
+![Image_Pasted_at_2021-10-6_20-58](/uploads/e39884244c26e7d887c7ca067007eaf6/Image_Pasted_at_2021-10-6_20-58.png)
 
 
 
