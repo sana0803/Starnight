@@ -55,6 +55,7 @@ public class CachedWordService {
         requestBody.addProperty("timeUnit", "month");
         JsonArray keywordList = new JsonArray();
         // MainKeyword ADD
+        keywordList.add(mainWord);
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
         keywordGroup.add("keywords", keywordList);
