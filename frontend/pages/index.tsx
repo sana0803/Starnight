@@ -15,7 +15,7 @@ const Index = () => {
     <>
       <Head>
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      </Head>
+      <meta name="google-site-verification" content="KvlcKlucdM-Fvv2b8dOcmUWynCBXhySnSl2l2qK0zao" />      </Head>
       <DynamicComponent />
     </>
   );
