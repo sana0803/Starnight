@@ -96,11 +96,13 @@ const IndexPage: NextPage = () => {
       <article className={styles.articleTarget}>
         <div id={styles.stars}></div>
         <section id={styles.mainText} ref={mainText}>
+          <h1>
           저희가
           <br></br>
           무엇을 할 수 있는지
           <br></br>
           보여드릴게요
+          </h1>
           {
           isScrollTop ?
               <ScrollDownComponent /> :
