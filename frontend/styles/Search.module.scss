@@ -372,8 +372,18 @@
     margin: auto 0;    
 }
 
-.questionIcon {
-    margin-left: 10px;
+.questionIcon1 {
+    margin-left: 7px;
     color: #2C2E43;
     font-size: 17px;
+}
+
+.questionIcon2 {
+    margin-left: 7px;
+    color: #2C2E43;
+    font-size: 17px;
+}
+
+#mentions_analysis_second_box_3_title, #mentions_analysis_second_box_3_2_title {
+    display: flex;
 }
