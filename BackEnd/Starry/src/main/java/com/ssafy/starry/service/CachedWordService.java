@@ -24,7 +24,8 @@ public class CachedWordService {
 
     static String RelKwdPath = "/keywordstool";
     static String DataLabPath = "https://openapi.naver.com/v1/datalab/search";
-    @Cacheable(key="#hintKeywords",value="list")
+
+    @Cacheable(key = "#hintKeywords", value = "list")
     public WordVO list(RestClient rest, long customerId, String hintKeywords)
         throws Exception {
         System.out.println("list()");
@@ -39,7 +40,8 @@ public class CachedWordService {
         return objectMapper
             .readValue(responseBody, WordVO.class);
     }
-    @Cacheable(key="#mainWord", value = "trend")
+
+    @Cacheable(key = "#mainWord", value = "trend")
     public SearchFlowVO getDataTrend(String mainWord, String clientId,
         String clientSecret) throws JsonProcessingException {
         System.out.println("getDataTrend()");
@@ -54,6 +56,10 @@ public class CachedWordService {
         JsonArray keywordList = new JsonArray();
         // MainKeyword ADD
         keywordList.add(mainWord);
+        for (Object w : keywordList) {
+            String s = (String) w;
+            log.info("keywordList : " + s);
+        }
         JsonObject keywordGroup = new JsonObject();
         keywordGroup.addProperty("groupName", mainWord);
         keywordGroup.add("keywords", keywordList);
@@ -61,6 +67,7 @@ public class CachedWordService {
         keywordGroups.add(keywordGroup);
         requestBody.add("keywordGroups", keywordGroups);
         String request = requestBody.toString();
+        log.info("request Body : " + request);
         String responseBody = DataLabHttp.post(DataLabPath, requestHeaders, request);
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(responseBody, SearchFlowVO.class);
