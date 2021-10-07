@@ -20,15 +20,26 @@ public class SearchDto {
     private long mention;
     private List<String> twit;
 
-//    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
+    //    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
 //    @JsonCreator
     public SearchDto(WordVO wordVO, SearchFlowVO searchFlowVO, long mention, List<String> twit) {
         keywordList = wordVO.getKeywordList();
         timeUnit = searchFlowVO.getTimeUnit();
         ratios = new ArrayList<Double>();
         this.mention = mention;
+        int month = 1;
         for (Data d : searchFlowVO.results.get(0).data) {
+            String m = d.period.substring(5, 7);
+            int mon = Integer.parseInt(m);
+            while (mon > month) {
+                ratios.add((double) 0);
+                month++;
+            }
             ratios.add(d.ratio);
+        }
+        while (month < 9) {
+            ratios.add((double) 0);
+            month++;
         }
 
         double sum = ratios.stream().mapToDouble(i -> i).sum();
@@ -51,11 +62,23 @@ public class SearchDto {
         }
         if (average > ratios.get(ratios.size() - 1)) {
             rank -= 0.5;
+        } else {
+            double diff = ratios.get(ratios.size() - 1) - average;
+            if (diff > 30) {
+                rank += 2;
+            } else if (diff > 20) {
+                rank += 1;
+            } else {
+                rank += 0.5;
+            }
+        }
+        if (rank > 5) {
+            rank = 5;
         }
         this.twit = twit;
     }
 
-//    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
+    //    @ConstructorProperties({"wordVO", "searchFlowVO", "mention", "twit"})
 //    @JsonCreator
     public SearchDto(WordVO wordVO, List<Double> ratios, long mention, List<String> twit) {
         keywordList = wordVO.getKeywordList();
@@ -66,8 +89,8 @@ public class SearchDto {
         this.twit = twit;
     }
 
-//    @JsonCreator
-    public SearchDto(){
+    //    @JsonCreator
+    public SearchDto() {
         keywordList = new ArrayList<>();
         ratios = new ArrayList<>();
         twit = new ArrayList<>();
