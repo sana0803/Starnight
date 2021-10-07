@@ -40,7 +40,7 @@ public class CachedWordService {
             .readValue(responseBody, WordVO.class);
     }
 
-//    @Cacheable(key = "#mainWord", value = "trend")
+    @Cacheable(key = "#mainWord", value = "trend")
     public SearchFlowVO getDataTrend(String mainWord, String clientId,
         String clientSecret) throws JsonProcessingException {
         Map<String, String> requestHeaders = new HashMap<>();
