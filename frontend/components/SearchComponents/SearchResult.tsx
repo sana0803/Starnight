@@ -3,11 +3,11 @@ const SearchResult = ({data}) => {
   console.log(val);
   return (
     <>
-      {val.map((v) =>
+      {/* {val.map((v) =>
         Object.values(v).map((v1) => {
           return <p>{v1}</p>;
         }),
-      )}
+      )} */}
     </>
   );
 };
