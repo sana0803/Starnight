@@ -10,8 +10,12 @@ from time import sleep
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.firefox.options import Options
+import requests
 
-
+black_list_word= ['애인대행','섹','출장추천','채팅만남','수치플','변남','키스방','만남앱','즉석만남','출장전용','비아그라','부부만남',
+'즉석추천','유흥','여탑','자위','번역망가','비떱','사컨','멜섭','대물','남성전신','핸드폰만남','성감마사지','오프후기','보빨','만남알바','미시','콜걸','대딸','핸플','펠라','사까시','출장','야노','변남','게이','입싸','성인만남','후장'
+,'암캐','용돈만남','스폰녀','스팽','능욕','풋잡','초대남','성인용품','포르노','sex','러브샵','유두','오피','강간','변녀','섻','노출','글래머','건오'
+,'레즈','도그플']
 def init_driver(headless=False):
     # chromedriver_path = chromedriver_autoinstaller.install()
     # options = webdriver.ChromeOptions()
@@ -22,8 +26,8 @@ def init_driver(headless=False):
         options.headless = True
     else:
         options.headless = False
-        options.add_argument('window-size = 1920,1080')
-    options.add_argument('log-level=3')
+#        options.add_argument('window-size = 1920,1080')
+#    options.add_argument('log-level=3')
     prefs = {"profile.managed_default_content_settings.images": 2}
     # options.add_experimental_option("prefs", prefs)
 #    driver = webdriver.Chrome(options=options, executable_path=chromedriver_path)
@@ -134,8 +138,23 @@ def keep_scrolling(driver, tweet_ids, scrolling, data, scroll, last_position, se
         page_cards = driver.find_elements_by_xpath('//article[@data-testid="tweet"]')  # changed div by article
         for card in page_cards:
             tweet = get_data(card)
-            if tweet is not None and tweet[0] is not None and tweet[1] is not None and tweet[2] is not None and tweet[
-                4] is not None:
+            if tweet is not None and tweet[0] is not None and tweet[1] is not None and tweet[2] is not None and tweet[4] is not None:
+                flag = False
+                print(tweet[4])
+                for word in black_list_word:
+                    if tweet[4].find(word) != -1:
+                        flag = True
+                        print(word)
+                        break
+                if flag is True:
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    print('fail')
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    continue
                 # check if the tweet is unique
                 # print("------------")
                 # print('0',tweet[0])
@@ -157,8 +176,19 @@ def keep_scrolling(driver, tweet_ids, scrolling, data, scroll, last_position, se
                     temp = OrderedDict()
                     temp["text"] = tweet[4]
                     headers = {'Content-Type': 'application/json; charset=utf-8'}
-                    # requests.post("http://localhost:8080/kafka",data = json.dumps(temp),headers=headers)
-                    print(json.dumps(temp, ensure_ascii=False, indent="\t"))
+                    while True :
+                        try:
+                            res = requests.post("http://3.35.214.129:6061/collect/twit",data = json.dumps(temp),headers=headers)
+                            if res.status_code == 200 :
+                                print(res.status_code)
+                                break
+                        except:
+                            print('sleep 15')
+                            print('maybe server is down')
+                            sleep(15)
+
+#                    print(json.dumps(temp, ensure_ascii=False, indent="\t"))
+                    print("send")
                     tweet_ids.add(tweet_id)
                     data.append(tweet)
                     last_date = str(tweet[2])
@@ -194,13 +224,14 @@ def keep_scrolling(driver, tweet_ids, scrolling, data, scroll, last_position, se
 
 
 driver = init_driver(True)
-driver.get('https://twitter.com/search?q=since%3A2021-09-15&src=typed_query&f=live&lf=on')
+driver.get('https://twitter.com/search?q=lang%3Ako%20-filter%3Areplies&src=typed_query&f=live')
 tweet_ids = set()
 scrolling = True
 last_position = driver.execute_script("return window.pageYOffset;")
 data = []
 scroll = 0
 set_crash = False
+
 if len(sys.argv) == 2:
     deadline = datetime.strftime(datetime.strptime(sys.argv[1], '%Y-%m-%d'), '%Y-%m-%d')
     print(deadline)
