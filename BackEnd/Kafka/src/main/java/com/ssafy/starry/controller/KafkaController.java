@@ -21,8 +21,6 @@ public class KafkaController {
 
     @PostMapping
     public String sendMessage(@RequestBody testDto testdto) {
-        System.out
-            .printf("requestbody key1 : %s%n key2 : %s%n", testdto.getKey1(), testdto.getKey2());
         this.producer.sendMessage(testdto);
         return "success";
     }

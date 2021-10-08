@@ -1,16 +1,21 @@
 package com.ssafy.starry.common.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 public class DataLabHttp {
 
     public static String post(String apiUrl, Map<String, String> requestHeaders,
@@ -25,8 +30,13 @@ public class DataLabHttp {
 
             con.setDoOutput(true);
             try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
-                wr.write(requestBody.getBytes());
-                wr.flush();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr,
+                    StandardCharsets.UTF_8));
+                writer.write(requestBody);
+                writer.close();
+//                wr.close();
+//                wr.write(requestBody.getBytes());
+//                wr.flush();
             }
 
             int responseCode = con.getResponseCode();
