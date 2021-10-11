@@ -9,6 +9,7 @@
 }
 
 #searchInput {
+    font-size: 0.67vw;
     padding: 1.3vh;
     width: 24vw;
     height: 4vh;
@@ -65,8 +66,8 @@
 
 .dataKeyWordLink {
     font-family: pretendard500;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 0.66vw;
+    line-height: 1.48vh;
     letter-spacing: -0.03em;
     color: #a9a8b0;
     cursor: pointer;
@@ -75,13 +76,13 @@
 
 .dataKeyWordLink:hover {
     font-family: pretendard500;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 0.66vw;
+    line-height: 1.48vh;
     letter-spacing: -0.03em;
     color: #2C2E43;
     cursor: pointer;
     z-index: 2;
-    transform: translateX(4px);
+    transform: translateX(0.20vw);
     transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
 }
 
@@ -93,7 +94,7 @@
     font-size: 0.93vw;
     line-height: 2.03vh;
     letter-spacing: -0.03em;
-    padding: 2vh 21vh 4vh 2.5vh;
+    padding: 2vh 0 4vh 1.5vw;
     display: flex;
 }
 
@@ -123,6 +124,7 @@
 }
 
 #keyWordTopList {
+    font-size: 0.93vw;
     width: 100%;
     height: 23vh;
     overflow-y: scroll;
