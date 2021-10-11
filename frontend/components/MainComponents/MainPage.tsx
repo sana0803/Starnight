@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import styles from "../../styles/MainPage.module.scss";
 import MainBody from "./MainBody";
