@@ -23,49 +23,23 @@ const IndexPage: NextPage = () => {
     window.scrollTo(0,0);
     function handleScroll() {
       const scrollTop = window.scrollY;
-      const isEndOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-      
-      if (!circleBackground.current) {
-        return;
-      }
-      circleBackground.current.style.width = `${100}vw`;
-      circleBackground.current.style.height = `${100}vh`;
-      
-      if (545 - scrollTop > 0) {
-        
-        circleBackground.current.style.borderRadius = `50%`;
-        circleBackground.current.style.marginTop = `${110}vh`;
-        
-      }
-      else if((545 - scrollTop <= 0)){
-        circleBackground.current.style.marginLeft = `0px`;
-        circleBackground.current.style.borderRadius = `0%`;
-        circleBackground.current.style.marginTop = `${110}vh`;
-      }
-      
-      if (scrollTop <= 790) {
-        mainText.current.style.color = "white";
-      }
-      else {
-        mainText.current.style.color = "#FFD523";
-      }
-      
+      let innerHeight = window.innerHeight;
+      const isEndOfPage = (innerHeight + window.scrollY) >= document.body.offsetHeight;
+      let point = innerHeight / 2;
+     
+      circleBackground.current.style.borderRadius
+        = point > scrollTop ? '50%' : '0%';
       if (isEndOfPage) {
-        circleBackground.current.style.height = `100vh`;
-        mainText.current.style.height= "30vh";
+        mainText.current.style.color = "#FFD523";
         setIsLastScroll(true);
       }
       else {
-        mainText.current.style.padding = "10vh 29vw 5vh 29vw";
+        
+        mainText.current.style.color = "white";
         setIsLastScroll(false);
       }
 
-      if (scrollTop === 0) {
-        setIsScrollTop(true);
-      }
-      else {
-        setIsScrollTop(false);
-      }
+      scrollTop === 0 ? setIsScrollTop(true) : setIsScrollTop(false);
       
     }
 

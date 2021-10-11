@@ -65,7 +65,7 @@ $shadows-big:    multiple-box-shadow(100);
     position: fixed;
     z-index: 3;
     width: 100vw;
-    height: 100vh;
+    height: 30vh;
     margin-top: 10vh;
     color: #fff;
     font-family: esamanru;
@@ -86,7 +86,7 @@ $shadows-big:    multiple-box-shadow(100);
     background: white;
     border-radius: 50%;
     overflow: hidden;
-    margin-top:110vh;
+    margin-top: calc(110vh + 42.6vh);
     // animation: firstSection 50s linear infinite;
 }
 
@@ -98,4 +98,21 @@ $shadows-big:    multiple-box-shadow(100);
   to {
     border-radius: 0%;
   }
+}
+
+@import './mobile/mixin';
+
+@include mobile {
+  
+}
+
+@include tablet {
+  #mainText > h1{
+    z-index: 2;
+    // color: #FFD523;
+  }
+}
+
+@include desktop {
+
 }
