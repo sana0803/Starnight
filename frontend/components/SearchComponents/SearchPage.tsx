@@ -59,8 +59,8 @@ const SearchPage = () => {
     paramData = '소고기';
   }
   const [searchText, setSearchText] = React.useState(paramData);
-  const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
-  // const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
+  // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
+  const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
   
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;
   if (data) {
