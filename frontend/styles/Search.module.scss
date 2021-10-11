@@ -10,7 +10,7 @@
 
 #searchBoxLine {
     display: flex;
-    padding-top: 2vh;
+    // padding-top: 2vh;
 }
 
 #logoImgBox{
@@ -18,10 +18,12 @@
     height: 4.3vh ;
     margin: 0px 1.6vw 0 0 ;
     cursor: pointer;
+    padding-top: 1.57vh;
 }
 
 #searchBox {
     position: relative;
+    padding-top: 2.03vh;
 }
 
 #searchInput {
@@ -31,12 +33,17 @@
     padding-left:2.6vw;
     border-radius: 10px;
     border: none;
+    font-size: 0.93vw;
+}
+
+#inputInsideIcon:hover {
+    cursor: pointer;
 }
 
 #inputInsideIcon {
-    position: absolute;
-    left: 0.52vw;
-    top: 0.92vh;
+    position: relative;
+    left: -25.5vw;
+    // top: 3vh;
     width: 0.83vw;
     height: 1.48vh;
 }
@@ -44,7 +51,7 @@
 #yellowBox {
     display: inline-block;
     width: 3.3vw;
-    height: 3.3vw;
+    // height: 3.3vw;
     margin: 2.6vh 1.3vw 2.6vh 1.6vw;
     background: rgba(255, 213, 35, 0.15);
     border-radius: 33px;
@@ -121,20 +128,20 @@
 
 .first_box_3_txt_1 {
     text-align: left;
-    margin: auto 5px auto 6px;
-    padding-top: 3px;
+    margin: auto 0.26vw auto 0.31vw;
+    padding-top: 0.28vh;
     font-family: pretendard;
     color: #595260;
-    font-size: 16px;
+    font-size: 0.83vw;
 }
 
 .first_box_3_txt_2 {
     text-align: left;
     margin: auto 0;
-    padding-top: 3px;
+    padding-top: 0.28vh;
     font-family: pretendard;
     color: #2C2E43;
-    font-size: 17px;
+    font-size: 0.88vw;
 }
 
 #mentions_analysis_second_box_1 {
@@ -223,6 +230,7 @@
 .mentions_analysis_second_box_1_dataBox {
     overflow-y: scroll;
     height: 34.2vh;
+    font-size: 0.72vw;
 }
 .mentions_analysis_second_box_2_dataBox {
    height: 34.2vh; 
@@ -305,16 +313,38 @@
     display: flex;
     margin: auto 0;
     height: 100%;
+
+    .second_box_3_2_img {
+        width: 2.5vw;
+        height: 3.8vh;
+    }
 }
 
-.second_box_wrap > div:first-child,
 .second_box_wrap > div:first-child {
     display: inline-block;
     margin: auto 0;
     padding: 0.1vh 0.1vw;
+
+    svg { 
+        width: 2.3vw;
+        height: 5vh;
+    }
 }
 
-.second_box_wrap > div:last-child,
+.mentions_analysis_second_box_3_dataBox_title {
+    font-size: 0.83vw;
+    line-height: 1.75vh;
+    letter-spacing: -0.03em;
+
+}
+
+.mentions_analysis_second_box_3_2_dataBox_title {
+    font-size: 0.83vw;
+    line-height: 1.75vh;
+    letter-spacing: -0.03em;
+
+}
+
 .second_box_wrap > div:last-child {
     display: inline-block;
     margin: auto 0;
@@ -327,7 +357,7 @@
     height: 18.5vh;
     text-align: center;
     font-family: pretendard;
-    margin: 0 0px 0 1.4vw;
+    margin: 0 0px 0 0.4vw;
     font-size: 0.83vw;    
     // background-color: #eee;
 }
@@ -354,8 +384,8 @@
 }
 
 .twit_icon {
-    margin-top: 6px;
-    width: 7%;
+    margin-top: 0.55vh;
+    width: 3.7vw;
     height: 3.14vh;
 }
 
@@ -365,7 +395,7 @@
     border-radius: 10px;
     padding: 1.3vh 0.78vw;
     margin: 0px 0.8vw 0px 0px;
-    width: 89%;
+    width: 23.1vw;
     color: #333;
     font-size: 0.78vw;
     text-align: left;
@@ -373,10 +403,6 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: normal;
-}
-
-.twit_box:hover {
-    // cursor: pointer;
 }
 
 .mentions_analysis_third_box_2_dataBox {
@@ -407,12 +433,21 @@
     font-size: 0.89vw;
 }
 
+.questionIcon1:hover {
+    cursor: pointer;
+}
+
 .questionIcon2 {
     margin-left: 0.36vw;
     color: #2C2E43;
     font-size: 0.89vw;
     font-family: pretendard600;
 }
+
+.questionIcon2:hover {
+    cursor: pointer;
+}
+
 
 #mentions_analysis_second_box_3_title, #mentions_analysis_second_box_3_2_title {
     display: flex;
