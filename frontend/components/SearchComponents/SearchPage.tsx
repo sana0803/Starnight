@@ -228,7 +228,7 @@ const SearchPage = () => {
                   <div className={styles.second_box_wrap}>
                     <div><PcIcon /></div>
                     <div>
-                      <div>PC 클릭률</div>
+                    <div className={styles.mentions_analysis_second_box_3_dataBox_title}>PC 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
                     </div>
                   </div>
@@ -238,7 +238,7 @@ const SearchPage = () => {
                   <div className={styles.second_box_wrap}>
                     <div><MobileIcon /></div>
                     <div>
-                      <div>모바일 클릭률</div>
+                      <div className={styles.mentions_analysis_second_box_3_dataBox_title}>모바일 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
                     </div>
                   </div>
@@ -258,9 +258,9 @@ const SearchPage = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    <div><Image src={twitterIcon} alt="twitter" /></div>
+                  <div className={styles.second_box_3_2_img}><Image src={twitterIcon} alt="twitter" /></div>
                     <div>
-                      <div>트위터 내 언급량</div>
+                      <div className={styles.mentions_analysis_second_box_3_2_dataBox_title}>트위터 내 언급량</div>
                       <span>{ data && data.mention }</span>
                     </div>
                   </div>
