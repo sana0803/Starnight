@@ -45,7 +45,6 @@ const MainBody = () => {
 
     if (data) {
         datas = data?.keywords;
-        //console.log(data.keywords)
     }
     
     const goEnter = (e) => {
@@ -56,10 +55,7 @@ const MainBody = () => {
 
     const getNews = (e,event) => {
         
-        
         let target = event.target.innerText.replace(/ /g, "");
-        //console.log(target);
-
         if (target.length === 5 && target.includes('>')) {
             window.open(e.news_url, e.news_title,
                 "resizable,scrollbars,status"
@@ -74,13 +70,6 @@ const MainBody = () => {
         }
 
     }
-    const getLink = (e) => {
-    
-        window.open(e.news_url, e.news_title,
-            "resizable,scrollbars,status"
-        );
-    }
-
 
     return (
         <>
