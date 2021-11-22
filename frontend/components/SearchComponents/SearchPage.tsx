@@ -1,9 +1,6 @@
 import styles from '../../styles/Search.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import logo from '../../images/logo.png';
-// import pcIcon from '../../images/pc.svg';
-// import mobileIcon from '../../images/mobile.svg';
-// import graphIcon from '../../images/graph.svg';
 import twitterIcon from '../../images/twitter.png';
 import PcIcon from '../../images/pc.svg';
 import MobileIcon from '../../images/mobile.svg';
@@ -20,6 +17,7 @@ import ReactHover, { Trigger, Hover } from "react-hover";
 import ClickRateResultManual from './ClickRateResultManual';
 import MentionRateResultManual from './MentionRateResultManual';
 import KeywordSearchManual from './KeywordSearchManual';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 const fetcher = url => fetch(url, {
   method: 'GET',
@@ -27,7 +25,6 @@ const fetcher = url => fetch(url, {
     'Content-Type': 'application/json'
   },
 }).then(async res => {
-  //console.log(res.json())
   let data = await res.json();
   return data;
 })
@@ -38,34 +35,33 @@ const optionsCursorTrueWithMargin = {
   shiftY: -25
 };
 
-
-const SearchBackground = () => {
+const SearchPage = () => {
   
   const textInput = React.useRef<any>();
   const router = useRouter();
   let paramData: string | undefined | string[] = '';
-  if (router.query) {
-
-    if (router.query.word === '') {
-      paramData = '한복'
+  const queryObj = router.query;
+  if (queryObj) {
+    if (queryObj.hasOwnProperty('word')) {
+      if (router.query.word === '') {
+        paramData = '한복'
+      }
+      else {
+        paramData = router.query.word;
+      }
     }
     else {
-      paramData = router.query.word;
+
+      paramData = '소고기';
     }
   }
   else {
     paramData = '소고기';
   }
-  
-  //console.log(paramData);
-
   const [searchText, setSearchText] = React.useState(paramData);
-
-  // const { data, error } = useSWRImmutable(`/search/${searchText}`, fetcher);
   // const { data, error } = useSWRImmutable(`http://localhost:3000/search/${searchText}`, fetcher);
   const { data, error } = useSWRImmutable(`https://j5b103.p.ssafy.io/api/word/search?word=${searchText}`, fetcher);
-
-  //console.log(data)
+  
   let keywordList: null | any[]  = null, ratios: null | any[] = null , rank: null | string | number = null, graphData : null | any[] | undefined = null;
   if (data) {
     keywordList = data?.keywordList;
@@ -83,12 +79,9 @@ const SearchBackground = () => {
     }
   }
 
- //console.log(keywordList, ratios)
-
   const submitInput = () => {
-    //console.log(textInput.current.value)
-    setSearchText(textInput.current.value.replace(/ /g, "").trim());
-    //textInput.current.value = '';
+    let changeData = textInput.current.value.replace(/ /g, "").trim();
+    setSearchText(changeData);
   }
 
   const goEnter = (e) => {
@@ -97,20 +90,22 @@ const SearchBackground = () => {
     }
   }
   const goSearch = (value) => {
-    // console.log(value)
-    setSearchText(value.replace(/ /g, "").trim());
-    textInput.current.value = value.replace(/ /g, "").trim();
+    let changeData = value.replace(/ /g, "").trim();
+    setSearchText(changeData);
   }
 
   const moveHome = () => {
-
     router.push(`/`);
-    
   };
 
-  useEffect(()=>{
-    textInput.current.value = paramData;
-  }, [])
+  useEffect(() => {
+      textInput.current.value = searchText;
+    router.push(`/search?word=${searchText}`, undefined, { shallow: true });
+    
+    return () => {
+      
+    }
+  }, [searchText])
     return (
       <div id={styles.background}>
         
@@ -130,7 +125,7 @@ const SearchBackground = () => {
         </div>
 
         <div id={styles.mentions_analysis}>
-          <div id={styles.mentions_analysis_title}>키워드 분석
+          <h1 id={styles.mentions_analysis_title}>키워드 분석
           <ReactHover options={optionsCursorTrueWithMargin}>
                   <Trigger type="trigger">
                 <AiOutlineQuestionCircle className={styles.questionIcon1}/>
@@ -139,13 +134,12 @@ const SearchBackground = () => {
                   <KeywordSearchManual />
                 </Hover>
               </ReactHover>
-          </div>
+          </h1>
           <div id={ styles.mentions_analysis_first_line }>
             <div id={styles.mentions_analysis_first_box_1}>
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    {/* <Image src={pcIcon} alt="pc" /> */}
                     <PcIcon />
                   </div>
                 </div>
@@ -159,7 +153,6 @@ const SearchBackground = () => {
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    {/* <Image src={mobileIcon} alt="mobile" /> */}
                     <MobileIcon />
                   </div>
                 </div>
@@ -173,7 +166,6 @@ const SearchBackground = () => {
               <div className={styles.first_box_wrap}>
                 <div id={styles.yellowBox}>
                   <div className={styles.icon_img}>
-                    {/* <Image src={graphIcon} alt="graph" /> */}
                     <GraphIcon />
                   </div>         
                 </div>
@@ -218,8 +210,6 @@ const SearchBackground = () => {
                   <></>
                 }
                 </div>
-              
-              
             </div>
             <div id={styles.mentions_analysis_second_box_3}>                
                 <div id={styles.mentions_analysis_second_box_3_title}>
@@ -236,10 +226,9 @@ const SearchBackground = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    {/* <div><Image src={pcIcon} alt="pc" /></div> */}
                     <div><PcIcon /></div>
                     <div>
-                      <div>PC 클릭률</div>
+                    <div className={styles.mentions_analysis_second_box_3_dataBox_title}>PC 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAvePcCtr } %</span>
                     </div>
                   </div>
@@ -247,10 +236,9 @@ const SearchBackground = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    {/* <div><Image src={mobileIcon} alt="mobile" /></div> */}
                     <div><MobileIcon /></div>
                     <div>
-                      <div>모바일 클릭률</div>
+                      <div className={styles.mentions_analysis_second_box_3_dataBox_title}>모바일 클릭률</div>
                       <span>{ keywordList && keywordList[0].monthlyAveMobileCtr } %</span>
                     </div>
                   </div>
@@ -270,9 +258,9 @@ const SearchBackground = () => {
                 <div className
                     ={styles.mentions_analysis_second_box_3_2_dataBox}>
                   <div className={styles.second_box_wrap}>
-                    <div><Image src={twitterIcon} alt="twitter" /></div>
+                  <div className={styles.second_box_3_2_img}><Image src={twitterIcon} alt="twitter" /></div>
                     <div>
-                      <div>트위터 내 언급량</div>
+                      <div className={styles.mentions_analysis_second_box_3_2_dataBox_title}>트위터 내 언급량</div>
                       <span>{ data && data.mention }</span>
                     </div>
                   </div>
@@ -303,7 +291,7 @@ const SearchBackground = () => {
                   </div>                    
                   )                    
                 })
-                   : 
+                  : 
                   <>
                     앗! 아직 트윗을 찾지 못했어요.
                     </>
@@ -332,19 +320,6 @@ const SearchBackground = () => {
                     height: "80%"
                   }}
                 />
-                {/* <div className={styles.mentions_analysis_third_box_2_dataBox}>{
-                  ratios && 
-                  ratios.map((ratio, index) => {
-                    return (<div key={index} className
-                      ={styles.mentions_analysis_third_box_2_data}>
-                        <div>{index + 1}월</div>
-                        <div>{Math.ceil(ratio)}%</div>
-                      </div>
-                    )
-                  })
-              }
-                </div> */}
-              
             </div>
           </div>
         </div>
@@ -353,4 +328,4 @@ const SearchBackground = () => {
     );
   };
   
-  export default SearchBackground;
+  export default SearchPage;

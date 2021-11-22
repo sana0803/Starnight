@@ -7,7 +7,7 @@ const CINEPS_BOARD_DOMAIN = "https://j5b103.p.ssafy.io";
 const formatting = (target) => prettier.format(target, { parser: "html" });
 
 // let pages = ["/best", "talk", "/citic", "/campus", "/notice"];
-let pages = ["/search?word=", "/"];
+let pages = ["/search?word=", "/", "/search"];
 pages = pages.map((page) => CINEPS_BOARD_DOMAIN + page);
 
 // 웹의 페이지에 따라 반복적으로 넣을 loc, loastmod

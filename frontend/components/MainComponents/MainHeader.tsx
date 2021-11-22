@@ -20,10 +20,6 @@ const MainHeader = () => {
             <div id={styles.logoImgBox} onClick={moveHome}>
                 <Image src={logo} alt="logo"/>
             </div>
-
-            {/* <div id={styles.keyWordBox} onClick={moveKeyword}>
-                키워드 분석
-            </div> */}
         </div>
     );
 }

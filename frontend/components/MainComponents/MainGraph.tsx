@@ -14,19 +14,6 @@ const grade = [
     '3rd'
 ];
 
-const LabelListComponent = (props) => {
-    const { name, width, height, x,y } = props;
-    console.log(props)
-    return (
-        <g className={styles.labelText}>
-            <text x={x + width / 2} y={ y+ height/2} textAnchor="middle">
-            { name }
-            </text>
-        </g>
-    );
-
-}
-
 const CustomizedYAxis = (props) => {
     //console.log(props)
     const { x, y, index } = props;
@@ -112,7 +99,6 @@ const MainGraph = ({ data }) => {
                         }}
                         cursor={false}
                     />
-                    {/* /<Legend /> */}
                     <Bar dataKey="traffic" >
                     {
                         data.map((entry, index) => (
@@ -124,7 +110,6 @@ const MainGraph = ({ data }) => {
                         
                         <LabelList dataKey="name" position="center"/>
                     </Bar>
-                    {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
                 </BarChart>
                 :
                 <></>
