@@ -1,8 +1,6 @@
-import { StylesContext } from "@material-ui/styles";
 import styles from '../../styles/LoadingComponent.module.scss';
 import Image from 'next/image';
 import logo from '../../images/logo.png';
-
 
 const LoadingComponent = () => {
 
