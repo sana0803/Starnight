@@ -1,4 +1,4 @@
-![Asset_6](/uploads/ea933faa885a3ece1aed9bfe8a4e46a7/Asset_6.png)
+![Asset_6](README.assets/Asset_6.png)
 
 SSAFY 2학기 특화 프로젝트 - 별나린밤
 
@@ -45,7 +45,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 ---
 
-![image](/uploads/fe53bf6e79cef9754071b4d7263e5d53/image.png)
+![image](README.assets/image.png)
 
 
 
@@ -59,9 +59,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 # Architecture
 
----
-
-![Image_Pasted_at_2021-10-6_20-58](/uploads/e39884244c26e7d887c7ca067007eaf6/Image_Pasted_at_2021-10-6_20-58.png)
+![Image_Pasted_at_2021-10-6_20-58](README.assets/Image_Pasted_at_2021-10-6_20-58.png)
 
 
 
@@ -83,7 +81,7 @@ SSAFY 2학기 특화 프로젝트 - 별나린밤
 
 | Name     | 김주현 | 이산하 | 임호정 | 조세연 | 최승재 |
 | -------- | ------ | ------ | ------ | ------ | ------ |
-| Profile  | ![김주현](/uploads/3b4f64d2214fcf699d6c29f978fcb01e/김주현.jpg) | ![이산하](/uploads/0e805e6f8a45cb7a4b265864690ecbd2/이산하.jpg) | ![임호정_프로필](/uploads/0f298bc348037cd5dd32949171f2e5a4/임호정.png)       | ![조세연_프로필](/uploads/98422f8661eec9e5a7b5a3bafb004109/조세연.png)       | ![최승재_프로필](/uploads/209ea4249595c3b8f44ef14d962912ad/최승재.png) |
+| Profile  | ![김주현](README.assets/김주현.jpg) | ![이산하](README.assets/이산하.jpg) | ![임호정](README.assets/임호정.png) | ![조세연](README.assets/조세연.png) | ![최승재](README.assets/최승재.png) |
 | Position | BE | FE/UI,UX | FE/UI,UX |    BE  | BE |
 | GitHub   | @juhyun7955 | @sana0803 | @39ghwjd |  @cnsy831 |@nodayst|
 
